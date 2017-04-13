@@ -20,8 +20,21 @@
     "mem": 0,
     "greyStars": 0,
     "yellowStars": 0,
-    "giftBox": [],
-    "history": [],
+    "giftBox": [
+      {
+      "type": "giveOrLend",
+      "content": ["10 Pen refills (0.5mm)"]
+      },
+      {
+        "type": "deliver",
+        "content": ["Olympic Station", "University Station", "Mong Kok East Station"]
+      },
+      {
+        "type": "know",
+        "content": ["整西多士", "basic windsurfing"]
+      }
+    ],
+    "prevRequests": [2, 1],
     "token": "jwt.token.here"
   }
 }
@@ -57,7 +70,7 @@
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
     "wish": true,
-    "wishPot": 0,
+    "wishPot": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -86,7 +99,7 @@
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
     "wish": true,
-    "wishPot": 0,
+    "wishPot": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -107,7 +120,7 @@
     "updatedAt": "2017-04-13T03:48",
     "request_id": 1,
     "wish": true,
-    "wishPot": 0,
+    "wishPot": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -160,7 +173,7 @@
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 3
     }
   }]
 }
@@ -359,7 +372,7 @@ Required fields: `body`
 
 
 
-### Getting comments to a request########################
+### Getting comments from a request
 
 `GET /api/requests/:request_id/comments`
 
