@@ -16,7 +16,7 @@
     "email": "xemexpress@uni.com",
     "bio": "Working in the Sea of Palaces",
     "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-    "mobileNum": 85212345678,
+    "mobileNum": "85212345678",
     "mem": 0,
     "greyStars": 0,
     "yellowStars": 0,
