@@ -20,21 +20,6 @@
     "mem": 0,
     "greyStars": 0,
     "yellowStars": 0,
-    "giftBox": [
-      {
-      "type": "giveOrLend",
-      "content": ["10 Pen refills (0.5mm)"]
-      },
-      {
-        "type": "deliver",
-        "content": ["Olympic Station", "University Station", "Mong Kok East Station"]
-      },
-      {
-        "type": "know",
-        "content": ["整西多士", "basic windsurfing"]
-      }
-    ],
-    "prevRequests": [2, 1],
     "token": "jwt.token.here"
   }
 }
@@ -50,6 +35,57 @@
     "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
     "yellowStars": 0
   }
+}
+```
+
+### Single gift
+
+```JSON
+{
+  "gift": {
+    "type": "giveOrLend",
+    "text": "10 Pen refills (0.5mm)",
+    "image": "https://photouploads.com/image/1N0"
+  }
+}
+```
+
+### Multiple gifts
+
+```JSON
+{
+  "gifts": [
+    {
+      "type": "giveOrLend",
+      "text": "10 Pen refills (0.5mm)",
+      "image": "https://photouploads.com/image/1N0"
+    },
+    {
+      "type": "deliver",
+      "text": "Olympic Station",
+      "image": null
+    },
+    {
+      "type": "deliver",
+      "text": "University Station",
+      "image": null
+    },
+    {
+      "type": "deliver",
+      "text": "Mong Kok East Station",
+      "image": null
+    },
+    {
+      "type": "know",
+      "text": "整西多士",
+      "image": "https://photouploads.com/image/1Nx"
+    },
+    {
+      "type": "know",
+      "text": "basic windsurfing",
+      "image": null
+    }
+  ]
 }
 ```
 
@@ -69,8 +105,8 @@
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
-    "wish": true,
-    "wishPot": 1,
+    "wished": true,
+    "wishesCount": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -98,8 +134,8 @@
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
-    "wish": true,
-    "wishPot": 1,
+    "wished": true,
+    "wishesCount": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -119,8 +155,8 @@
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 1,
-    "wish": true,
-    "wishPot": 1,
+    "wished": true,
+    "wishesCount": 1,
     "poster": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
