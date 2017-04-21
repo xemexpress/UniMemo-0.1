@@ -43,7 +43,7 @@
 ```JSON
 {
   "gift": {
-    "type": "giveOrLend",
+    "tagList": ["giveOrLend"],
     "text": "10 Pen refills (0.5mm)",
     "image": "https://photouploads.com/image/1N0"
   }
@@ -56,32 +56,33 @@
 {
   "gifts": [
     {
+      "tagList": ["giveOrLend"],
       "type": "giveOrLend",
       "text": "10 Pen refills (0.5mm)",
       "image": "https://photouploads.com/image/1N0"
     },
     {
-      "type": "deliver",
+      "tagList": ["deliver"],
       "text": "Olympic Station",
       "image": null
     },
     {
-      "type": "deliver",
+      "tagList": ["deliver"],
       "text": "University Station",
       "image": null
     },
     {
-      "type": "deliver",
+      "tagList": ["deliver"],
       "text": "Mong Kok East Station",
       "image": null
     },
     {
-      "type": "know",
+      "tagList": ["know"],
       "text": "整西多士",
       "image": "https://photouploads.com/image/1Nx"
     },
     {
-      "type": "know",
+      "tagList": ["know"],
       "text": "basic windsurfing",
       "image": null
     }
@@ -94,14 +95,13 @@
 ```JSON
 {
   "request": {
-    "status": "ongoing",
-    "type": "shopping",
+    "tagList": ["ongoing", "shopping"],
     "startTime": "",
     "startPlace": "",
     "endTime": "2017-04-15T17:30",
     "endPlace": "Exit B at University Station",
     "text": "Please help me buy a Book called 'Winning' by Jack Welch.",
-    "images": ["https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg"],
+    "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
@@ -123,14 +123,13 @@
 ```JSON
 {
   "requests":[{
-    "status": "ongoing",
-    "type": "shopping",
+    "tagList": ["ongoing", "shopping"],
     "startTime": "",
     "startPlace": "",
     "endTime": "2017-04-15T17:30",
     "endPlace": "Exit B at University Station",
     "text": "Please help me buy a Book called 'Winning' by Jack Welch.",
-    "images": ["https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg"],
+    "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 2,
@@ -144,14 +143,13 @@
     },
     "helper": ""
   }, {
-    "status": "done",
-    "type": "production",
+    "tagList": ["done", "production"],
     "startTime": "2017-04-11T19:00",
     "startPlace": "Yin Chong St, Mong Kok",
     "endTime": "2017-04-18",
     "endPlace": "We Decide",
     "text": "有冇人可以幫我寄養「鴨腳木」一個星期？",
-    "images": ["https://photouploads.com/image/ybr"],
+    "image": "https://photouploads.com/image/ybr",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
     "request_id": 1,
@@ -195,6 +193,7 @@
     "id": 1,
     "body": "You can borrow it from CU:) Do you need help?",
     "createdAt": "2017-04-13T06:48",
+    "updatedAt": "2017-04-13T06:48",
     "author": {
       "username": "Jason Luo",
       "bio": "The Sea of Palaces",
@@ -205,6 +204,7 @@
     "id": 2,
     "body": "Oh thank you! I go borrow it later.",
     "createdAt": "2017-04-13T07:50",
+    "updatedAt": "2017-04-13T07:50",
     "author": {
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
@@ -212,6 +212,17 @@
       "yellowStars": 3
     }
   }]
+}
+```
+
+### List of Tags
+
+```JSON
+{
+  "tags": [
+    "reactjs",
+    "angularjs"
+  ]
 }
 ```
 
@@ -324,6 +335,20 @@ Authentication optional, returns a [Profile](#profile)
 
 Returns most recent requests globally be default
 
+Query Parameters:
+
+Filter by tag:
+
+`?tag=ongoing,shopping`
+
+Filter by poster:
+
+`?poster=xemexpress`
+
+Wished by user:
+
+`?wished=xemexpress`
+
 Limit number of requests (default is 10):
 
 `?limit=10`
@@ -347,13 +372,13 @@ Example request body:
 ```JSON
 {
   "request": {
-    "type": "production",
+    "tagList": ["ongoing", "production"],
     "startTime": "2017-04-11T19:00",
     "startPlace": "Yin Chong St, Mong Kok",
     "endTime": "2017-04-18",
     "endPlace": "We Decide",
     "text": "有冇人可以幫我寄養「鴨腳木」一個星期？",
-    "images": ["https://photouploads.com/image/ybr"]
+    "image": "https://photouploads.com/image/ybr"
   }
 }
 ```
@@ -362,7 +387,7 @@ Authentication required, will return an [Request](#single-request)
 
 Required fields: `type`, `startTime`, `startPlace`, `endTime`, `endPlace`, `text`
 
-Optional fields: `images` as an array of imageURLs
+Optional fields: `image`
 
 
 
