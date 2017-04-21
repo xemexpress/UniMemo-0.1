@@ -4,6 +4,7 @@
 
 `Authorization: Token jwt.token.here`
 
+
 ## JSON Objects returned by API:
 
 ### Users (for authentication)
@@ -38,7 +39,7 @@
 }
 ```
 
-### Single gift
+### Single Gift
 
 ```JSON
 {
@@ -50,14 +51,13 @@
 }
 ```
 
-### Multiple gifts
+### Multiple Gifts
 
 ```JSON
 {
   "gifts": [
     {
       "tagList": ["giveOrLend"],
-      "type": "giveOrLend",
       "text": "10 Pen refills (0.5mm)",
       "image": "https://photouploads.com/image/1N0"
     },
@@ -104,7 +104,7 @@
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": 2,
+    "id": 2,
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -118,7 +118,7 @@
 }
 ```
 
-### Multiple requests
+### Multiple Requests
 
 ```JSON
 {
@@ -132,7 +132,7 @@
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": 2,
+    "id": 2,
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -152,7 +152,7 @@
     "image": "https://photouploads.com/image/ybr",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": 1,
+    "id": 1,
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -167,7 +167,7 @@
 }
 ```
 
-### Single comment
+### Single Comment
 
 ```JSON
 {
@@ -185,7 +185,7 @@
 }
 ```
 
-### Multiple comments
+### Multiple Comments
 
 ```JSON
 {
@@ -269,7 +269,6 @@ No authentication required, returns a [User](#users-for-authentication)
 
 Required fields: `email`, `password`
 
-
 ### Registration:
 
 `POST /api/users`
@@ -289,15 +288,11 @@ No authentication required, returns a [User](#users-for-authentication)
 
 Required fields: `email`, `username`, `password`
 
-
-
 ### Get Current User
 
 `GET /api/user`
 
 Authentication required, returns a [User](#users-for-authentication) that's the current user
-
-
 
 ### Update User
 
@@ -317,17 +312,80 @@ Example request body:
 Authentication required, returns the [User](#users-for-authentication)
 
 
-Accepted fields: `email`, `username`, `password`, `proPic`, `bio`
+Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
+### List Gifts
 
+`GET /api/user/gifts`
+
+Returns most recent requests globally be default
+
+Query Parameters:
+
+Filter by tag:
+
+`?tag=giveOrLend`
+
+Limit number of gifts (default is 10):
+
+`?limit=10`
+
+Offset number of gifts (default is 0):
+
+`?offset=0`
+
+Authentication required, returns [multiple gifts](#multiple-gifts), ordered by most recent first
+
+### Create Gift
+
+`POST /api/user/gifts`
+
+Example request body:
+```JSON
+{
+  "gift":{
+    "tagList": ["giveOrLend"],
+    "text": "10 Pen refills (0.5mm)",
+    "image": "https://photouploads.com/image/1N0"
+  }
+}
+```
+
+Authentication required, returns the [Gift](#single-gift)
+
+Required fields: `tagList`, `text`
+
+Optional fields: `image`
+
+### Update Gift
+
+`PUT /api/user/gifts/:id`
+
+Example request body:
+
+```JSON
+{
+  "gift": {
+    "text": "10 Pen refills (0.5mm) and 1 well-fitting pen shell"
+  }
+}
+```
+
+Authentication required, returns the updated [Gift](#single-gift)
+
+Optional fields: `text`, `image`
+
+### Delete Gift
+
+`DELETE /api/user/gifts/:id`
+
+Authentication required
 
 ### Get Profile
 
 `GET /api/profiles/:username`
 
-Authentication optional, returns a [Profile](#profile)
-
-
+Authentication optional, returns the [Profile](#profile)
 
 ### List Requests
 
@@ -353,15 +411,17 @@ Limit number of requests (default is 10):
 
 `?limit=10`
 
-Authentication optional, will return [multiple requests](#multiple-requests), ordered by most recent first
+Offset number of requests (default is 0):
 
+`?offset=0`
 
+Authentication optional, returns [multiple requests](#multiple-requests), ordered by most recent first
 
 ### Retrieve Request
 
-`GET /api/requests/:request_id`
+`GET /api/requests/:id`
 
-No authentication required, will return [single request](#single-request)
+No authentication required, returns [single request](#single-request)
 
 ### Create Request
 
@@ -383,17 +443,15 @@ Example request body:
 }
 ```
 
-Authentication required, will return an [Request](#single-request)
+Authentication required, returns the [Request](#single-request)
 
-Required fields: `type`, `startTime`, `startPlace`, `endTime`, `endPlace`, `text`
+Required fields: `tagList`, `startTime`, `startPlace`, `endTime`, `endPlace`, `text`
 
 Optional fields: `image`
 
+### Update Request
 
-
-### Update request
-
-`PUT /api/requests/:request_id`
+`PUT /api/requests/:id`
 
 Example request body:
 
@@ -407,15 +465,11 @@ Example request body:
 
 Authentication required, returns the updated [Request](#single-request)
 
-Optional fields: `title`, `description`, `body`
+Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `image`
 
-The `slug` also gets updated when the `title` is changed
+### Add a Comment to a Request
 
-
-
-### Adding comments to a request
-
-`POST /api/requests/:request_id/comments`
+`POST /api/requests/:id/comments`
 
 Example request body:
 
@@ -427,41 +481,33 @@ Example request body:
 }
 ```
 
-Authentication required, returns the created [Comment](#single-comment)
+Authentication required, returns the [Comment](#single-comment)
 
 Required fields: `body`
 
+### Get Comments from a Request
 
-
-### Getting comments from a request
-
-`GET /api/requests/:request_id/comments`
+`GET /api/requests/:id/comments`
 
 Authentication optional, returns [multiple comments](#multiple-comments)
 
+### Delete a Comment
 
-
-### Deleting a comment
-
-`DELETE /api/requests/:request_id/comments/:id`
+`DELETE /api/requests/:id/comments/:id`
 
 Authentication required
 
+### Wish a Request
 
-
-### Wishing a request
-
-`POST /api/requests/:request_id/wish`
+`POST /api/requests/:id/wish`
 
 Authentication required, returns the [Request](#single-request)
 
 No additional parameters required
 
+### Unwish a Request
 
-
-### Unwishing a request
-
-`DELETE /api/requests/:request_id/wish`
+`DELETE /api/requests/:id/wish`
 
 Authentication required, returns the [Request](#single-request)
 
