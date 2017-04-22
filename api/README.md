@@ -478,6 +478,12 @@ Authentication required, returns the [Request](#single-request)
 
 Authentication required, returns the [Request](#single-request) with `helper` set
 
+### End Request
+
+`PUT /api/requests/:id/end/:mem`
+
+Authentication required, returns the [Request](#single-request) with 'done' in `tagList`, `yellowStars` incremented, `mem` updated.
+
 ### Create Request
 
 `POST /api/requests`
