@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def underscore_params!
-    params.deep_transform_keys!(&:underscore)
+    params.transform_keys!(&:underscore)
   end
 
 end
