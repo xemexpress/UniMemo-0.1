@@ -161,7 +161,12 @@
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0
     },
-    "helper": "Kate Yuen"
+    "helper": {
+      "username": "Kate Yuen",
+      "bio": "An Artist - Graphic Designer & Photographer",
+      "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
+      "yellowStars": 3
+    }
   }],
   "requestsCount": 2
 }
