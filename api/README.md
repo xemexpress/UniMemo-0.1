@@ -236,8 +236,9 @@
 ```JSON
 {
   "tags": [
-    "reactjs",
-    "angularjs"
+    "shopping",
+    "delivering"
+    "production"
   ]
 }
 ```
