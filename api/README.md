@@ -115,6 +115,7 @@
       "yellowStars": 0,
       "following": false
     },
+    "taking": false,
     "helper": null
   }
 }
@@ -144,6 +145,7 @@
       "yellowStars": 0,
       "following": false
     },
+    "taking": true,
     "helper": null
   }, {
     "tagList": ["done", "production"],
@@ -165,6 +167,7 @@
       "yellowStars": 0,
       "following": false
     },
+    "taking": false,
     "helper": {
       "username": "Kate Yuen",
       "bio": "An Artist - Graphic Designer & Photographer",
@@ -404,13 +407,13 @@ Authentication optional, returns the [Profile](#profile)
 
 `POST /api/profiles/:username/follow`
 
-Authentication required, returns a [Profile](#profile)
+Authentication required, returns the [Profile](#profile)
 
 ### Unfollow User
 
 `DELETE /api/profiles/:username/follow`
 
-Authentication required, returns a [Profile](#profile)
+Authentication required, returns the [Profile](#profile)
 
 ### List Requests
 
@@ -455,6 +458,24 @@ Authentication required, returns [multiple Requests](#multiple-requests) created
 `GET /api/requests/:id`
 
 No authentication required, returns [single request](#single-request)
+
+### Take Request
+
+`POST /api/requests/:id/follow`
+
+Authentication required, returns the [Request](#single-request)
+
+### Untake Request
+
+`DELETE /api/requests/:id/follow`
+
+Authentication required, returns the [Request](#single-request)
+
+### Confirm Request
+
+`POST /api/requests/:id/confirm`
+
+Authentication required, returns the [Request](#single-request) with `helper` set
 
 ### Create Request
 
@@ -528,7 +549,7 @@ Required fields: `body`
 
 `GET /api/requests/:id/comments`
 
-Authentication optional, returns [multiple comments](#multiple-comments)
+Authentication optional, returns [multiple Comments](#multiple-comments)
 
 ### Delete a Comment
 
