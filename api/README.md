@@ -12,7 +12,6 @@
 ```JSON
 {
   "user": {
-    "id": 1,
     "username": "xemexpress",
     "email": "xemexpress@uni.com",
     "bio": "Working in the Sea of Palaces",
