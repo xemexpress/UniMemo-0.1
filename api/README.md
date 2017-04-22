@@ -500,6 +500,12 @@ Authentication required, returns the updated [Request](#single-request)
 
 Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `image`
 
+### Delete a Request
+
+`DELETE /api/requests/:id`
+
+Authentication required
+
 ### Add a Comment to a Request
 
 `POST /api/requests/:id/comments`
