@@ -34,7 +34,8 @@
     "username": "xemexpress",
     "bio": "Working in the Sea of Palaces",
     "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-    "yellowStars": 0
+    "yellowStars": 0,
+    "following": false
   }
 }
 ```
@@ -111,9 +112,10 @@
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 0,
+      "following": false
     },
-    "helper": ""
+    "helper": null
   }
 }
 ```
@@ -139,9 +141,10 @@
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 0,
+      "following": false
     },
-    "helper": ""
+    "helper": null
   }, {
     "tagList": ["done", "production"],
     "startTime": "2017-04-11T19:00",
@@ -159,13 +162,15 @@
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 0,
+      "following": false
     },
     "helper": {
       "username": "Kate Yuen",
       "bio": "An Artist - Graphic Designer & Photographer",
       "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
-      "yellowStars": 3
+      "yellowStars": 3,
+      "following": false
     }
   }],
   "requestsCount": 2
@@ -184,7 +189,8 @@
       "username": "Jason Luo",
       "bio": "The Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 0,
+      "following": false
     }
   }
 }
@@ -203,7 +209,8 @@
       "username": "Jason Luo",
       "bio": "The Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 0
+      "yellowStars": 0,
+      "following": false
     }
   }, {
     "id": 2,
@@ -214,7 +221,8 @@
       "username": "xemexpress",
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
-      "yellowStars": 3
+      "yellowStars": 3,
+      "following": false
     }
   }]
 }
@@ -392,6 +400,18 @@ Authentication required
 
 Authentication optional, returns the [Profile](#profile)
 
+### Follow User
+
+`POST /api/profiles/:username/follow`
+
+Authentication required, returns a [Profile](#profile)
+
+### Unfollow User
+
+`DELETE /api/profiles/:username/follow`
+
+Authentication required, returns a [Profile](#profile)
+
 ### List Requests
 
 `GET /api/requests`
@@ -508,12 +528,8 @@ Authentication required
 
 Authentication required, returns the [Request](#single-request)
 
-No additional parameters required
-
 ### Unwish a Request
 
 `DELETE /api/requests/:id/wish`
 
 Authentication required, returns the [Request](#single-request)
-
-No additional parameters required
