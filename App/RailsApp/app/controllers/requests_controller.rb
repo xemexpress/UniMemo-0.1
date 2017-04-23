@@ -20,6 +20,8 @@ class RequestsController < ApplicationController
     @request.poster = @request.helper = current_user
 
     if @request.save
+      @request.request_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@request.id) + rand(36**3).to_s(36)
+      @request.save
       render :show
     else
       render json: { errors: @request.errors }, status: :unprocessable_entity

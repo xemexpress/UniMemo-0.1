@@ -39,6 +39,7 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'devise'
 gem 'jwt'
 gem 'rack-cors'
+gem 'hashids'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
