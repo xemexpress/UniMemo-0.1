@@ -26,6 +26,10 @@ class RequestsController < ApplicationController
     end
   end
 
+  def show
+      @request = Request.find_by_request_id!(params[:request_id])
+  end
+
   private
 
   def request_params
