@@ -2,6 +2,9 @@ class Request < ApplicationRecord
   belongs_to :poster
   belongs_to :helper
 
+  scope :posted_by, ->(username) { where(poster: User.where(username: username)) }
+  scope :helped_by, ->(username) { where(helper: User.where(username: username)) }
+
   validates :text, presence: true, allow_blank: false
   validates :request_id, uniqueness: true
 
