@@ -15,6 +15,17 @@ class RequestsController < ApplicationController
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
   end
 
+  def create
+    @request = Request.new(request_params)
+    @request.poster = current_user
+
+    if @request.save
+      render :show
+    else
+      render json: { errors: @request.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def request_params
