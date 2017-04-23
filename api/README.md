@@ -446,9 +446,9 @@ Offset number of requests (default is 0):
 
 Authentication optional, returns [multiple requests](#multiple-requests), ordered by most recent first
 
-### Feed Requests
+### Pass Requests
 
-`GET /api/requests/feed`
+`GET /api/requests/pass`
 
 Can also take `limit` and `offset` query parameters like [List Requests](#list-requests)
 
