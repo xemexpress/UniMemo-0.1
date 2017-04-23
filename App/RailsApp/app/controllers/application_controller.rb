@@ -27,6 +27,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_user!(option = {})
+    head :unauthorized unless signed_in?
+  end
+
+  def current_user
+    @current_user ||= super || User.find(@current_user_id)
+  end
+
+  def signed_in?
+    @current_user_id.present?
+  end
+
   def underscore_params!
     params.transform_keys!(&:underscore)
   end
