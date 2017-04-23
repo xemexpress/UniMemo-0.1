@@ -428,9 +428,13 @@ Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Filter by poster:
+Filter by poster: (reserved due to its aggressiveness)
 
 `?poster=xemexpress`
+
+Filter by helper: (reserved due to its aggressiveness)
+
+`?helper=xemexpress`
 
 Wished by user:
 
