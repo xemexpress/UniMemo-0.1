@@ -96,15 +96,15 @@
 {
   "request": {
     "tagList": ["ongoing", "shopping"],
-    "startTime": "",
-    "startPlace": "",
+    "startTime": null,
+    "startPlace": null,
     "endTime": "2017-04-15T17:30",
     "endPlace": "Exit B at University Station",
     "text": "Please help me buy a Book called 'Winning' by Jack Welch.",
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "id": 2,
+    "request_id": "ju92ak6",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -126,15 +126,15 @@
 {
   "requests":[{
     "tagList": ["ongoing", "shopping"],
-    "startTime": "",
-    "startPlace": "",
+    "startTime": null,
+    "startPlace": null,
     "endTime": "2017-04-15T17:30",
     "endPlace": "Exit B at University Station",
     "text": "Please help me buy a Book called 'Winning' by Jack Welch.",
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "id": 2,
+    "request_id": "ju92ak6",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -156,7 +156,7 @@
     "image": "https://photouploads.com/image/ybr",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "id": 1,
+    "request_id": "9501mlu",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -455,31 +455,31 @@ Authentication required, returns [multiple Requests](#multiple-requests) created
 
 ### Retrieve Request
 
-`GET /api/requests/:id`
+`GET /api/requests/:request_id`
 
 No authentication required, returns [single request](#single-request)
 
 ### Take Request
 
-`POST /api/requests/:id/follow`
+`POST /api/requests/:request_id/follow`
 
 Authentication required, returns the [Request](#single-request)
 
 ### Untake Request
 
-`DELETE /api/requests/:id/follow`
+`DELETE /api/requests/:request_id/follow`
 
 Authentication required, returns the [Request](#single-request)
 
 ### Confirm Request
 
-`POST /api/requests/:id/confirm`
+`POST /api/requests/:request_id/confirm`
 
 Authentication required, returns the [Request](#single-request) with `helper` set
 
 ### End Request
 
-`PUT /api/requests/:id/end/:mem`
+`PUT /api/requests/:request_id/end/:mem`
 
 Authentication required, returns the [Request](#single-request) with 'done' in `tagList`, `yellowStars` incremented, `mem` updated.
 
@@ -511,7 +511,7 @@ Optional fields: `image`
 
 ### Update Request
 
-`PUT /api/requests/:id`
+`PUT /api/requests/:request_id`
 
 Example request body:
 
@@ -529,13 +529,13 @@ Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `imag
 
 ### Delete a Request
 
-`DELETE /api/requests/:id`
+`DELETE /api/requests/:request_id`
 
 Authentication required
 
 ### Add a Comment to a Request
 
-`POST /api/requests/:id/comments`
+`POST /api/requests/:request_id/comments`
 
 Example request body:
 
@@ -553,24 +553,24 @@ Required fields: `body`
 
 ### Get Comments from a Request
 
-`GET /api/requests/:id/comments`
+`GET /api/requests/:request_id/comments`
 
 Authentication optional, returns [multiple Comments](#multiple-comments)
 
 ### Delete a Comment
 
-`DELETE /api/requests/:id/comments/:id`
+`DELETE /api/requests/:request_id/comments/:id`
 
 Authentication required
 
 ### Wish a Request
 
-`POST /api/requests/:id/wish`
+`POST /api/requests/:request_id/wish`
 
 Authentication required, returns the [Request](#single-request)
 
 ### Unwish a Request
 
-`DELETE /api/requests/:id/wish`
+`DELETE /api/requests/:request_id/wish`
 
 Authentication required, returns the [Request](#single-request)
