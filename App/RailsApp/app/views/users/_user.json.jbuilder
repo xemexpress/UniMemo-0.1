@@ -1,2 +1,2 @@
-json.(user, :username, :email, :bio, :proPic, :mobileNum, :mem, :greystars, :yellowStars)
+json.(user, :username, :email, :bio, :proPic, :mobileNum, :mem, :greyStars, :yellowStars)
 json.token user.generate_jwt

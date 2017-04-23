@@ -1,4 +1,4 @@
-class UsersController < Applicationcontroller
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
