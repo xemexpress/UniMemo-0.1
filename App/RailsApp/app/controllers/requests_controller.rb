@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!#, except: [:index, :show]
 
   def index
     @requests = Request.all.includes(:poster)
