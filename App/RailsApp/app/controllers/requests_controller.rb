@@ -42,6 +42,18 @@ class RequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @request = Request.find_by_request_id!(params[:request_id])
+
+    if @request.poster_id == @current_user_id
+      @request.destroy
+
+      render json: {}
+    else
+      render json: { errors: { request: ['not posted by user'] } }, status: :forbidden
+    end
+  end
+
   private
 
   def request_params
