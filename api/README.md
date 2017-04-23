@@ -104,7 +104,7 @@
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": "ju92ak6",
+    "requestId": "ju92ak6",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -134,7 +134,7 @@
     "image": "https://images-na.ssl-images-amazon.com/images/I/5168G4UoVFL._SY346_.jpg",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": "ju92ak6",
+    "requestId": "ju92ak6",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -156,7 +156,7 @@
     "image": "https://photouploads.com/image/ybr",
     "createdAt": "2017-04-13T03:22",
     "updatedAt": "2017-04-13T03:48",
-    "request_id": "9501mlu",
+    "requestId": "9501mlu",
     "wished": true,
     "wishesCount": 1,
     "poster": {
@@ -187,6 +187,7 @@
     "id": 1,
     "body": "You can borrow it from CU:)",
     "createdAt": "2017-04-13T06:48",
+    "updatedAt": "2017-04-13T06:48",
     "author": {
       "username": "Jason Luo",
       "bio": "The Sea of Palaces",
