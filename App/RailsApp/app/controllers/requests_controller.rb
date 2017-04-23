@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    @request.poster = current_user
+    @request.poster = @request.helper = current_user
 
     if @request.save
       render :show
