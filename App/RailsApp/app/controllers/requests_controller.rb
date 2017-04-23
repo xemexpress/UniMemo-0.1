@@ -30,6 +30,18 @@ class RequestsController < ApplicationController
       @request = Request.find_by_request_id!(params[:request_id])
   end
 
+  def update
+    @request = Request.find_by_request_id!(params[:request_id])
+
+    if @request.poster_id == @current_user_id
+      @request.update_attributes(request_params)
+
+      render :show
+    else
+      render json: { errors: { request: ['not posted by user'] } }, status: :forbidden
+    end
+  end
+
   private
 
   def request_params
