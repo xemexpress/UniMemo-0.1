@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422104854) do
+ActiveRecord::Schema.define(version: 20170423101616) do
+
+  create_table "requests", force: :cascade do |t|
+    t.datetime "start_time"
+    t.string   "start_place"
+    t.datetime "end_time"
+    t.string   "end_place"
+    t.text     "text"
+    t.string   "image"
+    t.string   "request_id"
+    t.integer  "wishes_count"
+    t.integer  "poster_id"
+    t.integer  "helper_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["helper_id"], name: "index_requests_on_helper_id"
+    t.index ["poster_id"], name: "index_requests_on_poster_id"
+    t.index ["request_id"], name: "index_requests_on_request_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
