@@ -402,7 +402,7 @@ Authentication required, returns {}
 
 `GET /api/profiles/:username`
 
-Authentication optional, returns the [Profile](#profile)
+No authentication required, returns the [Profile](#profile)
 
 ### Favor User
 
@@ -420,19 +420,17 @@ Authentication required, returns the unfavored User's [Profile](#profile)
 
 `GET /api/requests`
 
-Returns most recent requests globally be default
-
 Query Parameters:
 
 Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Filter by poster: (reserved due to its aggressiveness)
+Filter by poster: *(reserved due to its aggressiveness)*
 
 `?poster=xemexpress`
 
-Filter by helper: (reserved due to its aggressiveness)
+Filter by helper: *(reserved due to its aggressiveness)*
 
 `?helper=xemexpress`
 
@@ -454,9 +452,21 @@ Authentication optional, returns [multiple requests](#multiple-requests), ordere
 
 `GET /api/requests/collect`
 
-Can also take `limit` and `offset` query parameters like [List Requests](#list-requests)
+Query Parameters:
 
-Authentication required, returns [multiple Requests](#multiple-requests) created by favored users, ordered by most recent first.
+Filter by tag:
+
+`?tag=ongoing,shopping`
+
+Limit number of requests (default is 10):
+
+`?limit=10`
+
+Offset number of requests (default is 0):
+
+`?offset=0`
+
+Authentication required, returns [multiple Requests](#multiple-requests) posted by previously favored Users, ordered by most recent first.
 
 ### Retrieve Request
 
@@ -542,7 +552,7 @@ Authentication required, returns {}
 
 `GET /api/requests/:request_id/comments`
 
-Authentication optional, returns [multiple Comments](#multiple-comments)
+No authentication required, returns [multiple Comments](#multiple-comments)
 
 ### Add Comment to a Request
 
