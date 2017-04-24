@@ -10,6 +10,7 @@ class User < ApplicationRecord
                        format: { with: /\A[a-zA-Z0-9]+\z/ }
 
   has_many :requests, dependent: :destroy
+  has_many :wishes, dependent: :destroy
 
   def generate_jwt
     JWT.encode({ id: id,
