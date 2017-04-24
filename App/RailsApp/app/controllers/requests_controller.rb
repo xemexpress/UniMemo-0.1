@@ -22,6 +22,8 @@ class RequestsController < ApplicationController
   def collect
     @requests = Request.includes(:poster).where(poster: current_user.following_users)
 
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
+
     @requests_count = @requests.count
 
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
