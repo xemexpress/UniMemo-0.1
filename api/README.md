@@ -438,7 +438,7 @@ Filter by helper: (reserved due to its aggressiveness)
 
 Wished by user:
 
-`?wished=xemexpress`
+`?wisher=xemexpress`
 
 Limit number of requests (default is 10):
 
