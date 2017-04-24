@@ -4,6 +4,8 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.all.includes(:poster)
 
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
+
     # This corrupts Privacy, and may hurt Users due to others' limited understanding of the whole picture.
     #@requests = @requests.posted_by(params[:poster]) if params[:poster].present?
 
