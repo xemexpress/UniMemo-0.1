@@ -17,6 +17,6 @@ class WishesController < ApplicationController
   private
 
   def find_request!
-    @request = Request.find_by_request_id!(params[:request_id])
+    @request = Request.find_by_request_id!(params[:request_request_id])
   end
 end
