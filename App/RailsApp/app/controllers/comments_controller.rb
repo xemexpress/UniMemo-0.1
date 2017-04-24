@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :find_request!
 
+  def index
+    @comments = @request.comments.order(created_at: :desc)
+  end
+
   private
 
   def comment_params
