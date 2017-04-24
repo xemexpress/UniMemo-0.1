@@ -2,6 +2,7 @@ class Request < ApplicationRecord
   belongs_to :poster, :class_name => "User"
   belongs_to :helper, :class_name => "User"
   has_many :wishes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   scope :posted_by, ->(username) { where(poster: User.where(username: username)) }
   scope :helped_by, ->(username) { where(helper: User.where(username: username)) }
