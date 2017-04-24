@@ -6,6 +6,13 @@ class CommentsController < ApplicationController
     @comments = @request.comments.order(created_at: :desc)
   end
 
+  def create
+    @comment = @request.comments.new(comment_params)
+    @comment.user = current_user
+
+    render json: { errors: @comment.errors }, status: :unprocessable_entity unless @comment.save
+  end
+
   private
 
   def comment_params
