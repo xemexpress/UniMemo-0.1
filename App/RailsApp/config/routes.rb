@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :profiles, param: :username, only: [:show]
 
     resources :requests, param: :request_id, except: [:edit, :new]
+
+    resources :tags, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
