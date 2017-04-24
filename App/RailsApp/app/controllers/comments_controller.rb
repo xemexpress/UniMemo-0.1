@@ -4,6 +4,10 @@ class CommentsController < ApplicationController
 
   private
 
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
   def find_request!
     @request = Request.find_by_request_id!(params[:request_request_id])
   end
