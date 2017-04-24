@@ -34,7 +34,7 @@
     "bio": "Working in the Sea of Palaces",
     "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
     "yellowStars": 0,
-    "following": false
+    "favoring": false
   }
 }
 ```
@@ -112,7 +112,7 @@
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0,
-      "following": false
+      "favoring": false
     },
     "taking": false,
     "helper": null
@@ -142,7 +142,7 @@
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0,
-      "following": false
+      "favoring": false
     },
     "taking": true,
     "helper": null
@@ -164,7 +164,7 @@
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0,
-      "following": false
+      "favoring": false
     },
     "taking": false,
     "helper": {
@@ -172,7 +172,7 @@
       "bio": "An Artist - Graphic Designer & Photographer",
       "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
       "yellowStars": 3,
-      "following": false
+      "favoring": false
     }
   }],
   "requestsCount": 2
@@ -193,7 +193,7 @@
       "bio": "The Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0,
-      "following": false
+      "favoring": false
     }
   }
 }
@@ -213,7 +213,7 @@
       "bio": "The Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 0,
-      "following": false
+      "favoring": false
     }
   }, {
     "id": 2,
@@ -225,7 +225,7 @@
       "bio": "Working in the Sea of Palaces",
       "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
       "yellowStars": 3,
-      "following": false
+      "favoring": false
     }
   }]
 }
@@ -404,15 +404,15 @@ Authentication required
 
 Authentication optional, returns the [Profile](#profile)
 
-### Follow User
+### Favor User
 
-`POST /api/profiles/:username/follow`
+`POST /api/profiles/:username/favor`
 
 Authentication required, returns the [Profile](#profile)
 
-### Unfollow User
+### Unfavor User
 
-`DELETE /api/profiles/:username/follow`
+`DELETE /api/profiles/:username/favor`
 
 Authentication required, returns the [Profile](#profile)
 
@@ -450,13 +450,13 @@ Offset number of requests (default is 0):
 
 Authentication optional, returns [multiple requests](#multiple-requests), ordered by most recent first
 
-### Pass Requests
+### Collect Requests
 
-`GET /api/requests/pass`
+`GET /api/requests/collect`
 
 Can also take `limit` and `offset` query parameters like [List Requests](#list-requests)
 
-Authentication required, returns [multiple Requests](#multiple-requests) created by followed users, ordered by most recent first.
+Authentication required, returns [multiple Requests](#multiple-requests) created by favored users, ordered by most recent first.
 
 ### Retrieve Request
 
