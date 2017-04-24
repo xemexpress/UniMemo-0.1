@@ -396,7 +396,7 @@ Optional fields: `text`, `image`
 
 `DELETE /api/user/gifts/:id`
 
-Authentication required
+Authentication required, returns {}
 
 ### Get Profile
 
@@ -464,13 +464,13 @@ Authentication required, returns [multiple Requests](#multiple-requests) created
 
 No authentication required, returns [single request](#single-request)
 
-### Take Request
+### Follow Request
 
 `POST /api/requests/:request_id/follow`
 
 Authentication required, returns the [Request](#single-request)
 
-### Untake Request
+### Unfollow Request
 
 `DELETE /api/requests/:request_id/follow`
 
@@ -486,7 +486,7 @@ Authentication required, returns the [Request](#single-request) with `helper` se
 
 `PUT /api/requests/:request_id/end/:mem`
 
-Authentication required, returns the [Request](#single-request) with 'done' in `tagList`, `yellowStars` incremented, `mem` updated.
+Authentication required, returns the [Request](#single-request) with 'done' in `tag_list`, `yellowStars` incremented, `mem` updated.
 
 ### Create Request
 
@@ -536,7 +536,7 @@ Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `imag
 
 `DELETE /api/requests/:request_id`
 
-Authentication required
+Authentication required, returns {}
 
 ### Add a Comment to a Request
 
@@ -566,7 +566,7 @@ Authentication optional, returns [multiple Comments](#multiple-comments)
 
 `DELETE /api/requests/:request_id/comments/:id`
 
-Authentication required
+Authentication required, returns {}
 
 ### Wish a Request
 
@@ -579,3 +579,9 @@ Authentication required, returns the [Request](#single-request)
 `DELETE /api/requests/:request_id/wish`
 
 Authentication required, returns the [Request](#single-request)
+
+### Get Tags
+
+`GET /api/tags`
+
+No authentication required, returns a [List of Tags](#list-of-tags)
