@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
     render json: { errors: @comment.errors }, status: :unprocessable_entity unless @comment.save
   end
 
+  def update
+    if @comment.user_id == @current_user_id
+      @comment.update_attributes(comment_params)
+
+      render :create
+    else
+      render json: { errors: { comments: ['not owned by user'] } }, status: :forbidden
+    end
+  end
+
   def destroy
     @comment = @request.comments.find(params[:id])
 
