@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = @request.comments.find(params[:id])
     if @comment.user_id == @current_user_id
       @comment.update_attributes(comment_params)
 
