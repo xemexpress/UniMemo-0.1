@@ -61,6 +61,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:tag_list: [], :start_time, :start_place, :end_time, :end_place, :text, :image)
+    params.require(:request).permit(:start_time, :start_place, :end_time, :end_place, :text, :image, tag_list: [])
   end
 end
