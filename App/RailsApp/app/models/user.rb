@@ -28,4 +28,8 @@ class User < ApplicationRecord
     request.reload
   end
 
+  def wished?(request)
+    wishes.find_by(request_id: request.id).present?
+  end
+
 end
