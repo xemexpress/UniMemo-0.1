@@ -19,6 +19,16 @@ class RequestsController < ApplicationController
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
   end
 
+  def collect
+    @requests = Request.includes(:poster).where(poster: current_user.following_users)
+
+    @requests_count = @requests.count
+
+    @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
+
+    render :index
+  end
+
   def create
     @request = Request.new(request_params)
     @request.poster = @request.helper = current_user
