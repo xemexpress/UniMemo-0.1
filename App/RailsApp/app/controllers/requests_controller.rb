@@ -12,6 +12,8 @@ class RequestsController < ApplicationController
     # This is considered less aggressive. But still, it can indirectly harm Users.
     #@requests = @requests.helped_by(params[:helper]) if params[:helper].present?
 
+    @requests = @requests.wished_by(params[:wisher]) if params[:wisher].present?
+
     @requests_count = @requests.count
 
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
