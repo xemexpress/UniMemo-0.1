@@ -5,6 +5,7 @@ class Request < ApplicationRecord
 
   scope :posted_by, ->(username) { where(poster: User.where(username: username)) }
   scope :helped_by, ->(username) { where(helper: User.where(username: username)) }
+  scope :wished_by, ->(username) { joins(:wishes).where(wishes: { user: User.where(username: username) }) }
 
   acts_as_taggable
 
