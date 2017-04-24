@@ -408,13 +408,13 @@ Authentication optional, returns the [Profile](#profile)
 
 `POST /api/profiles/:username/favor`
 
-Authentication required, returns the [Profile](#profile)
+Authentication required, returns the favored User's [Profile](#profile)
 
 ### Unfavor User
 
 `DELETE /api/profiles/:username/favor`
 
-Authentication required, returns the [Profile](#profile)
+Authentication required, returns the unfavored User's [Profile](#profile)
 
 ### List Requests
 
