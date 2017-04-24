@@ -532,13 +532,19 @@ Authentication required, returns the updated [Request](#single-request)
 
 Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `image`
 
-### Delete a Request
+### Delete Request
 
 `DELETE /api/requests/:request_id`
 
 Authentication required, returns {}
 
-### Add a Comment to a Request
+### Get Comments from a Request
+
+`GET /api/requests/:request_id/comments`
+
+Authentication optional, returns [multiple Comments](#multiple-comments)
+
+### Add Comment to a Request
 
 `POST /api/requests/:request_id/comments`
 
@@ -556,13 +562,25 @@ Authentication required, returns the [Comment](#single-comment)
 
 Required fields: `body`
 
-### Get Comments from a Request
+### Update Comment
 
-`GET /api/requests/:request_id/comments`
+`PUT /api/requests/:request_id/comments/:id`
 
-Authentication optional, returns [multiple Comments](#multiple-comments)
+Example request body:
 
-### Delete a Comment
+```JSON
+{
+  "comment": {
+    "body": "You can borrow it from CU Ulib :) Do you need help?"
+  }
+}
+```
+
+Authentication required, returns the updated [Comment](#single-comment)
+
+Optional fields: `body`
+
+### Delete Comment
 
 `DELETE /api/requests/:request_id/comments/:id`
 
