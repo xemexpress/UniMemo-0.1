@@ -18,4 +18,14 @@ class User < ApplicationRecord
                 Rails.application.secrets.secret_key_base)
   end
 
+  def wish(request)
+    wishes.find_or_create_by(request: request)
+  end
+
+  def unwish(request)
+    wishes.where(request: request).destroy_all
+
+    request.reload
+  end
+
 end
