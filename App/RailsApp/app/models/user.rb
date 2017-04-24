@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :requests, dependent: :destroy
   has_many :wishes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def generate_jwt
     JWT.encode({ id: id,
