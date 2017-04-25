@@ -3,8 +3,6 @@ class Gift < ApplicationRecord
   belongs_to :receiver, :class_name => "User"
 
   scope :related_to, (user_id) -> { where(provider_id: user_id).or(Gift.where(receiver_id: user_id)) }
-  scope :provided_by, (user_id) -> { where(provider_id: user_id) }
-  scope :received_by, (user_id) -> { where(receiver_id: user_id) }
 
   acts_as_taggable
 
