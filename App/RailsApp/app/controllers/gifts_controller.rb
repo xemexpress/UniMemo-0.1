@@ -4,6 +4,11 @@ class GiftsController < ApplicationController
   def index
     @gifts = Gift.all.related_to(@current_user_id)
 
+    @expired_gifts = @gifts.expired.find_each do |gift|
+      gift.receiver = gift.provider
+      gift.save
+    end
+
     @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
 
     @gifts_count = @gifts.count
