@@ -2,6 +2,10 @@ class ConfirmsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_request!
 
+  def index
+    @confirms = @request.followers
+  end
+
   private
 
   def find_request!
