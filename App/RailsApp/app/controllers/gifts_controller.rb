@@ -22,11 +22,11 @@ class GiftsController < ApplicationController
   end
 
   def show
-    @gift = Gift.find_by_gift_id!(params[:gift_id])
+    find_gift!
   end
 
   def update
-    @gift = Gift.find_by_gift_id!(params[:gift_id])
+    find_gift!
 
     if @gift.provider_id == @current_user_id
       @gift.update_attributes(gift_params_provider)
@@ -39,6 +39,18 @@ class GiftsController < ApplicationController
     render :show
   end
 
+  def destroy
+    find_gift!
+
+    if @gift.provider_id == @current_user_id
+      @gift.destory
+
+      render json: {}
+    else
+      render json: { errors: { gift: ['not provided by user'] } }, status: :forbidden
+    end
+  end
+
   private
 
   def gift_params_as_provider
@@ -47,5 +59,9 @@ class GiftsController < ApplicationController
 
   def gift_params_as_receiver
     params.require(:gift).permit(:receiver, tag_list: [])
+  end
+
+  def find_gift!
+    @gift = Gift.find_by_gift_id!(params[:gift_id])
   end
 end
