@@ -13,5 +13,6 @@ class Request < ApplicationRecord
 
   acts_as_taggable
 
+  validates :tag_list, presence: true, allow_blank: false
   validates :text, presence: true, allow_blank: false
 end
