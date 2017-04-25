@@ -304,10 +304,7 @@
     "shopping",
     "delivering",
     "production"
-  ]
-}
-
-{
+  ],
   "giftTags": [
     "personal",
     "public",
