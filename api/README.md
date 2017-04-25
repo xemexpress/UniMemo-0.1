@@ -44,9 +44,27 @@
 ```JSON
 {
   "gift": {
-    "tagList": ["giveOrLend"],
+    "tagList": ["openPublic", "giveOrLend"],
     "text": "10 Pen refills (0.5mm)",
-    "image": "https://photouploads.com/image/1N0"
+    "image": "https://photouploads.com/image/1N0",
+    "createdAt": "2017-04-25T20:02",
+    "updatedAt": "2017-04-25T20:02",
+    "giftId": "cg056e5m",
+    "expireAt": "2017-06-20T00:00",
+    "provider": {
+      "username": "xemexpress",
+      "bio": "Working in the Sea of Palaces",
+      "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+      "yellowStars": 0,
+      "favoring": false
+    },
+    "receiver": {
+      "username": "Kate Yuen",
+      "bio": "An Artist - Graphic Designer & Photographer",
+      "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
+      "yellowStars": 3,
+      "favoring": false
+    }
   }
 }
 ```
@@ -57,34 +75,61 @@
 {
   "gifts": [
     {
-      "tagList": ["giveOrLend"],
+      "tagList": ["public", "giveOrLend"],
       "text": "10 Pen refills (0.5mm)",
-      "image": "https://photouploads.com/image/1N0"
+      "image": "https://photouploads.com/image/1N0",
+      "createdAt": "2017-04-25T20:02",
+      "updatedAt": "2017-04-25T20:02",
+      "giftId": "cg056e5m",
+      "expireAt": "2017-06-20T00:00",
+      "provider": {
+        "username": "xemexpress",
+        "bio": "Working in the Sea of Palaces",
+        "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+        "yellowStars": 0,
+        "favoring": false
+      },
+      "receiver": null
     },
     {
-      "tagList": ["deliver"],
-      "text": "Olympic Station",
-      "image": null
-    },
-    {
-      "tagList": ["deliver"],
+      "tagList": ["public", "deliver"],
       "text": "University Station",
-      "image": null
+      "image": null,
+      "createdAt": "2017-04-25T20:02",
+      "updatedAt": "2017-04-25T20:02",
+      "giftId": "cg056e5m",
+      "expireAt": "2017-06-20T00:00",
+      "provider": {
+        "username": "xemexpress",
+        "bio": "Working in the Sea of Palaces",
+        "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+        "yellowStars": 0,
+        "favoring": false
+      },
+      "receiver": {
+        "username": "Kate Yuen",
+        "bio": "An Artist - Graphic Designer & Photographer",
+        "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
+        "yellowStars": 3,
+        "favoring": false
+      }
     },
     {
-      "tagList": ["deliver"],
-      "text": "Mong Kok East Station",
-      "image": null
-    },
-    {
-      "tagList": ["know"],
+      "tagList": ["personal", "know"],
       "text": "整西多士",
-      "image": "https://photouploads.com/image/1Nx"
-    },
-    {
-      "tagList": ["know"],
-      "text": "basic windsurfing",
-      "image": null
+      "image": "https://photouploads.com/image/1Nx",
+      "createdAt": "2017-04-25T20:02",
+      "updatedAt": "2017-04-25T20:02",
+      "giftId": "cg056e5m",
+      "expireAt": "2017-06-20T00:00",
+      "provider": {
+        "username": "xemexpress",
+        "bio": "Working in the Sea of Palaces",
+        "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+        "yellowStars": 0,
+        "favoring": false
+      },
+      "receiver": null
     }
   ]
 }
@@ -352,8 +397,6 @@ Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
 `GET /api/user/gifts`
 
-Returns most recent requests globally be default
-
 Query Parameters:
 
 Filter by tag:
@@ -368,7 +411,13 @@ Offset number of gifts (default is 0):
 
 `?offset=0`
 
-Authentication required, returns [multiple gifts](#multiple-gifts), ordered by most recent first
+Authentication required, returns [multiple current_user-related gifts](#multiple-gifts), ordered by most recent first
+
+### Retrieve Gift
+
+`GET /api/user/gifts/:gift_id`
+
+Authentication optional, returns [single Gift](#single-gift)
 
 ### Create Gift
 
@@ -393,7 +442,7 @@ Optional fields: `image`
 
 ### Update Gift
 
-`PUT /api/user/gifts/:id`
+`PUT /api/user/gifts/:gift_id`
 
 Example request body:
 
@@ -411,7 +460,7 @@ Optional fields: `text`, `image`
 
 ### Delete Gift
 
-`DELETE /api/user/gifts/:id`
+`DELETE /api/user/gifts/:gift_id`
 
 Authentication required, returns {}
 
@@ -489,7 +538,7 @@ Authentication required, returns [multiple Requests](#multiple-requests) posted 
 
 `GET /api/requests/:request_id`
 
-Authentication optional, returns [single request](#single-request)
+Authentication optional, returns [single Request](#single-request)
 
 ### Take Request
 
