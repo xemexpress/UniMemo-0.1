@@ -3,11 +3,15 @@ class ConfirmsController < ApplicationController
   before_action :find_request!
 
   def index
-    @helpers = @request.followers
+    if @request.poster_id == @current_user_id
+      @helpers = @request.followers
 
-    @helpers_count = @helpers.count
+      @helpers_count = @helpers.count
 
-    @helpers = @helpers.offset(params[:offset] || 0).limit(params[:limit] || 10)
+      @helpers = @helpers.offset(params[:offset] || 0).limit(params[:limit] || 10)
+    else
+      render json: { errors: { requests: ['not owned by user'] } }, status: :forbidden
+    end
   end
 
   private
