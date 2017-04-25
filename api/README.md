@@ -231,11 +231,11 @@
 }
 ```
 
-### List of Takers
+### List of Helpers
 
 ```JSON
 {
-  "takers": [
+  "helpers": [
     "Kate Yuen",
     "xemexpress"
   ]
@@ -487,21 +487,31 @@ Authentication optional, returns [single request](#single-request)
 
 ### Take Request
 
-`POST /api/requests/:request_id/take`
+`POST /api/requests/:request_id/help`
 
 Authentication required, returns the [Request](#single-request)
 
-### Untake Request
+### Unhelp Request
 
-`DELETE /api/requests/:request_id/take`
+`DELETE /api/requests/:request_id/help`
 
 Authentication required, returns the [Request](#single-request)
 
-### Retrieve Request's Taker
+### List Request's Helpers
 
 `GET /api/requests/:request_id/confirms`
 
-Authentication required, returns a [List of Takers](#list-of-takers)
+Query Parameters:
+
+Limit number of requests (default is 10):
+
+`?limit=10`
+
+Offset number of requests (default is 0):
+
+`?offset=0`
+
+Authentication required, returns a [List of Helpers](#list-of-helprs)
 
 ### Confirm Request
 
