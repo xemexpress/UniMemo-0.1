@@ -21,6 +21,10 @@ class GiftsController < ApplicationController
     end
   end
 
+  def show
+    @gift = Gift.find_by_gift_id!(params[:gift_id])
+  end
+
   private
 
   def gift_params
