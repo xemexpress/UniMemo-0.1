@@ -131,7 +131,8 @@
       },
       "receiver": null
     }
-  ]
+  ],
+  "giftsCount": 3
 }
 ```
 
@@ -455,7 +456,7 @@ Required fields: `tag_list`, `text`, `expire_at`
 
 Optional fields: `image`, `receiver`
 
-### Update Gift
+### Update Gift (Mainly For provider)
 
 `PUT /api/user/gifts/:gift_id`
 
@@ -471,7 +472,13 @@ Example request body:
 
 Authentication required, returns the updated [Gift](#single-gift)
 
-Optional fields: `text`, `image`
+Optional fields: `text`, `image`, `expire_at`, `receiver` (also for receiver), `tag_list`
+
+### Toggle Gift's Tag public(if any)-openPublic (For receiver)
+
+`GET /api/user/gifts/:gift_id/openPublic`
+
+Authentication required, returns the updated [Gift](#single-gift)
 
 ### Delete Gift
 
