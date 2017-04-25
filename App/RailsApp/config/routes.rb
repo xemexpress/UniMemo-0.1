@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resource :take, only: [:create, :destroy]
       resources :comments, except: [:edit, :new, :show]
       resources :confirms, param: :username, only: [:index, :show]
+      resources :ends, param: :mem, only: [:show]
       get :collect, on: :collection
     end
 
