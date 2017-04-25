@@ -41,6 +41,28 @@ class GiftsController < ApplicationController
     render :show
   end
 
+  def openPublic
+    find_gift!
+
+    if @gift.receiver_id == @current_user_id
+      if !@gift.tag_list.include?('personal')
+        if @gift.tag_list.include?('public')
+          @gift.tag_list.remove('public')
+          @gift.tag_list.add('openPublic')
+        else
+          @gift.tag_list.remove('openPublic')
+          @gift.tag_list.add('public')
+        end
+      else
+        render json: { errors: { gift: ['not public'] } }
+      end
+    else
+      render json: { errors: { user: ["not the gift's receiver"] } }
+    end
+
+    render :show
+  end
+
   def destroy
     find_gift!
 
