@@ -16,12 +16,18 @@ class ConfirmsController < ApplicationController
 
   def show
     if @request.poster_id == @current_user_id
+      @helpers = User.where(id: @request.user_followers.pluck(:id))
       @helper = User.find_by_username!(params[:username])
-      @request.helper = @helper
-
-      render 'requests/show'
+      if @helpers.include?(@helper)
+        @request.tag_list.remove("ongoing").add("ongoing-taken")
+        @request.update_attributes(:helper => @helper)
+        
+        render 'requests/show'
+      else
+        render json: { errors: { helper: ['not valid']}}
+      end
     else
-      render json: { errors: { requests: ['not owned by user'] } }, status: :forbidden
+      render json: { errors: { request: ['not owned by user'] } }, status: :forbidden
     end
   end
 
