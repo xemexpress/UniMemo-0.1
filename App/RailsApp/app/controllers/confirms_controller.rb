@@ -14,6 +14,17 @@ class ConfirmsController < ApplicationController
     end
   end
 
+  def show
+    if @request.poster_id == @current_user_id
+      @helper = User.find_by_username!(params[:username])
+      @request.helper = @helper
+
+      render 'requests/show'
+    else
+      render json: { errors: { requests: ['not owned by user'] } }, status: :forbidden
+    end
+  end
+
   private
 
   def find_request!
