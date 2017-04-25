@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { sessions: :sessions },
                        path_names: { sign_in: :login }
     resource :user, only: [:show, :update] do
-      resources :gifts, param: :gift_id, except: [:edit, :new]
+      resources :gifts, param: :gift_id, except: [:edit, :new] do
+        get :openPublic, on: :member
+      end
     end
 
     resources :profiles, param: :username, only: [:show] do
