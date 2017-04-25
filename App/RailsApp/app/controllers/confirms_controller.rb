@@ -3,7 +3,11 @@ class ConfirmsController < ApplicationController
   before_action :find_request!
 
   def index
-    @confirms = @request.followers
+    @helpers = @request.followers
+
+    @helpers_count = @helpers.count
+
+    @helpers = @helpers.offset(params[:offset] || 0).limit(params[:limit] || 10)
   end
 
   private
