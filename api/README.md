@@ -236,9 +236,15 @@
 ```JSON
 {
   "helpers": [
-    "Kate Yuen",
-    "xemexpress"
-  ]
+    {
+      "username": "xemexpress",
+      "bio": "Working in the Sea of Palaces",
+      "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+      "yellowStars": 0,
+      "favoring": false
+    }
+  ],
+  "helpersCount": 1
 }
 ```
 
@@ -511,7 +517,7 @@ Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication required, returns a [List of Helpers](#list-of-helprs)
+Authentication required, returns a [List of Helpers' Profile](#list-of-helprs) with yellowStars in descending order.
 
 ### Confirm Request
 
