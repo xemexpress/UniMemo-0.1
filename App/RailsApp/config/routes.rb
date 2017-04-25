@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :requests, param: :request_id, except: [:edit, :new] do
       resource :wish, only: [:create, :destroy]
       resources :comments, except: [:edit, :new, :show]
+      resource :take, only: [:create, :destroy]
       get :collect, on: :collection
     end
 
