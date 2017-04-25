@@ -472,7 +472,7 @@ Authentication required, returns [multiple Requests](#multiple-requests) posted 
 
 `GET /api/requests/:request_id`
 
-No authentication required, returns [single request](#single-request)
+Authentication optional, returns [single request](#single-request)
 
 ### Take Request
 
