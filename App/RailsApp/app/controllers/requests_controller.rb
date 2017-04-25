@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @requests = Request.all.includes(:poster)
+    @requests = Request.includes(:poster)
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
 
