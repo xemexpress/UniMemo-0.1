@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
     devise_for :users, controllers: { sessions: :sessions },
                        path_names: { sign_in: :login }
-    resource :user, only: [:show, :update]
+    resource :user, only: [:show, :update] do
+      resources :gifts, param: :gift_id, except: [:edit, :new]
+    end
 
     resources :profiles, param: :username, only: [:show] do
       resource :favor, only: [:create, :destroy]
