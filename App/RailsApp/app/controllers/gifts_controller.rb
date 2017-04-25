@@ -58,7 +58,7 @@ class GiftsController < ApplicationController
   end
 
   def gift_params_as_receiver
-    params.require(:gift).permit(:receiver, tag_list: [])
+    params.require(:gift).permit(:receiver)
   end
 
   def find_gift!
