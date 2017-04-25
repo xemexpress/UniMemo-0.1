@@ -231,13 +231,24 @@
 }
 ```
 
+### List of Takers
+
+```JSON
+{
+  "takers": [
+    "Kate Yuen",
+    "xemexpress"
+  ]
+}
+```
+
 ### List of Tags
 
 ```JSON
 {
   "tags": [
     "shopping",
-    "delivering"
+    "delivering",
     "production"
   ]
 }
@@ -486,9 +497,15 @@ Authentication required, returns the [Request](#single-request)
 
 Authentication required, returns the [Request](#single-request)
 
+### Retrieve Request's Taker
+
+`GET /api/requests/:request_id/confirms`
+
+Authentication required, returns a [List of Takers](#list-of-takers)
+
 ### Confirm Request
 
-`POST /api/requests/:request_id/confirm`
+`POST /api/requests/:request_id/confirms/:username`
 
 Authentication required, returns the [Request](#single-request) with `helper` settled
 
