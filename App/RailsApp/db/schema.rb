@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424142920) do
+ActiveRecord::Schema.define(version: 20170425133455) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20170424142920) do
     t.datetime "updated_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.text     "text"
+    t.string   "image"
+    t.string   "gift_id"
+    t.datetime "expire_at"
+    t.integer  "provider_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["provider_id"], name: "index_gifts_on_provider_id"
+    t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
   end
 
   create_table "requests", force: :cascade do |t|
