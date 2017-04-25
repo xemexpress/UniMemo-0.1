@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :wishes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :follows, as: :followable, dependent: :destroy
+  has_many :follows, as: :follower, dependent: :destroy
 
   acts_as_follower
   acts_as_followable

@@ -3,6 +3,7 @@ class Request < ApplicationRecord
   belongs_to :helper, :class_name => "User"
   has_many :wishes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :follows, as: :followable, dependent: :destroy
 
   acts_as_followable
 
