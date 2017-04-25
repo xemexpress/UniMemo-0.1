@@ -10,6 +10,7 @@ class User < ApplicationRecord
                        format: { with: /\A[a-zA-Z0-9]+\z/ }
 
   has_many :requests, dependent: :destroy
+  has_many :gifts, dependent: :destroy
   has_many :wishes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :follows, as: :followable, dependent: :destroy
