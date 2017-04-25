@@ -505,7 +505,7 @@ Authentication required, returns a [List of Takers](#list-of-takers)
 
 ### Confirm Request
 
-`POST /api/requests/:request_id/confirms/:username`
+`GET /api/requests/:request_id/confirms/:username`
 
 Authentication required, returns the [Request](#single-request) with `helper` settled
 
