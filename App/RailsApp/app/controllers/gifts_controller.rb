@@ -10,7 +10,7 @@ class GiftsController < ApplicationController
   end
 
   def create
-    @gift = Gift.new(gift_params)
+    @gift = Gift.new(gift_params_provider)
     @gift.provider = @gift.receiver = current_user
     @gift.gift_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@gift.id) + rand(36**3).to_s(36)
 
@@ -25,9 +25,27 @@ class GiftsController < ApplicationController
     @gift = Gift.find_by_gift_id!(params[:gift_id])
   end
 
+  def update
+    @gift = Gift.find_by_gift_id!(params[:gift_id])
+
+    if @gift.provider_id == @current_user_id
+      @gift.update_attributes(gift_params_provider)
+    elsif @gift.receiver_id == @current_user_id
+      @gift.update_attributes(gift_params_as_receiver)
+    else
+      render json: { errors: { gift: ['not related to user'] } }, status: :forbidden
+    end
+
+    render :show
+  end
+
   private
 
-  def gift_params
+  def gift_params_as_provider
     params.require(:gift).permit(:text, :image, :expire_at, :receiver, tag_list: [])
+  end
+
+  def gift_params_as_receiver
+    params.require(:gift).permit(:receiver, tag_list: [])
   end
 end
