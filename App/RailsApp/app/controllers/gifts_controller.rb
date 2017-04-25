@@ -4,6 +4,8 @@ class GiftsController < ApplicationController
   def index
     @gifts = Gift.all.related_to(@current_user_id)
 
+    @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
+
     @gifts_count = @gifts.count
 
     @gifts = @gifts.order(updated_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
