@@ -527,7 +527,7 @@ Authentication required, returns the [Request](#single-request) with `helper` se
 
 ### End Request
 
-`GET /api/requests/:request_id/end/:mem`
+`GET /api/requests/:request_id/ends/:mem`
 
 Authentication required, returns the [Request](#single-request) with 'done' in `tag_list`, `yellowStars` incremented, `mem` updated.
 
