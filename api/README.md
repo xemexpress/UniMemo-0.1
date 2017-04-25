@@ -59,7 +59,7 @@
       "favoring": false
     },
     "receiver": {
-      "username": "Kate Yuen",
+      "username": "KateYuen",
       "bio": "An Artist - Graphic Designer & Photographer",
       "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
       "yellowStars": 3,
@@ -107,7 +107,7 @@
         "favoring": false
       },
       "receiver": {
-        "username": "Kate Yuen",
+        "username": "KateYuen",
         "bio": "An Artist - Graphic Designer & Photographer",
         "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
         "yellowStars": 3,
@@ -213,7 +213,7 @@
     },
     "taking": false,
     "helper": {
-      "username": "Kate Yuen",
+      "username": "KateYuen",
       "bio": "An Artist - Graphic Designer & Photographer",
       "proPic": "https://avatars3.githubusercontent.com/u/22487340?v=3&s=460",
       "yellowStars": 3,
@@ -297,10 +297,23 @@
 
 ```JSON
 {
-  "tags": [
+  "requestTags": [
+    "ongoing",
+    "done",
     "shopping",
     "delivering",
     "production"
+  ]
+}
+
+{
+  "giftTags": [
+    "personal",
+    "public",
+    "openPublic",
+    "giveOrLend",
+    "delivering",
+    "know"
   ]
 }
 ```
@@ -426,19 +439,21 @@ Authentication optional, returns [single Gift](#single-gift)
 Example request body:
 ```JSON
 {
-  "gift":{
-    "tagList": ["giveOrLend"],
+  "gift": {
+    "tag_list": ["public", "giveOrLend"],
     "text": "10 Pen refills (0.5mm)",
-    "image": "https://photouploads.com/image/1N0"
+    "image": "https://photouploads.com/image/1N0",
+    "expire_at": "2017-06-20T00:00",
+    "receiver": "KateYuen"
   }
 }
 ```
 
 Authentication required, returns the [Gift](#single-gift)
 
-Required fields: `tagList`, `text`
+Required fields: `tag_list`, `text`, `expire_at`
 
-Optional fields: `image`
+Optional fields: `image`, `receiver`
 
 ### Update Gift
 
@@ -589,11 +604,11 @@ Example request body:
 ```JSON
 {
   "request": {
-    "tagList": ["ongoing", "production"],
-    "startTime": "2017-04-11T19:00",
-    "startPlace": "Yin Chong St, Mong Kok",
-    "endTime": "2017-04-18",
-    "endPlace": "We Decide",
+    "tag_list": ["ongoing", "production"],
+    "start_time": "2017-04-11T19:00",
+    "start_place": "Yin Chong St, Mong Kok",
+    "end_time": "2017-04-18",
+    "end_place": "We Decide",
     "text": "有冇人可以幫我寄養「鴨腳木」一個星期？",
     "image": "https://photouploads.com/image/ybr"
   }
@@ -602,7 +617,7 @@ Example request body:
 
 Authentication required, returns the [Request](#single-request)
 
-Required fields: `tagList`, `startTime`, `startPlace`, `endTime`, `endPlace`, `text`
+Required fields: `tag_list`, `start_time`, `start_place`, `end_time`, `end_place`, `text`
 
 Optional fields: `image`
 
@@ -622,7 +637,7 @@ Example request body:
 
 Authentication required, returns the updated [Request](#single-request)
 
-Optional fields: `startTime`, `startPlace`, `endTime`, `endPlace`, `text`, `image`
+Optional fields: `start_time`, `start_place`, `end_time`, `end_place`, `text`, `image`
 
 ### Delete Request
 
@@ -678,13 +693,13 @@ Optional fields: `body`
 
 Authentication required, returns {}
 
-### Wish a Request
+### Wish Request
 
 `POST /api/requests/:request_id/wish`
 
 Authentication required, returns the [Request](#single-request)
 
-### Unwish a Request
+### Unwish Request
 
 `DELETE /api/requests/:request_id/wish`
 
