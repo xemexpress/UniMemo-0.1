@@ -2,7 +2,7 @@ class Gift < ApplicationRecord
   belongs_to :provider, :class_name => "User"
   belongs_to :receiver, :class_name => "User"
 
-  scope :related_to, (user_id) -> { where(provider_id: user_id).or(Gift.where(receiver_id: user_id)) }
+  scope :related_to, -> (user_id) { where(provider_id: user_id).or(Gift.where(receiver_id: user_id)) }
   scope :expired, -> { where("expire_at < ?", Time.now) }
 
   acts_as_taggable

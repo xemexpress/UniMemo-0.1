@@ -17,11 +17,14 @@ class GiftsController < ApplicationController
   end
 
   def create
-    @gift = Gift.new(gift_params_provider)
-    @gift.provider = @gift.receiver = current_user
-    @gift.gift_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@gift.id) + rand(36**3).to_s(36)
+    @gift = Gift.new(gift_params_as_provider)
+    @gift.provider = current_user
+    @gift.receiver = @gift.receiver || current_user
 
-    if @article.save
+    if @gift.save
+      @gift.gift_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@gift.id) + rand(36**3).to_s(36)
+      @gift.save
+
       render :show
     else
       render json: { errors: @gift.errors}, status: :unprocessable_entity
@@ -36,14 +39,16 @@ class GiftsController < ApplicationController
     find_gift!
 
     if @gift.provider_id == @current_user_id
-      @gift.update_attributes(gift_params_provider)
+      @gift.update_attributes(gift_params_as_provider)
+
+      render :show
     elsif @gift.receiver_id == @current_user_id
       @gift.update_attributes(gift_params_as_receiver)
+
+      render :show
     else
       render json: { errors: { gift: ['not related to user'] } }, status: :forbidden
     end
-
-    render :show
   end
 
   def openPublic
