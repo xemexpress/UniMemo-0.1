@@ -474,15 +474,15 @@ Authentication required, returns [multiple Requests](#multiple-requests) posted 
 
 No authentication required, returns [single request](#single-request)
 
-### Follow Request
+### Take Request
 
-`POST /api/requests/:request_id/follow`
+`POST /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
-### Unfollow Request
+### Untake Request
 
-`DELETE /api/requests/:request_id/follow`
+`DELETE /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
@@ -490,7 +490,7 @@ Authentication required, returns the [Request](#single-request)
 
 `POST /api/requests/:request_id/confirm`
 
-Authentication required, returns the [Request](#single-request) with `helper` set
+Authentication required, returns the [Request](#single-request) with `helper` settled
 
 ### End Request
 
