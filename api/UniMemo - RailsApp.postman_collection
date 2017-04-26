@@ -1,0 +1,2663 @@
+{
+	"variables": [],
+	"info": {
+		"name": "UniMemo - RailsApp",
+		"_postman_id": "0c2295fa-7580-a99b-8574-4e94e75a896d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"url": "{{apiUrl}}/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"username\": \"TESTTEST\",\n    \"email\": \"TEST@TEST.com\",\n    \"password\": \"TESTTEST\"\n  }\n}"
+				},
+				"description": "Register an account"
+			},
+			"response": [
+				{
+					"id": "a28784b8-449f-4b5b-b930-40ee9f595d23",
+					"name": "Registration repeated",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU3OSwidXNlcm5hbWUiOiJ0ZXN0Mjc0MyIsImV4cCI6MTQ5NjMxNDQ2MH0.d3sYm7WEe7QkH9h14IRjV0zhqC9a7U9JRW5JSI3yXiQ",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\":{\n    \"username\": \"asasazxzxz\",\n    \"email\": \"asasazxzxz@163.com\",\n    \"password\": \"dfdfdcvcvc\"\n  }\n}"
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c6f43ba032e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:26:33 GMT",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "422, 422 Unprocessable Entity",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "f1f24bf9-beb2-422b-8391-ac2b6fac3c2f",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.092097",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "623",
+					"body": "{\"errors\":{\"email\":[\"has already been taken\"],\"username\":[\"has already been taken\"]}}"
+				},
+				{
+					"id": "c2ac43c2-adfb-40ec-af8a-5cf425d99b1d",
+					"name": "Register 'asasazxzxz'",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU3OSwidXNlcm5hbWUiOiJ0ZXN0Mjc0MyIsImV4cCI6MTQ5NjMxNDQ2MH0.d3sYm7WEe7QkH9h14IRjV0zhqC9a7U9JRW5JSI3yXiQ",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\":{\n    \"username\": \"asasazxzxz\",\n    \"email\": \"asasazxzxz@163.com\",\n    \"password\": \"dfdfdcvcvc\"\n  }\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493a4d93ad932e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "283",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:03:16 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"c9d20949955b3f16ee5f575320d5bb98\"",
+							"description": ""
+						},
+						{
+							"name": "location",
+							"key": "location",
+							"value": "/",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "da24ea8e-4a2c-4373-a3ea-4e31e2ad5277",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.108429",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "739",
+					"body": "{\"user\":{\"id\":3585,\"email\":\"asasazxzxz@163.com\",\"createdAt\":\"2017-04-02T12:03:16.476Z\",\"updatedAt\":\"2017-04-02T12:03:16.486Z\",\"username\":\"asasazxzxz\",\"bio\":null,\"image\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4NTk2fQ.uGvpVPqDw9iJkQDiBzfpItj-_JfncrDZJ1RpHHkJFqA\"}}"
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"request": {
+				"url": "{{apiUrl}}/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"email\": \"kate@uni.com\",\n    \"password\": \"unimemo\"\n  }\n}"
+				},
+				"description": "Log in an account"
+			},
+			"response": [
+				{
+					"id": "1cc79d88-11e3-4b87-ad11-6c60475ad682",
+					"name": "Log in asasazxzxz",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/users/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\":{\n    \"email\": \"asasazxzxz@163.com\",\n    \"password\": \"dfdfdcvcvc\"\n  }\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c68dff2032e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:26:17 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"69f5ce98f8d1fab5d88024eb30aa4ef0\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "b19374b3-3de8-4c5d-9902-5fec9362008d",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.081653",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "801",
+					"body": "{\"user\":{\"id\":3585,\"email\":\"asasazxzxz@163.com\",\"createdAt\":\"2017-04-02T12:03:16.476Z\",\"updatedAt\":\"2017-04-02T12:11:31.013Z\",\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE5OTc3fQ.DZSGakenJ13JhyImub-_2eEdHEVLUCnYV9pPBwDj5xo\"}}"
+				}
+			]
+		},
+		{
+			"name": "Get Current User",
+			"request": {
+				"url": "{{apiUrl}}/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get the User object"
+			},
+			"response": [
+				{
+					"id": "84c0a9fa-7d4a-4801-96cb-c7eca89126e1",
+					"name": "Get current User object",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/user",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4NzYzfQ.sWcnC6Wbotf6chtVDHF_7XOLWzIsoHU1lkJWKiJcvvE",
+								"enabled": true
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c5af5bf732e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:25:41 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"40138a65da5503f8bb09108aecc593ae\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "2be2a0b6-bf3a-41be-a0af-4383413fbeb4",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.005789",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "278",
+					"body": "{\"user\":{\"id\":3585,\"email\":\"asasazxzxz@163.com\",\"createdAt\":\"2017-04-02T12:03:16.476Z\",\"updatedAt\":\"2017-04-02T12:11:31.013Z\",\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE5OTQxfQ.PJhx9HCItw-AHJlfwBww0TmNmi9fNwcngJaLP8UqUO0\"}}"
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"url": "{{apiUrl}}/user",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"mobileNum\": \"85254886130\"\n  }\n}"
+				},
+				"description": "Update User object\n\n\nAccepted fields: email, username, password, image, bio"
+			},
+			"response": [
+				{
+					"id": "1c74ccb5-5ca0-4491-8289-2e0adfdd155c",
+					"name": "Update Bio",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/user",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4ODc2fQ.-N_kxmOZDYC3jeglOp6Fg6NBoRAWHaE_VX0lMYv6Xfg",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\":{\n    \"email\": \"asasazxzxz@163.com\",\n    \"bio\": \"Working in the Sea of Palaces\"\n  }\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c5118ca932e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:25:16 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"98f872e8d803921dad9500e80545d505\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "99ad8456-bfde-490c-9d89-1e9aed07d4f0",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.010901",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "722",
+					"body": "{\"user\":{\"id\":3585,\"email\":\"asasazxzxz@163.com\",\"createdAt\":\"2017-04-02T12:03:16.476Z\",\"updatedAt\":\"2017-04-02T12:11:31.013Z\",\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE5OTE2fQ.bsh7VneGUULmO3r0mPHUh5jxr9bO7rwmFcY8qnCN98U\"}}"
+				}
+			]
+		},
+		{
+			"name": "List Gifts",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Gift",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts/hlmR9st0",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Gift",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"gift\": {\n      \"tag_list\": [\"public\", \"deliver\"],\n      \"text\": \"University Station\",\n      \"expire_at\": \"2017-01-30T06:43:35.315Z\",\n      \"receiver\": { \"username\": \"KateYuen\" }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Gift",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts/pbq2mdvy",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"gift\": {\n    \"expire_at\": \"2017-11-20T00:00\",\n    \"receiver\": { \"username\": \"KateYuen\" }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Switch Gift's Access Tag",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts/hlmR9st0/switch",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Gift",
+			"request": {
+				"url": "{{apiUrl}}/user/gifts/vrbrOjkx",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Profile",
+			"request": {
+				"url": "{{apiUrl}}/profiles/testtest",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get asasazxzxz's Profile object"
+			},
+			"response": [
+				{
+					"id": "c6c03a4a-406b-4c23-9886-8b5c640726e2",
+					"name": "Get asasazxzxz's Profile",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/profiles/asasazxzxz",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c4a4ef7032e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "160",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:24:58 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"70014c2292d4990bc8a6a404b4733f54\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "e1e356d8-8bde-4ea9-8b7e-02080fc16672",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.005523",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "426",
+					"body": "{\"profile\":{\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false}}"
+				}
+			]
+		},
+		{
+			"name": "List Requests",
+			"request": {
+				"url": "{{apiUrl}}/requests?tag=ongoing-taken",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get an article collection\n\nFilter by tag:\n\n?tag=AngularJS\n\nFilter by author:\n\n?author=jake\n\nFavorited by user:\n\n?favorited=jake\n\nLimit number of articles (default is 20):\n\n?limit=20\n\nOffset/skip number of articles:\n\n?offset=0"
+			},
+			"response": [
+				{
+					"id": "55eecf4e-4b1d-407b-a1da-1301289570d9",
+					"name": "No filter tags",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c0fb791032e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:22:28 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"3d22807e945f3ca7acff080f75379e0f\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "97351e10-cee4-4bb9-aae5-a9e7bb0b9d95",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.060213",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "585",
+					"body": "{\"articles\":[{\"title\":\"213\",\"slug\":\"213\",\"body\":\"213\",\"createdAt\":\"2017-04-02T06:57:59.630Z\",\"updatedAt\":\"2017-04-02T06:57:59.630Z\",\"tagList\":[],\"description\":\"123\",\"author\":{\"username\":\"deek\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"This is a test article1\",\"slug\":\"this-is-a-test-article1\",\"body\":\"# Test article Header\\nFormat: ![Cool picture](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSvGBbRtzgNfNaHPP9X28Gj6OQF0l6ZaiqgxJlujX5QsE5g35Or18WijxY3)\",\"createdAt\":\"2017-04-02T06:56:11.920Z\",\"updatedAt\":\"2017-04-02T06:56:11.920Z\",\"tagList\":[],\"description\":\"This article will tell the whole world about node \\u0026 angular\",\"author\":{\"username\":\"deek\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"Lorem Ipsum 2\",\"slug\":\"lorem-ipsum-2\",\"body\":\"\\\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\\\"\\n\\\"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...\\\"\\n\\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis volutpat augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis venenatis, sem sit amet tempus placerat, urna lacus pretium lorem, a placerat sapien enim sed odio. In nunc elit, lacinia vitae turpis eget, ultrices fermentum libero. Vivamus mauris ante, aliquam eu aliquam eu, commodo vitae purus. Cras quis nunc vitae lorem sodales eleifend vitae eget lectus. Nunc dictum, turpis dictum vestibulum tempor, velit ligula iaculis tortor, quis luctus ante arcu sed nisl. Suspendisse laoreet in est lobortis tempor. Morbi dolor est, luctus vitae erat bibendum, finibus iaculis diam. Nunc vel eros aliquet, fringilla ipsum nec, vulputate lacus. Quisque nisl nunc, accumsan sed placerat tincidunt, pharetra eget libero.\\n\\nEtiam iaculis eu nisl sit amet posuere. Curabitur arcu quam, aliquam quis lobortis id, feugiat a lectus. Etiam eget rhoncus ante. Mauris tincidunt sodales imperdiet. Ut at tristique felis, ut auctor nibh. Integer neque lorem, luctus et hendrerit nec, facilisis facilisis nibh. Ut semper eget metus ac maximus. Aliquam dignissim enim sit amet ex dignissim, at faucibus ante vehicula. Donec dapibus lectus ultrices erat fermentum pellentesque. Duis luctus scelerisque maximus. Suspendisse sodales pharetra orci eleifend tristique. Suspendisse sagittis consectetur ornare. In vitae lacinia orci, in elementum ex. Quisque eu placerat mi.\\n\\nSuspendisse aliquam eu risus sed semper. In non sapien rhoncus, facilisis elit vitae, mollis lectus. Curabitur tortor lorem, imperdiet efficitur quam ut, malesuada convallis magna. Cras a sagittis felis. Nullam lectus purus, varius in aliquet a, tincidunt in nulla. Morbi et sem vel ex lacinia tempus. Maecenas congue justo egestas urna ullamcorper, quis auctor ex venenatis. Cras eros arcu, molestie eget nisi a, volutpat feugiat orci. Phasellus risus augue, posuere ut purus at, interdum tincidunt est. Ut mauris mi, varius ac erat eu, fermentum ornare lacus. Nulla felis lorem, pretium quis eros in, vestibulum laoreet sem. Quisque ac laoreet nisl. Donec fermentum, tellus sit amet gravida cursus, sapien lacus bibendum eros, quis blandit mauris enim non lacus. Fusce non diam risus. Nunc blandit congue lorem, quis pharetra ante viverra nec. Etiam molestie est id tincidunt consequat.\\n\\nAenean quis justo in risus luctus elementum a eget orci. Duis suscipit elementum ligula quis efficitur. Nulla rhoncus ipsum sed sagittis pretium. Ut massa nulla, varius vel tortor eu, laoreet vestibulum augue. Vestibulum eu lobortis metus. Nullam placerat dui id lacus lacinia auctor. Etiam porta magna et eros fermentum, nec tincidunt tortor viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam euismod, erat vitae mattis placerat, tortor mauris efficitur ex, vel pulvinar massa turpis vel nisi. Aliquam quis convallis eros. Fusce bibendum nulla vel nunc aliquet, a rutrum felis mattis. Vivamus lacus ex, tincidunt vitae neque eleifend, vulputate pharetra urna. Donec auctor eros sed nisl auctor, ut aliquet felis sollicitudin. Nam tempor velit et fermentum faucibus. Etiam sagittis vel lectus ac scelerisque.\\n\\nAliquam non tincidunt nulla. Donec dolor dolor, ornare quis rhoncus vel, sodales vitae orci. Phasellus facilisis semper elit ac malesuada. Cras vitae mi tempus, auctor mi non, porta neque. Vestibulum sit amet libero euismod, venenatis massa at, iaculis lacus. Etiam ultricies nisi a molestie dictum. Nulla non quam at ipsum maximus luctus. Sed rutrum accumsan nisl in laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec rutrum diam. Etiam id justo finibus sapien finibus porta quis ut odio. In rhoncus leo felis, at mollis dolor sagittis sit amet. Suspendisse ac augue finibus, laoreet sem vitae, pretium enim. Aliquam sit amet ipsum a tellus vulputate vehicula eu a justo. Nulla facilisi.\",\"createdAt\":\"2017-04-01T15:12:22.495Z\",\"updatedAt\":\"2017-04-01T15:12:22.495Z\",\"tagList\":[],\"description\":\"\\\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\\\"\",\"author\":{\"username\":\"srdavicho\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"Test Article nguyentoanuit\",\"slug\":\"test-article-nguyentoanuit\",\"body\":\"\\u003ch3\\u003eTest Article\\u003c/h3\\u003e\\n\\u003cp\\u003eTest functionalities of Conduit\\u003c/p\\u003e\",\"createdAt\":\"2017-04-01T14:21:19.924Z\",\"updatedAt\":\"2017-04-01T14:21:19.924Z\",\"tagList\":[],\"description\":\"Test functionalities of Conduit\",\"author\":{\"username\":\"nguyentoanuit\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"Test Article One\",\"slug\":\"test-article-one\",\"body\":\"test article\",\"createdAt\":\"2017-04-01T09:13:48.345Z\",\"updatedAt\":\"2017-04-01T09:13:48.345Z\",\"tagList\":[],\"description\":\"test\",\"author\":{\"username\":\"ngrkd\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"An awesome article\",\"slug\":\"an-awesome-article\",\"body\":\"I love winning.  I am winning\",\"createdAt\":\"2017-04-01T04:57:09.430Z\",\"updatedAt\":\"2017-04-01T04:57:09.430Z\",\"tagList\":[\"winning\",\"killing it\",\"awesome\"],\"description\":\"Killing it\",\"author\":{\"username\":\"dwatson\",\"bio\":\"I am awesome\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"Test Article 999\",\"slug\":\"test-article-999\",\"body\":\"Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article.\\n\\nTesting conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article\",\"createdAt\":\"2017-04-01T01:09:39.754Z\",\"updatedAt\":\"2017-04-01T01:09:39.754Z\",\"tagList\":[],\"description\":\"Testing conduit article\",\"author\":{\"username\":\"Django\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"WASS UP\",\"slug\":\"wass-up\",\"body\":\"YOOO\",\"createdAt\":\"2017-04-01T00:12:27.283Z\",\"updatedAt\":\"2017-04-01T00:12:27.283Z\",\"tagList\":[],\"description\":\"WASSAAPPPP\",\"author\":{\"username\":\"Tai\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\",ñ,ñ\",\"slug\":\"n-n\",\"body\":\"çñ,çñ.çñ,çñ,\",\"createdAt\":\"2017-03-31T20:14:42.560Z\",\"updatedAt\":\"2017-03-31T20:14:42.560Z\",\"tagList\":[],\"description\":\"ĺnñlknñnñln-., \",\"author\":{\"username\":\"211º3124141\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"9999\",\"slug\":\"9999\",\"body\":\"99kkkk99\",\"createdAt\":\"2017-03-31T16:10:44.600Z\",\"updatedAt\":\"2017-03-31T16:10:44.600Z\",\"tagList\":[],\"description\":\"9kkkk\",\"author\":{\"username\":\"aaa919\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"The first article\",\"slug\":\"the-first-article\",\"body\":\"Hello world!\",\"createdAt\":\"2017-03-31T13:21:00.279Z\",\"updatedAt\":\"2017-03-31T13:21:00.279Z\",\"tagList\":[],\"description\":\"The new topic\",\"author\":{\"username\":\"dot\",\"bio\":\"Some bio. The bio.\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"First article from didier\",\"slug\":\"first-article-from-didier\",\"body\":\"# thanks a lot for this tutorial\",\"createdAt\":\"2017-03-31T09:30:40.586Z\",\"updatedAt\":\"2017-03-31T09:30:40.586Z\",\"tagList\":[],\"description\":\"discover conduit project\",\"author\":{\"username\":\"didierc65\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":3},{\"title\":\"How to read\",\"slug\":\"how-to-read\",\"body\":\"Example article \",\"createdAt\":\"2017-03-31T04:18:41.883Z\",\"updatedAt\":\"2017-03-31T04:18:41.883Z\",\"tagList\":[],\"description\":\"How to read cookbook\",\"author\":{\"username\":\"naveen1\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"this is texst\",\"slug\":\"this-is-texst\",\"body\":\"asdf asdf asdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdf\",\"createdAt\":\"2017-03-31T01:53:16.903Z\",\"updatedAt\":\"2017-03-31T01:53:16.903Z\",\"tagList\":[],\"description\":\"hi i am test\",\"author\":{\"username\":\"tsvmadhav\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"Lee con atencion\",\"slug\":\"lee-con-atencion\",\"body\":\"PUTO EL QUE LO LEA\",\"createdAt\":\"2017-03-31T01:38:07.385Z\",\"updatedAt\":\"2017-03-31T01:38:07.385Z\",\"tagList\":[],\"description\":\"react\",\"author\":{\"username\":\"cualquier cosa\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"test fart fly\",\"slug\":\"test-fart-fly\",\"body\":\"test fart fly\",\"createdAt\":\"2017-03-30T23:17:11.423Z\",\"updatedAt\":\"2017-03-30T23:17:35.960Z\",\"tagList\":[],\"description\":\"test fart fly\",\"author\":{\"username\":\"joejoejoe1\",\"bio\":\"i test, i fart, and i fly\",\"image\":\"\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"The Body Within\",\"slug\":\"the-body-within\",\"body\":\"The body has so many parts that you can't control even if you are the owner of that body. What if you can control every tiny living cell in your body?\",\"createdAt\":\"2017-03-30T22:51:52.888Z\",\"updatedAt\":\"2017-03-30T22:51:52.888Z\",\"tagList\":[],\"description\":\"About the body\",\"author\":{\"username\":\"JeanDoe\",\"bio\":\"I love John Doe because I am Jean Doe\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"about a sea\",\"slug\":\"about-a-sea\",\"body\":\"The Salton Sea is inland.   And below sea level.\",\"createdAt\":\"2017-03-30T21:42:42.627Z\",\"updatedAt\":\"2017-03-30T21:42:42.627Z\",\"tagList\":[],\"description\":\"a sea\",\"author\":{\"username\":\"donovan\",\"bio\":null,\"image\":\"https://launchbit.com/carbon-i/6803-toptal_fem_A_02_Carbon.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"dfvv\",\"slug\":\"dfvv\",\"body\":\"Dfgg\",\"createdAt\":\"2017-03-30T15:43:15.436Z\",\"updatedAt\":\"2017-03-30T15:43:15.436Z\",\"tagList\":[],\"description\":\"cfvh\",\"author\":{\"username\":\"cv\",\"bio\":null,\"image\":\"ccv\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"pedrogomes\",\"slug\":\"pedrogomes\",\"body\":\"asdasdasd\",\"createdAt\":\"2017-03-30T11:47:58.367Z\",\"updatedAt\":\"2017-03-30T11:47:58.367Z\",\"tagList\":[],\"description\":\"asdasdasd\",\"author\":{\"username\":\"pgomes\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":5}],\"articlesCount\":2253}"
+				},
+				{
+					"id": "7c89472f-7732-4a86-888f-6706005354bc",
+					"name": "tag=AngularJS",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles?tag=AngularJS",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c010588232e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:21:51 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"980377a97414063ef0a54a1eb4cccc5d\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "bbf7507d-879b-4cd4-8432-7204e9f81558",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.085716",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "640",
+					"body": "{\"articles\":[{\"title\":\"Wibble\",\"slug\":\"wibble\",\"body\":\"# Hello\\n\\nwelcome\",\"createdAt\":\"2016-12-15T14:28:21.948Z\",\"updatedAt\":\"2016-12-15T15:51:10.537Z\",\"tagList\":[\"angularjs\"],\"description\":\"wibble\",\"author\":{\"username\":\"kristest\",\"bio\":\"This is my bio! UPDATED!\",\"image\":\"https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/bear.png\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"What this course will cover\",\"slug\":\"what-this-course-will-cover\",\"body\":\"ES6 class support for services and controllers\\nAngular's new component API\\nUsing a task runner to transform and compile your code\\nProper codebase structuring\\nBest practices for writing Angular2 compatible code\",\"createdAt\":\"2016-11-04T11:09:44.841Z\",\"updatedAt\":\"2016-11-04T11:09:44.841Z\",\"tagList\":[\"angularjs\"],\"description\":\"The new changes in Angular 1.5 and relevant portions of the Angular Style Guide will be the focus of our learning, including but not limited to:\",\"author\":{\"username\":\"username123\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2}],\"articlesCount\":2}"
+				}
+			]
+		},
+		{
+			"name": "Retrieve Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "3846647a-5fdb-4102-988f-4376cf382b8e",
+					"name": "get an article",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493edd57a5332e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:53:06 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"2cbe2968bc34d1a3049dcfe0d916c6bf\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "e85fe552-5f62-426f-82a6-6abc4ec17f8b",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.010673",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "2314",
+					"body": "{\"article\":{\"title\":\"Did you train your dragons?\",\"slug\":\"did-you-train-your-dragons\",\"body\":\"You have to believe!!\",\"createdAt\":\"2017-04-02T12:33:02.027Z\",\"updatedAt\":\"2017-04-02T12:39:12.946Z\",\"tagList\":[\"reactjs\",\"angularjs\",\"dragons\"],\"description\":\"Ever wonder how?\",\"author\":{\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0}}"
+				}
+			]
+		},
+		{
+			"name": "Help Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/take",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Unhelp Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/take",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Request's Helpers",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/confirms",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/confirms/testtest",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Request",
+			"request": {
+				"url": "{{apiUrl}}/requests",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"tag_list\": [\"ongoing\", \"production\"],\n    \"start_time\": \"2017-04-11T19:00\",\n    \"start_place\": \"Yin Chong St, Mong Kok\",\n    \"end_time\": \"2017-04-18\",\n    \"end_place\": \"We Decide\",\n    \"text\": \"有冇人可以幫我寄養「鴨腳木」一個星期？\",\n    \"image\": \"https://photouploads.com/image/ybr\"\n  }\n}"
+				},
+				"description": "In the example, we post:\n\n{\n  \"article\": {\n    \"title\": \"How to train your dragons\",\n    \"description\": \"Ever wonder how?\",\n    \"body\": \"You have to believe!!\",\n    \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\n  }\n}\n\n\nRequired fields: title, description, body\n\nOptional fields: tagList as an array of Strings"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/jqeY9z5s",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"tag_list\": [\"done\", \"production\"]\n  }\n}"
+				},
+				"description": "In the example, we update the title:\n{\n  \"article\": {\n    \"title\": \"Did you train your dragons?\"\n  }\n}\n\nOptional fields: title, description, body\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/h73N730a",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get tags",
+			"request": {
+				"url": "{{apiUrl}}/tags",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wish Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/wish",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Unwish Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/wish",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comments from a Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/comments",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment to a Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/comments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"comment\": {\n    \"body\": \"Thanks!\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "84199b2e-c9a4-477a-8d0f-e3aa92bebf31",
+					"name": "make a comment",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons/comments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"warning": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4NzYzfQ.sWcnC6Wbotf6chtVDHF_7XOLWzIsoHU1lkJWKiJcvvE",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								"{",
+								"\n",
+								" ",
+								" ",
+								"\"",
+								"c",
+								"o",
+								"m",
+								"m",
+								"e",
+								"n",
+								"t",
+								"\"",
+								":",
+								" ",
+								"{",
+								"\n",
+								" ",
+								" ",
+								" ",
+								" ",
+								"\"",
+								"b",
+								"o",
+								"d",
+								"y",
+								"\"",
+								":",
+								" ",
+								"\"",
+								"Y",
+								"e",
+								"s",
+								"!",
+								" ",
+								"I",
+								" ",
+								"a",
+								"m",
+								" ",
+								"t",
+								"r",
+								"a",
+								"i",
+								"n",
+								"i",
+								"n",
+								"g",
+								" ",
+								"i",
+								"t",
+								" ",
+								"n",
+								"o",
+								"w",
+								"!",
+								"!",
+								"\"",
+								"\n",
+								" ",
+								" ",
+								"}",
+								"\n",
+								"}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493ec46482332e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:52:02 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"5ac44d3d9b8279077f61d882ca7b324b\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "fd202073-3d6d-4b28-9011-b4812d9be025",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.018003",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "760",
+					"body": "{\"comment\":{\"id\":2114,\"createdAt\":\"2017-04-02T12:52:01.938Z\",\"updatedAt\":\"2017-04-02T12:52:01.938Z\",\"body\":\"Yes! I am training it now!!\",\"author\":{\"username\":\"asasazxzxz\",\"bio\":\"Working in the Sea of Palaces\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false}}}"
+				}
+			]
+		},
+		{
+			"name": "Update Comment",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/comments/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"comment\": {\n    \"body\": \"Thank you!\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/comments/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "f2b88cbc-3c16-4432-8869-c1912d34b148",
+					"name": "Delete a comment with id 2115",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons/comments/2115",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4NzYzfQ.sWcnC6Wbotf6chtVDHF_7XOLWzIsoHU1lkJWKiJcvvE",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493f6f6ff463349-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:59:19 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"99914b932bd37a50b983c5e7c90ae93b\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "965fb22f-6fe7-4098-87e5-9b1b6421028f",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.012258",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "712",
+					"body": "{}"
+				}
+			]
+		},
+		{
+			"name": "Favor User",
+			"request": {
+				"url": "{{apiUrl}}/profiles/testtest/favor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "87f548bf-3902-4973-af10-164bf248b444",
+					"name": "Follow xemexpress",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/profiles/xemexpress/follow",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4ODc2fQ.-N_kxmOZDYC3jeglOp6Fg6NBoRAWHaE_VX0lMYv6Xfg",
+								"enabled": true
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c4572a7a32e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:24:46 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"f5a48bdf9a3e62d4e424c40762888b24\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "8d5b5be7-f307-46a0-98ac-1e6572973f5a",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.020222",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "485",
+					"body": "{\"profile\":{\"username\":\"xemexpress\",\"bio\":\"To Be\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":true}}"
+				}
+			]
+		},
+		{
+			"name": "Unfavor User",
+			"request": {
+				"url": "{{apiUrl}}/profiles/testtest/favor",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "cc7990f4-7da4-426c-81fd-3e57381c2e35",
+					"name": "Unfollow xemexpress",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/profiles/xemexpress/follow",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4ODc2fQ.-N_kxmOZDYC3jeglOp6Fg6NBoRAWHaE_VX0lMYv6Xfg",
+								"enabled": true
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-credentials",
+							"key": "access-control-allow-credentials",
+							"value": "true",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+							"description": ""
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo",
+							"description": ""
+						},
+						{
+							"name": "access-control-max-age",
+							"key": "access-control-max-age",
+							"value": "1728000",
+							"description": ""
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c3fc4a7432e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:24:31 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"d42c842cd01cef34941a322acc489c5f\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "b932ec0a-5a5a-461e-8453-8f96bdcf0c40",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.012014",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "488",
+					"body": "{\"profile\":{\"username\":\"xemexpress\",\"bio\":\"To Be\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false}}"
+				}
+			]
+		},
+		{
+			"name": "Collect Requests",
+			"request": {
+				"url": "{{apiUrl}}/requests/collect?tag=ongoing",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "bd01c66d-2dfb-4bdd-ad92-a48964c3cecb",
+					"name": "If not following",
+					"originalRequest": {
+						"url": "https://conduit.productionready.io/api/articles/feed",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzU4NSwidXNlcm5hbWUiOiJhc2FzYXp4enh6IiwiZXhwIjoxNDk2MzE4NzYzfQ.sWcnC6Wbotf6chtVDHF_7XOLWzIsoHU1lkJWKiJcvvE",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate",
+							"description": ""
+						},
+						{
+							"name": "cf-ray",
+							"key": "cf-ray",
+							"value": "3493c2fb8c4632e3-HKG",
+							"description": ""
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 02 Apr 2017 12:23:50 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"f6f6fb081aafa45d6056eb20c0c7a16c\"",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "cloudflare-nginx",
+							"description": ""
+						},
+						{
+							"name": "status",
+							"key": "status",
+							"value": "200",
+							"description": ""
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Origin",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Phusion Passenger 4.0.60",
+							"description": ""
+						},
+						{
+							"name": "x-request-id",
+							"key": "x-request-id",
+							"value": "483b4bb4-b77d-4b3a-a2d0-2429f9582862",
+							"description": ""
+						},
+						{
+							"name": "x-runtime",
+							"key": "x-runtime",
+							"value": "0.015376",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Mar 14 2018 11:21:29 GMT+0800 (HKT)",
+							"hostOnly": false,
+							"httpOnly": true,
+							"domain": ".productionready.io",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "d3222ea16cf94974c08a71f1ffb80e8011489461689",
+							"key": "__cfduid"
+						}
+					],
+					"responseTime": "535",
+					"body": "{\"articles\":[],\"articlesCount\":0}"
+				}
+			]
+		},
+		{
+			"name": "End Request",
+			"request": {
+				"url": "{{apiUrl}}/requests/cg056e5m/ends/60",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
