@@ -428,7 +428,7 @@ Authentication required, returns [multiple current_user-related gifts](#multiple
 
 `GET /api/user/gifts/:gift_id`
 
-Authentication optional, returns [single Gift](#single-gift)
+Authentication required, returns [single Gift](#single-gift)
 
 ### Create Gift
 
@@ -449,11 +449,11 @@ Example request body:
 
 Authentication required, returns the [Gift](#single-gift)
 
-Required fields: `tag_list`, `text`, `expire_at`
+Required fields: `tag_list`, `text`, `expire_at`, `receiver`
 
-Optional fields: `image`, `receiver`
+Optional fields: `image`
 
-### Update Gift (Mainly For provider)
+### Update Gift (Mainly for providers)
 
 `PUT /api/user/gifts/:gift_id`
 
@@ -471,9 +471,9 @@ Authentication required, returns the updated [Gift](#single-gift)
 
 Optional fields: `text`, `image`, `expire_at`, `receiver` (also for receiver), `tag_list`
 
-### Toggle Gift's Tag public(if any)-openPublic (For receiver)
+### Switch Gift's Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
-`GET /api/user/gifts/:gift_id/openPublic`
+`GET /api/user/gifts/:gift_id/switch`
 
 Authentication required, returns the updated [Gift](#single-gift)
 
