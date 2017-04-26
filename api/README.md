@@ -469,9 +469,9 @@ Example request body:
 
 Authentication required, returns the updated [Gift](#single-gift)
 
-Optional fields: `text`, `image`, `expire_at`, `receiver` (also for receiver), `tag_list`
+Optional fields: `text`, `image`, `expire_at`, `receiver` ( also for receivers; accepting an object with `username` i.e. {"username": "testtest"} ), `tag_list`
 
-### Switch Gift's Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
+### Switch Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
 `GET /api/user/gifts/:gift_id/switch`
 
