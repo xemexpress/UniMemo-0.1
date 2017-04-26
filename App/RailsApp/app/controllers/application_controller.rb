@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= super || User.find(@current_user_id)
+    User.find(@current_user_id)
   end
 
   def signed_in?

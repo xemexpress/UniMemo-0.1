@@ -1,14 +1,9 @@
 class GiftsController < ApplicationController
   before_action :authenticate_user!
+  before_action :fix_expired, except: [:create]
+  before_action :find_gift!, except: [:index, :create]
 
   def index
-    @gifts = Gift.all.related_to(@current_user_id)
-
-    @expired_gifts = @gifts.expired.find_each do |gift|
-      gift.receiver = gift.provider
-      gift.save
-    end
-
     @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
 
     @gifts_count = @gifts.count
@@ -17,67 +12,92 @@ class GiftsController < ApplicationController
   end
 
   def create
-    @gift = Gift.new(gift_params_as_provider)
+    @gift = Gift.new(gift_params)
     @gift.provider = current_user
-    @gift.receiver = @gift.receiver || current_user
-
+    if params[:gift].key?("receiver")
+      if @gift.last_for_at_least_three_days?
+        @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
+        @gift.save!
+      else
+        render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+        return
+      end
+    else
+      @gift.receiver = User.find(@current_user_id)
+      @gift.save!
+    end
     if @gift.save
       @gift.gift_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@gift.id) + rand(36**3).to_s(36)
-      @gift.save
+      @gift.save!
 
       render :show
     else
-      render json: { errors: @gift.errors}, status: :unprocessable_entity
+      render json: { errors: @gift.errors }, status: :unprocessable_entity
     end
   end
 
   def show
-    find_gift!
   end
 
   def update
-    find_gift!
-
     if @gift.provider_id == @current_user_id
-      @gift.update_attributes(gift_params_as_provider)
+      @gift.update_attributes(gift_params)
+      if params[:gift].has_key?("receiver")
+        if @gift.last_for_at_least_three_days?
+          @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
+          @gift.save!
+        else
+          render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+          return
+        end
+      end
 
       render :show
     elsif @gift.receiver_id == @current_user_id
-      @gift.update_attributes(gift_params_as_receiver)
+      @gift.receiver = User.find_by_username!(@gift.provider.username)
+      @gift.save!
 
       render :show
     else
-      render json: { errors: { gift: ['not related to user'] } }, status: :forbidden
+      @gift.receiver = User.find(@current_user_id)
+      @gift.tag_list.remove('openPublic').add('public')
+      @gift.save!
+
+      render :show
     end
   end
 
-  def openPublic
-    find_gift!
+  def switch
+    if @gift.provider_id == @current_user_id
+      if @gift.tag_list.include?('personal')
+        @gift.tag_list.remove('personal').add('public')
+      else
+        @gift.tag_list.remove('public', 'openPublic').add('personal')
+      end
+      @gift.save!
 
-    if @gift.receiver_id == @current_user_id
+      render :show
+    elsif @gift.receiver_id == @current_user_id
       if !@gift.tag_list.include?('personal')
         if @gift.tag_list.include?('public')
-          @gift.tag_list.remove('public')
-          @gift.tag_list.add('openPublic')
+          @gift.tag_list.remove('public').add('openPublic')
         else
-          @gift.tag_list.remove('openPublic')
-          @gift.tag_list.add('public')
+          @gift.tag_list.remove('openPublic').add('public')
         end
+        @gift.save
+
+        render :show
       else
-        render json: { errors: { gift: ['not public'] } }
+        render json: { errors: { gift: ['not public'] } }, status: :forbidden
       end
     else
-      render json: { errors: { user: ["not the gift's receiver"] } }
+      render json: { errors: { gift: ['already openPublic'] } }, status: :forbidden
     end
-
-    render :show
   end
 
   def destroy
-    find_gift!
-
     if @gift.provider_id == @current_user_id
-      @gift.destory
+      @gift.destroy
 
       render json: {}
     else
@@ -87,15 +107,20 @@ class GiftsController < ApplicationController
 
   private
 
-  def gift_params_as_provider
+  def gift_params
     params.require(:gift).permit(:text, :image, :expire_at, :receiver, tag_list: [])
   end
 
-  def gift_params_as_receiver
-    params.require(:gift).permit(:receiver)
+  def find_gift!
+    @gift = @gifts.find_by_gift_id!(params[:gift_id])
   end
 
-  def find_gift!
-    @gift = Gift.find_by_gift_id!(params[:gift_id])
+  def fix_expired
+    @open_public_gifts = Gift.tagged_with("openPublic").map(&:gift_id)
+    @gifts = Gift.all.related_to(@current_user_id).or(Gift.tagged(@open_public_gifts))
+    @gifts.expired.find_each do |gift|
+      gift.receiver = gift.provider
+      gift.save!
+    end
   end
 end
