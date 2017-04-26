@@ -404,7 +404,7 @@ Authentication required, returns the [User](#users-for-authentication)
 
 Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
-### List Gifts
+### List Gifts (Related to the current user)
 
 `GET /api/user/gifts`
 
@@ -442,7 +442,7 @@ Example request body:
     "text": "10 Pen refills (0.5mm)",
     "image": "https://photouploads.com/image/1N0",
     "expire_at": "2017-06-20T00:00",
-    "receiver": "KateYuen"
+    "receiver": { "username": "KateYuen" }
   }
 }
 ```
@@ -453,7 +453,7 @@ Required fields: `tag_list`, `text`, `expire_at`, `receiver`
 
 Optional fields: `image`
 
-### Update Gift (Mainly for providers)
+### Update Gift
 
 `PUT /api/user/gifts/:gift_id`
 
@@ -469,7 +469,11 @@ Example request body:
 
 Authentication required, returns the updated [Gift](#single-gift)
 
-Optional fields: `text`, `image`, `expire_at`, `receiver` ( also for receivers; accepting an object with `username` i.e. {"username": "testtest"} ), `tag_list`
+Optional fields: `text`, `image`, `expire_at`, `receiver` (accepting an object with `username`), `tag_list`
+
+Notes:
+- When Receivers update their received Gift, it will be returned to its provider.
+- When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`.
 
 ### Switch Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
