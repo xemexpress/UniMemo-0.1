@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                        path_names: { sign_in: :login }
     resource :user, only: [:show, :update] do
       resources :gifts, param: :gift_id, except: [:edit, :new] do
-        get :openPublic, on: :member
+        get :switch, on: :member
       end
     end
 
