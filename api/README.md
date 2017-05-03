@@ -89,7 +89,13 @@
         "yellowStars": 0,
         "favoring": false
       },
-      "receiver": null
+      "receiver": {
+        "username": "xemexpress",
+        "bio": "Working in the Sea of Palaces",
+        "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+        "yellowStars": 0,
+        "favoring": false
+      }
     },
     {
       "tagList": ["public", "deliver"],
@@ -129,7 +135,13 @@
         "yellowStars": 0,
         "favoring": false
       },
-      "receiver": null
+      "receiver": {
+        "username": "xemexpress",
+        "bio": "Working in the Sea of Palaces",
+        "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+        "yellowStars": 0,
+        "favoring": false
+      }
     }
   ],
   "giftsCount": 3
@@ -161,7 +173,13 @@
       "favoring": false
     },
     "taking": false,
-    "helper": null
+    "helper": {
+      "username": "xemexpress",
+      "bio": "Working in the Sea of Palaces",
+      "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+      "yellowStars": 0,
+      "favoring": false
+    }
   }
 }
 ```
@@ -191,7 +209,13 @@
       "favoring": false
     },
     "taking": true,
-    "helper": null
+    "helper": {
+      "username": "xemexpress",
+      "bio": "Working in the Sea of Palaces",
+      "proPic": "https://visualhunt.com/photos/l/7/supernova-cosmo-hubble.jpg",
+      "yellowStars": 0,
+      "favoring": false
+    }
   }, {
     "tagList": ["done", "production"],
     "startTime": "2017-04-11T19:00",
@@ -404,7 +428,7 @@ Authentication required, returns the [User](#users-for-authentication)
 
 Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
-### List Gifts (Related to the current user)
+### List Gifts (Related to Current User)
 
 `GET /api/user/gifts`
 
@@ -453,6 +477,8 @@ Required fields: `tag_list`, `text`, `expire_at`, `receiver`
 
 Optional fields: `image`
 
+`provider` is automatically set to Current User's [Profile](#profile)
+
 ### Update Gift
 
 `PUT /api/user/gifts/:gift_id`
@@ -472,10 +498,9 @@ Authentication required, returns the updated [Gift](#single-gift)
 Optional fields: `text`, `image`, `expire_at`, `receiver` (accepting an object with `username`), `tag_list`
 
 Notes:
-- When Receivers update their received Gift, it will be returned to its provider.
-- When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`.
+- When Receivers update their received Gift (as the only action), it will be returned to its provider.
 
-### Switch Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
+### Toggle Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
 `GET /api/user/gifts/:gift_id/switch`
 
@@ -628,6 +653,8 @@ Authentication required, returns the [Request](#single-request)
 Required fields: `tag_list`, `start_time`, `start_place`, `end_time`, `end_place`, `text`
 
 Optional fields: `image`
+
+`helper` is automatically set to Current User's [Profile](#profile)
 
 ### Update Request
 
