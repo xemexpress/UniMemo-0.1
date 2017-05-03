@@ -55,6 +55,7 @@ class GiftsController < ApplicationController
       render :show
     elsif @gift.receiver_id == @current_user_id
       @gift.receiver = User.find_by_username!(@gift.provider.username)
+      @gift.tag_list.remove('openPublic').add('public') if @gift.tag_list.include?('openPublic')
       @gift.save!
 
       render :show
