@@ -10,6 +10,8 @@ class Request < ApplicationRecord
   scope :posted_by, ->(username) { where(poster: User.where(username: username)) }
   scope :helped_by, ->(username) { where(helper: User.where(username: username)) }
   scope :wished_by, ->(username) { joins(:wishes).where(wishes: { user: User.where(username: username) }) }
+  scope :expired, -> { where("end_time < ?", Time.now) }
+  scope :old, -> { where("end_time < ?", Time.now - 14.days) }
 
   acts_as_taggable
 

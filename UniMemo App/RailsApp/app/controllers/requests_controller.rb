@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :fix_expired_and_old, except: [:create]
 
   def index
     @requests = Request.includes(:poster)
@@ -38,7 +39,7 @@ class RequestsController < ApplicationController
     if @request.save
       @request.request_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@request.id) + rand(36**3).to_s(36)
       @request.save
-      
+
       render :show
     else
       render json: { errors: @request.errors }, status: :unprocessable_entity
@@ -77,5 +78,14 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:start_time, :start_place, :end_time, :end_place, :text, :image, tag_list: [])
+  end
+
+  def fix_expired_and_old
+    @requests = Request.all
+    @requests.old.destroy_all
+    @requests.expired.find_each do |request|
+      request.tag_list.remove('ongoing').add('done') if request.tag_list.include?('ongoing')
+      request.save!
+    end
   end
 end
