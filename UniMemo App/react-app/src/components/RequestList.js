@@ -22,7 +22,7 @@ const RequestList = props => {
       {
         props.requests.map(request => {
           return (
-            <h2>
+            <h2 key={request.requestId}>
               {request.requestId}
             </h2>
           )
