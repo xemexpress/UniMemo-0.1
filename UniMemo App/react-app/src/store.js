@@ -1,27 +1,18 @@
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, combineReducers } from 'redux'
 
+import common from './reducers/common'
+import auth from './reducers/auth'
+import home from './reducers/home'
 import { promiseMiddleware } from './middleware'
 
-import {
-  HOME_PAGE_LOADED
-} from './constants/actionTypes'
+const reducer = combineReducers({
+  common,
+  auth,
+  home
+})
 
-const defaultState = {
-  appName: 'UniMemo',
-  requests: null
-}
-const reducer = (state=defaultState, action) => {
-  switch(action.type){
-    case HOME_PAGE_LOADED:
-      return {
-        ...state,
-        requests: action.payload.requests
-      }
-    default:
-  }
-  return state
-}
+const middleware = applyMiddleware(promiseMiddleware)
 
-const store = createStore(reducer, applyMiddleware(promiseMiddleware))
+const store = createStore(reducer, middleware)
 
 export default store
