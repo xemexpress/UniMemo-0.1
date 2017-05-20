@@ -1,5 +1,7 @@
 import React from 'react'
 
+import RequestPreview from './RequestPreview'
+
 const RequestList = props => {
   if(!props.requests){
     return (
@@ -22,9 +24,7 @@ const RequestList = props => {
       {
         props.requests.map(request => {
           return (
-            <h2 key={request.requestId}>
-              {request.requestId}
-            </h2>
+            <RequestPreview request={request} key={request.requestId}/>
           )
         })
       }
