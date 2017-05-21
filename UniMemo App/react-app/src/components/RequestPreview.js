@@ -7,7 +7,7 @@ const RequestPreview = props => {
 
       <div className='article-meta'>
         <a>
-          <img src={request.poster.image} alt={request.poster.username}/>
+          <img src={request.poster.proPic} alt={request.poster.username}/>
         </a>
 
         <div className='info'>
@@ -32,6 +32,10 @@ const RequestPreview = props => {
         <h1>{request.text}</h1>
 
         <p>
+          Start Time:&nbsp;{request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}
+          <br />
+          Start Place:&nbsp;{request.startPlace ? request.startPlace : 'Not determined yet :)'}
+          <br /><br />
           End Time:&nbsp;{new Date(request.endTime).toDateString()}
           <br />
           End Place:&nbsp;{request.endPlace}
