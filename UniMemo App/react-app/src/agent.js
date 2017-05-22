@@ -21,16 +21,18 @@ const requests = {
     superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
 }
 
+const Auth = {
+  register: (username, email, password) =>
+    requests.post('/users', { user: { username, email, password } }),
+  login: (email, password) =>
+    requests.post('/users/login', { user: { email, password } }),
+  current: () =>
+    requests.get('/user')
+}
+
 const Requests = {
   all: page =>
     requests.get('/requests?limit=3')
-}
-
-const Auth = {
-  current: () =>
-    requests.get('/user'),
-  login: (email, password) =>
-    requests.post('/users/login', { user: { email, password } })
 }
 
 export default {
