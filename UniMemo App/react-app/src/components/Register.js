@@ -7,7 +7,8 @@ import agent from '../agent'
 
 import {
   UPDATE_FIELD_AUTH,
-  REGISTER
+  REGISTER,
+  REGISTER_PAGE_UNLOADED
 } from '../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -33,6 +34,9 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: (username, email, password) => dispatch({
     type: REGISTER,
     payload: agent.Auth.register(username, email, password)
+  }),
+  onUnload: () => dispatch({
+    type: REGISTER_PAGE_UNLOADED
   })
 })
 
@@ -46,6 +50,10 @@ class Register extends React.Component {
       ev.preventDefault()
       this.props.onSubmit(username, email, password)
     }
+  }
+
+  componentWillUnmount(){
+    this.props.onUnload()
   }
 
   render(){

@@ -7,7 +7,8 @@ import agent from '../agent'
 
 import {
   UPDATE_FIELD_AUTH,
-  LOGIN
+  LOGIN,
+  LOGIN_PAGE_UNLOADED
 } from '../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -28,6 +29,9 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: (email, password) => dispatch({
     type: LOGIN,
     payload: agent.Auth.login(email, password)
+  }),
+  onUnload: () => dispatch({
+    type: LOGIN_PAGE_UNLOADED
   })
 })
 
@@ -40,6 +44,10 @@ class Login extends React.Component {
       ev.preventDefault()
       this.props.onSubmit(email, password)
     }
+  }
+
+  componentWillUnmount(){
+    this.props.onUnload()
   }
 
   render(){
@@ -57,13 +65,13 @@ class Login extends React.Component {
               </h1>
 
               <p className='text-xs-center'>
-                <Link to=''>
+                <Link to='register'>
                   Need an account?
                 </Link>
               </p>
 
               <ListErrors errors={this.props.errors} />
-            
+
               <form onSubmit={this.submitForm(email, password)}>
                 <fieldset>
 
