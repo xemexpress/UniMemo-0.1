@@ -5,8 +5,8 @@ export const ASYNC_START = 'ASYNC_START'
 export const APP_LOAD = 'APP_LOAD'
 export const REDIRECT = 'REDIRECT'
 export const REGISTER = 'REGISTER'
-// export const
-// export const
+export const SETTINGS_SAVED = 'SETTINGS_SAVED'
+export const LOGOUT = 'LOGOUT'
 // export const
 // export const
 // export const
