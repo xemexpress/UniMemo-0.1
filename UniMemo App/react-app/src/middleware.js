@@ -3,7 +3,8 @@ import agent from './agent'
 import {
   ASYNC_START,
   LOGIN,
-  REGISTER
+  REGISTER,
+  LOGOUT
 } from './constants/actionTypes'
 
 const promiseMiddleware = store => next => action => {
@@ -38,7 +39,11 @@ const localStorageMiddleware = store => next => action => {
       window.localStorage.setItem('jwt', action.payload.user.token)
       agent.setToken(action.payload.user.token)
     }
+  } else if(action.type === LOGOUT){
+    window.localStorage.setItem('jwt', '')
+    agent.setToken(null)
   }
+  
   next(action)
 }
 
