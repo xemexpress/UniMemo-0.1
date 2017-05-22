@@ -8,6 +8,10 @@ class User < ApplicationRecord
                        presence: true,
                        allow_blank: false,
                        format: { with: /\A[a-zA-Z0-9]+\z/ }
+  validates :bio, length: { maximum: 200 }
+  validates :mobileNum, uniqueness: true,
+                        format: { with: /\A[0-9]+\z/, message: 'only allows numbers' },
+                        length: { in: 8..13 }, if: 'mobileNum.present?'
 
   has_many :requests, dependent: :destroy
   has_many :gifts, dependent: :destroy
