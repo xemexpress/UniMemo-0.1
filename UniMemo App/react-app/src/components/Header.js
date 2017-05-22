@@ -47,14 +47,14 @@ const LoggedInView = props => {
 
         <li className='nav-item'>
           <Link to='settings' className='nav-link'>
-            <i className='ion-gear-a'></i>&nbsp;Setting
+            <i className='ion-gear-a'></i>&nbsp;Settings
           </Link>
         </li>
 
         <li className='nav-item'>
           <Link to='' className='nav-link'>
             <img
-              src={props.currentUser.proPic}
+              src={props.currentUser.proPic ? props.currentUser.proPic : 'https://photouploads.com/images/350646.png'}
               alt={props.currentUser.username}
               className='user-pic'/>
             {props.currentUser.username}
