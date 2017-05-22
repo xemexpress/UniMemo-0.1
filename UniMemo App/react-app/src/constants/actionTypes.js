@@ -7,8 +7,8 @@ export const REDIRECT = 'REDIRECT'
 export const REGISTER = 'REGISTER'
 export const SETTINGS_SAVED = 'SETTINGS_SAVED'
 export const LOGOUT = 'LOGOUT'
-// export const
-// export const
+export const LOGIN_PAGE_UNLOADED = 'LOGIN_PAGE_UNLOADED'
+export const REGISTER_PAGE_UNLOADED = 'REGISTER_PAGE_UNLOADED'
 // export const
 // export const
 // export const
