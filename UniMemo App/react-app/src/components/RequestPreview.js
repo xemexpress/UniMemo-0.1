@@ -13,6 +13,10 @@ const RequestPreview = props => {
         <div className='info'>
           <a className='author'>
             {request.poster.username}
+            &nbsp;
+            {/* <span style={{color:'lightyellow'}}>        // yellowStars
+              <i className='ion-star'></i>&nbsp;{request.poster.yellowStars}
+            </span> */}
           </a>
           <span className='date'>
             {new Date(request.createdAt).toDateString()}
