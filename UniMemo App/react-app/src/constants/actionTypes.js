@@ -4,7 +4,7 @@ export const LOGIN = 'LOGIN'
 export const ASYNC_START = 'ASYNC_START'
 export const APP_LOAD = 'APP_LOAD'
 export const REDIRECT = 'REDIRECT'
-// export const
+export const REGISTER = 'REGISTER'
 // export const
 // export const
 // export const
