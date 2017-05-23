@@ -36,11 +36,19 @@ const Auth = {
 
 const Requests = {
   all: page =>
-    requests.get('/requests?limit=3')
+    requests.get('/requests?limit=3'),
+  get: requestId =>
+    requests.get(`/requests/${requestId}`)
+}
+
+const Comments = {
+  forRequest: requestId =>
+    requests.get(`/requests/${requestId}/comments`)
 }
 
 export default {
-  Requests,
   Auth,
-  setToken: (_token) => { token = _token }
+  Requests,
+  Comments,
+  setToken: _token => { token = _token }
 }
