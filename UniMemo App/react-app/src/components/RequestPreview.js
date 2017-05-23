@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const RequestPreview = props => {
   const request = props.request
@@ -31,7 +32,7 @@ const RequestPreview = props => {
         </div>
       </div>
 
-      <a to={`request/${request.requestId}`} className='preview-link'>
+      <Link to={`request/${request.requestId}`} className='preview-link'>
 
         <h1>{request.text}</h1>
 
@@ -59,7 +60,7 @@ const RequestPreview = props => {
           }
         </ul>
 
-      </a>
+      </Link>
     </div>
   )
 }
