@@ -137,7 +137,7 @@ class Request extends React.Component {
               comments={this.props.comments || []}
               errors={this.props.commentErrors}
               requestId={this.props.params.requestId}
-              currentUser={this.props.currentUser}/>
+              currentUser={this.props.currentUser} />
           </div>
 
         </div>
