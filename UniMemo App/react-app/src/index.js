@@ -9,6 +9,8 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Settings from './components/Settings'
 import Request from './components/Request'
+import Profile from './components/Profile'
+import ProfileWishes from './components/ProfileWishes'
 import store from './store'
 
 ReactDOM.render((
@@ -20,6 +22,8 @@ ReactDOM.render((
         <Route path='register' component={Register} />
         <Route path='settings' component={Settings} />
         <Route path='request/:requestId' component={Request} />
+        <Route path='@:username' component={Profile} />
+        <Route path='@:username/wishes' component={ProfileWishes} />
       </Route>
     </Router>
   </Provider>
