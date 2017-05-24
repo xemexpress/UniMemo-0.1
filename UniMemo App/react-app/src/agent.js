@@ -20,7 +20,9 @@ const requests = {
   post: (url, body) =>
     superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
   put: (url, body) =>
-    superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
+    superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+  del: url =>
+    superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody)
 }
 
 const Auth = {
@@ -38,12 +40,16 @@ const Requests = {
   all: page =>
     requests.get('/requests?limit=3'),
   get: requestId =>
-    requests.get(`/requests/${requestId}`)
+    requests.get(`/requests/${requestId}`),
+  del: requestId =>
+    requests.del(`/requests/${requestId}`)
 }
 
 const Comments = {
   forRequest: requestId =>
-    requests.get(`/requests/${requestId}/comments`)
+    requests.get(`/requests/${requestId}/comments`),
+  create: (requestId, comment) =>
+    requests.post(`/requests/${requestId}/comments`, { comment })
 }
 
 export default {
