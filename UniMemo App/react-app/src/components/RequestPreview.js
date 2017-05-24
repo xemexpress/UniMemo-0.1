@@ -7,18 +7,21 @@ const RequestPreview = props => {
     <div className='article-preview'>
 
       <div className='article-meta'>
-        <a>
+        <Link
+          className='author'
+          to={`@${request.poster.username}`}>
           <img src={request.poster.proPic} alt={request.poster.username}/>
-        </a>
+        </Link>
 
         <div className='info'>
-          <a className='author'>
+          <Link
+            className='author'
+            to={`@${request.poster.username}`}>
             {request.poster.username}
-            &nbsp;
             {/* <span style={{color:'lightyellow'}}>        // yellowStars
               <i className='ion-star'></i>&nbsp;{request.poster.yellowStars}
             </span> */}
-          </a>
+          </Link>
           <span className='date'>
             {new Date(request.createdAt).toDateString()}
           </span>
