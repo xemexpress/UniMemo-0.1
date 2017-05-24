@@ -10,6 +10,7 @@ const Comment = props => {
 
   return (
     <div className='card'>
+
       <div className='card-block'>
         <div className='card-text'>
           {comment.body}
@@ -19,23 +20,27 @@ const Comment = props => {
       <div className='card-footer'>
         <Link
           className='comment-author'
-          to=''>
+          to={`@${comment.author.username}`}>
           <img
             className='comment-author-img'
             src={comment.author.proPic}
             alt={comment.author.username} />
-        </Link>
-        &nbsp;
+        </Link>&nbsp;
+
         <Link
           className='comment-author'
-          to=''>
+          to={`@${comment.author.username}`}>
           {comment.author.username}
-        </Link>
-        &nbsp;
+        </Link>&nbsp;
+
         <span className='date-posted'>
           {new Date(comment.createdAt).toDateString()}
         </span>
-        <DeleteButton show={show} requestId={props.requestId} commentId={comment.id} />
+
+        <DeleteButton
+          show={show}
+          requestId={props.requestId}
+          commentId={comment.id} />
       </div>
     </div>
   )
