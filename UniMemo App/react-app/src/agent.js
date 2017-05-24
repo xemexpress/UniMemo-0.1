@@ -49,7 +49,9 @@ const Comments = {
   forRequest: requestId =>
     requests.get(`/requests/${requestId}/comments`),
   create: (requestId, comment) =>
-    requests.post(`/requests/${requestId}/comments`, { comment })
+    requests.post(`/requests/${requestId}/comments`, { comment }),
+  delete: (requestId, commentId) =>
+    requests.del(`/requests/${requestId}/comments/${commentId}`)
 }
 
 export default {
