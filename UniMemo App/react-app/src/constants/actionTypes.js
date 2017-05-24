@@ -11,8 +11,8 @@ export const LOGIN_PAGE_UNLOADED = 'LOGIN_PAGE_UNLOADED'
 export const REGISTER_PAGE_UNLOADED = 'REGISTER_PAGE_UNLOADED'
 export const REQUEST_PAGE_LOADED = 'REQUEST_PAGE_LOADED'
 export const REQUEST_PAGE_UNLOADED = 'REQUEST_PAGE_UNLOADED'
-// export const
-// export const
+export const DELETE_REQUEST = 'DELETE_REQUEST'
+export const ADD_COMMENT = 'ADD_COMMENT'
 // export const
 // export const
 // export const
