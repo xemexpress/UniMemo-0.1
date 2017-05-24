@@ -1,8 +1,22 @@
-// import React from 'react'
+import React from 'react'
+
+import Comment from './Comment'
 
 const CommentList = props => {
   return (
-    null
+    <div>
+      {
+        props.comments.map(comment => {
+          return (
+            <Comment
+              comment={comment}
+              requestId={props.requestId}
+              currentUser={props.currentUser}
+              key={comment.id} />
+          )
+        })
+      }
+    </div>
   )
 }
 
