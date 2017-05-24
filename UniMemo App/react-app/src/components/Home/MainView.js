@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import RequestList from '../RequestList'
 
 const mapStateToProps = state => ({
-  requests: state.home.requests
+  ...state.requestList
 })
 
 const MainView = props => {
