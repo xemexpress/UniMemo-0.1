@@ -6,7 +6,8 @@ import MainView from './MainView'
 import agent from '../../agent'
 
 import {
-  HOME_PAGE_LOADED
+  HOME_PAGE_LOADED,
+  HOME_PAGE_UNLOADED
 } from '../../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -14,13 +15,22 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: payload =>
-    dispatch({ type: HOME_PAGE_LOADED, payload })
+  onLoad: payload => dispatch({
+    type: HOME_PAGE_LOADED,
+    payload
+  }),
+  onUnload: () => dispatch({
+    type: HOME_PAGE_UNLOADED
+  })
 })
 
 class Home extends React.Component {
   componentWillMount(){
     this.props.onLoad(agent.Requests.all())
+  }
+
+  componentWillUnmount(){
+    this.props.onUnload()
   }
 
   render(){
