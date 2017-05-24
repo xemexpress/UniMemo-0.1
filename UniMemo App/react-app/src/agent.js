@@ -36,9 +36,22 @@ const Auth = {
     requests.put('/user', { user })
 }
 
+const Profile = {
+  get: username =>
+    requests.get(`/profiles/${username}`),
+  favor: username =>
+    requests.post(`/profiles/${username}/favor`),
+  unfavor: username =>
+    requests.del(`/profiles/${username}/favor`)
+}
+
 const Requests = {
   all: page =>
     requests.get('/requests?limit=3'),
+  postedBy: username =>
+    requests.get(`/requests?poster=${username}&limit=3`),
+  wishedBy: username =>
+    requests.get(`/requests?wisher=${username}&limit=3`),
   get: requestId =>
     requests.get(`/requests/${requestId}`),
   del: requestId =>
@@ -56,6 +69,7 @@ const Comments = {
 
 export default {
   Auth,
+  Profile,
   Requests,
   Comments,
   setToken: _token => { token = _token }
