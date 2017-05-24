@@ -14,11 +14,11 @@ export const REQUEST_PAGE_UNLOADED = 'REQUEST_PAGE_UNLOADED'
 export const DELETE_REQUEST = 'DELETE_REQUEST'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
-// export const
-// export const
-// export const
-// export const
-// export const
+export const HOME_PAGE_UNLOADED = 'HOME_PAGE_UNLOADED'
+export const PROFILE_PAGE_LOADED = 'PROFILE_PAGE_LOADED'
+export const PROFILE_PAGE_UNLOADED = 'PROFILE_PAGE_UNLOADED'
+export const FOLLOW_USER = 'FOLLOW_USER'
+export const UNFOLLOW_USER = 'UNFOLLOW_USER'
 // export const
 // export const
 // export const
