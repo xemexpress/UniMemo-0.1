@@ -4,7 +4,8 @@ import {
   LOGIN,
   REGISTER,
   SETTINGS_SAVED,
-  LOGOUT
+  LOGOUT,
+  DELETE_REQUEST
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -46,6 +47,11 @@ export default (state=defaultState, action) => {
         redirectTo: '/',
         currentUser: null,
         token: null
+      }
+    case DELETE_REQUEST:
+      return {
+        ...state,
+        redirectTo: '/'
       }
     default:
   }
