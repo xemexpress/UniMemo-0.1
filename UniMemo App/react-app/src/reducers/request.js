@@ -20,7 +20,7 @@ export default (state={}, action) => {
         ...state,
         commentErrors: action.error ? action.payload.errors : null,
         comments: action.error ? null :
-          [action.payload.comment].concat(state.comments || [])
+          (state.comments || []).concat([action.payload.comment])
       }
     case DELETE_COMMENT:
       return {
