@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_request!
 
   def index
-    @comments = @request.comments.order(created_at: :desc)
+    @comments = @request.comments.order(:created_at)
   end
 
   def create
