@@ -9,7 +9,8 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
   FOLLOW_USER,
-  UNFOLLOW_USER
+  UNFOLLOW_USER,
+  SET_PAGE
 } from '../constants/actionTypes'
 
 const EditProfileSettings = props => {
@@ -30,13 +31,6 @@ const FollowUserButton = props => {
     return null
   }
 
-  let classes
-  if(props.user.favoring){
-    classes = 'btn btn-sm action-btn btn-secondary'
-  }else{
-    classes = 'btn btn-sm action-btn btn-outline-secondary'
-  }
-
   const handleClick = ev => {
     ev.preventDefault()
     if(props.user.favoring){
@@ -47,9 +41,8 @@ const FollowUserButton = props => {
   }
   return (
     <button
-      className={classes}
+      className={props.user.favoring ? 'btn btn-sm action-btn btn-secondary' : 'btn btn-sm action-btn btn-outline-secondary'}
       onClick={handleClick}>
-      <i className='ion-plus-round'></i>&nbsp;
       {
         props.user.favoring ? 'Unfavor' : 'Favor'
       }
@@ -78,6 +71,11 @@ const mapDispatchToProps = dispatch => ({
   onUnfavor: username => dispatch({
     type: UNFOLLOW_USER,
     payload: agent.Profile.unfavor(username)
+  }),
+  onSetPage: (p, payload) => dispatch({
+    type: SET_PAGE,
+    page: p,
+    payload
   })
 })
 
@@ -115,6 +113,13 @@ class Profile extends React.Component {
     )
   }
 
+  onSetPage(page){
+    this.props.onSetPage(
+      page,
+      agent.Requests.postedBy(this.props.profile.username, page)
+    )
+  }
+
   render(){
     const profile = this.props.profile
 
@@ -127,6 +132,8 @@ class Profile extends React.Component {
 
     const canFollow = this.props.currentUser &&
       this.props.currentUser.username !== profile.username
+
+    const onSetPage = page => this.onSetPage(page)
 
     return (
       <div className='profile-page'>
@@ -169,7 +176,10 @@ class Profile extends React.Component {
               </div>
 
               <RequestList
-                requests={this.props.requests} />
+                requests={this.props.requests}
+                requestsCount={this.props.requestsCount}
+                currentPage={this.props.currentPage}
+                onSetPage={onSetPage}/>
 
             </div>
           </div>

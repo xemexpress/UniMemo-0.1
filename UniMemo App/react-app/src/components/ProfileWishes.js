@@ -35,6 +35,13 @@ class ProfileWishes extends Profile {
       </ul>
     )
   }
+
+  onSetPage(page){
+    this.props.onSetPage(
+      page,
+      agent.Requests.wishedBy(this.props.profile.username, page)
+    )
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileWishes)
