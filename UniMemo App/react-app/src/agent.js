@@ -45,13 +45,19 @@ const Profile = {
     requests.del(`/profiles/${username}/favor`)
 }
 
+const limit = (count, page=0) => `limit=${count}&offset=${page * count}`
+const countRef = 3
 const Requests = {
   all: page =>
-    requests.get('/requests?limit=3'),
-  postedBy: username =>
-    requests.get(`/requests?poster=${username}&limit=3`),
-  wishedBy: username =>
-    requests.get(`/requests?wisher=${username}&limit=3`),
+    requests.get(`/requests?tag=ongoing&${limit(countRef, page)}`),
+  collect: page =>
+    requests.get(`/requests/collect?tag=ongoing&${limit(countRef, page)}`),
+  byTag: (tag, page) =>
+    requests.get(`/requests?tag=ongoing,${tag}&${limit(countRef, page)}`),
+  postedBy: (username, page) =>
+    requests.get(`/requests?poster=${username}&${limit(countRef, page)}`),
+  wishedBy: (username, page) =>
+    requests.get(`/requests?wisher=${username}&${limit(countRef, page)}`),
   get: requestId =>
     requests.get(`/requests/${requestId}`),
   del: requestId =>
@@ -67,10 +73,16 @@ const Comments = {
     requests.del(`/requests/${requestId}/comments/${commentId}`)
 }
 
+const Tags = {
+  getAll: () =>
+    requests.get('/tags')
+}
+
 export default {
   Auth,
   Profile,
   Requests,
   Comments,
+  Tags,
   setToken: _token => { token = _token }
 }
