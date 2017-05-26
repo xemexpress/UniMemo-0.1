@@ -1,12 +1,16 @@
 import React from 'react'
 
+import {
+  PER_PAGE
+} from '../constants/refs'
+
 const ListPagination = props => {
-  if(props.requestsCount <= 3){
+  if(props.requestsCount <= PER_PAGE){
     return null
   }
 
   const range = []
-  for(let i = 0; i < Math.ceil(props.requestsCount / 3); i++){
+  for(let i = 0; i < Math.ceil(props.requestsCount / PER_PAGE); i++){
     range.push(i)
   }
 
