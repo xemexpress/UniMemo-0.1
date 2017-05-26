@@ -5,7 +5,8 @@ import {
   REGISTER,
   SETTINGS_SAVED,
   LOGOUT,
-  DELETE_REQUEST
+  DELETE_REQUEST,
+  REQUEST_SUBMITTED
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -52,6 +53,17 @@ export default (state=defaultState, action) => {
       return {
         ...state,
         redirectTo: '/'
+      }
+    case REQUEST_SUBMITTED:
+      if(action.error){
+        return {
+          ...state
+        }
+      }
+      const redirectURL = `request/${action.payload.request.requestId}`
+      return {
+        ...state,
+        redirectTo: redirectURL
       }
     default:
   }
