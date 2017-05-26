@@ -25,7 +25,7 @@ const RequestActions = props => {
     return (
       <span>
         <Link
-          to=''
+          to={`editor/${request.requestId}`}
           className='btn btn-outline-secondary btn-sm'>
           <i className='ion-edit'></i> Edit Request
         </Link>
