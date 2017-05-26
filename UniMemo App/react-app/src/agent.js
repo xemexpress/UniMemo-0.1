@@ -1,6 +1,10 @@
 import superagentPromise from 'superagent-promise'
 import _superagent from 'superagent'
 
+import {
+  PER_PAGE
+} from './constants/refs'
+
 const superagent = superagentPromise(_superagent, global.Promise)
 
 const API_ROOT = 'http://localhost:3000/api'
@@ -46,20 +50,25 @@ const Profile = {
 }
 
 const limit = (count, page=0) => `limit=${count}&offset=${page * count}`
-const countRef = 3
+const omitRequestId = request => Object.assign(request, { request_id: undefined })
+
 const Requests = {
   all: page =>
-    requests.get(`/requests?tag=ongoing&${limit(countRef, page)}`),
+    requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
   collect: page =>
-    requests.get(`/requests/collect?tag=ongoing&${limit(countRef, page)}`),
+    requests.get(`/requests/collect?tag=ongoing&${limit(PER_PAGE, page)}`),
   byTag: (tag, page) =>
-    requests.get(`/requests?tag=ongoing,${tag}&${limit(countRef, page)}`),
+    requests.get(`/requests?tag=ongoing,${tag}&${limit(PER_PAGE, page)}`),
   postedBy: (username, page) =>
-    requests.get(`/requests?poster=${username}&${limit(countRef, page)}`),
+    requests.get(`/requests?poster=${username}&${limit(PER_PAGE, page)}`),
   wishedBy: (username, page) =>
-    requests.get(`/requests?wisher=${username}&${limit(countRef, page)}`),
+    requests.get(`/requests?wisher=${username}&${limit(PER_PAGE, page)}`),
   get: requestId =>
     requests.get(`/requests/${requestId}`),
+  update: request =>
+    requests.put(`/requests/${request.requestId}`, { request: omitRequestId(request) }),
+  create: request =>
+    requests.post('/requests', { request }),
   del: requestId =>
     requests.del(`/requests/${requestId}`)
 }
