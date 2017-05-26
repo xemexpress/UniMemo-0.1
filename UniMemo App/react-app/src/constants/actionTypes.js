@@ -22,12 +22,12 @@ export const UNFOLLOW_USER = 'UNFOLLOW_USER'
 export const CHANGE_TAB = 'CHANGE_TAB'
 export const APPLY_TAG_FILTER = 'APPLY_TAG_FILTER'
 export const SET_PAGE = 'SET_PAGE'
-// export const
-// export const
-// export const
-// export const
-// export const
-// export const
+export const REQUEST_SUBMITTED = 'REQUEST_SUBMITTED'
+export const EDITOR_PAGE_LOADED = 'EDITOR_PAGE_LOADED'
+export const UPDATE_FIELD_EDITOR = 'UPDATE_FIELD_EDITOR'
+export const EDITOR_PAGE_UNLOADED = 'EDITOR_PAGE_UNLOADED'
+export const ADD_TAG = 'ADD_TAG'
+export const REMOVE_TAG = 'REMOVE_TAG'
 // export const
 // export const
 // export const
