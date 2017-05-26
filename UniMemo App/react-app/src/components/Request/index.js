@@ -1,5 +1,9 @@
 import React from 'react'
 // import marked from 'marked'
+// marked.setOptions({
+//   gfm: true,
+//   breaks: true
+// });
 import { connect } from 'react-redux'
 
 import RequestMeta from './RequestMeta'
@@ -45,22 +49,6 @@ class Request extends React.Component {
       return null
     }
 
-    // const image = request.image ? `
-    //   <img className='img-fluid' src=${request.image} alt='Image provided by ${request.poster}' />
-    //
-    //
-    //   ` : null
-    // const text = `
-    //     Start Time: ${request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}
-    //
-    //     Start Place: ${request.startPlace ? request.startPlace : 'Not determined yet :)'}
-    //
-    //
-    //     End Time: __${new Date(request.endTime).toDateString()}__
-    //
-    //     End Place: __${request.endPlace}__
-    // `
-
     const text = `
       <div>
         Start Time:&nbsp;
@@ -78,8 +66,16 @@ class Request extends React.Component {
       </div>
     `
 
+    // const text = `
+    //     Start Time: __${request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}__
+    //     Start Place: __${request.startPlace ? request.startPlace : 'Not determined yet :)'}__
+    //
+    //     End Time: __${new Date(request.endTime).toDateString()}__
+    //     End Place: __${request.endPlace}__
+    // `
+
     const markup = {
-      // __html: marked(image + text)
+      // __html: marked(text)
       __html: text
     }
 
