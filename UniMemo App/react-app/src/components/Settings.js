@@ -87,7 +87,7 @@ class SettingsForm extends React.Component {
               className='form-control form-control-lg'
               type='password'
               placeholder='New Password'
-              value={this.state.username}
+              value={this.state.password}
               onChange={this.updateState('password')} />
           </fieldset>
 
