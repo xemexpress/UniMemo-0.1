@@ -5,7 +5,9 @@ import {
   PROFILE_PAGE_UNLOADED,
   CHANGE_TAB,
   APPLY_TAG_FILTER,
-  SET_PAGE
+  SET_PAGE,
+  REQUEST_WISHED,
+  REQUEST_UNWISHED
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -30,6 +32,21 @@ export default (state={}, action) => {
       }
     case PROFILE_PAGE_UNLOADED:
       return {}
+    case REQUEST_WISHED:
+    case REQUEST_UNWISHED:
+      return {
+        ...state,
+        requests: state.requests.map(request => {
+          if(action.payload.request.requestId === request.requestId){
+            return {
+              ...request,
+              wished: action.payload.request.wished,
+              wishesCount: action.payload.request.wishesCount
+            }
+          }
+          return request
+        })
+      }
     case CHANGE_TAB:
       return {
         ...state,
