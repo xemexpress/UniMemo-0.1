@@ -1,8 +1,40 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
+
+import agent from '../agent'
+
+import {
+  REQUEST_WISHED,
+  REQUEST_UNWISHED
+} from '../constants/actionTypes'
+
+const mapDispatchToProps = dispatch => ({
+  wish: requestId => dispatch({
+    type: REQUEST_WISHED,
+    payload: agent.Requests.wish(requestId)
+  }),
+  unwish: requestId => dispatch({
+    type: REQUEST_UNWISHED,
+    payload: agent.Requests.unwish(requestId)
+  })
+})
 
 const RequestPreview = props => {
   const request = props.request
+
+  const wishButtonClass = request.wished ?
+    'btn btn-sm btn-primary' : 'btn btn-sm btn-outline-primary'
+
+  const handleClick = ev => {
+    ev.preventDefault()
+    if(request.wished){
+      props.unwish(request.requestId)
+    }else{
+      props.wish(request.requestId)
+    }
+  }
+
   return (
     <div className='article-preview'>
 
@@ -29,7 +61,8 @@ const RequestPreview = props => {
 
         <div className='pull-xs-right'>
           <button
-            className='btn btn-sm btn-outline-primary'>
+            className={wishButtonClass}
+            onClick={handleClick}>
             <i className='ion-help-buoy'></i> {request.wishesCount}
           </button>
         </div>
@@ -68,4 +101,4 @@ const RequestPreview = props => {
   )
 }
 
-export default RequestPreview
+export default connect(()=>({}), mapDispatchToProps)(RequestPreview)
