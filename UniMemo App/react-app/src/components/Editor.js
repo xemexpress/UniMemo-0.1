@@ -142,7 +142,7 @@ class Editor extends React.Component {
                   </fieldset>
 
                   <label htmlFor='toggle'>
-                    <strong>Optional:</strong> Set how it starts
+                    <strong>Optional:</strong> Set when it starts
                   </label>
                   &nbsp;&nbsp;
                   <input
@@ -194,15 +194,6 @@ class Editor extends React.Component {
                   <fieldset className='form-group'>
                     <input
                       className='form-control form-control-lg'
-                      type='url'
-                      placeholder='Image URL that helps to describe this request'
-                      value={this.props.image}
-                      onChange={this.changeImage} />
-                  </fieldset>
-
-                  <fieldset className='form-group'>
-                    <input
-                      className='form-control form-control-lg'
                       type='text'
                       placeholder='Enter tags'
                       value={this.props.tagInput}
@@ -227,13 +218,23 @@ class Editor extends React.Component {
                     </div>
                   </fieldset>
 
-                  <button
-                    className='btn btn-lg pull-xs-right btn-primary'
-                    type='button'
-                    onClick={this.submitForm}
-                    disabled={this.props.inProgress}>
-                    Post Request
-                  </button>
+                  <div className='text-xs-center'>
+                    <i className='ion-information-circled'></i>&nbsp;
+                    Get URL by uploading your custom pic&nbsp;
+                    <a
+                      className='nav-link'
+                      href='https://photouploads.com/'
+                      target='_blank'>here</a>
+                  </div>
+
+                  <fieldset className='form-group'>
+                    <input
+                      className='form-control form-control-lg'
+                      type='url'
+                      placeholder='An image URL if it helps (optional)'
+                      value={this.props.image}
+                      onChange={this.changeImage} />
+                  </fieldset>
 
                   {
                     this.props.image ?
@@ -242,6 +243,14 @@ class Editor extends React.Component {
                         src={this.props.image}
                         alt='preview' /> : null
                   }
+
+                  <button
+                    className='btn btn-lg pull-xs-right btn-primary'
+                    type='button'
+                    onClick={this.submitForm}
+                    disabled={this.props.inProgress}>
+                    Post Request
+                  </button>
 
                 </fieldset>
               </form>
