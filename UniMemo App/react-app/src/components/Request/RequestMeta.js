@@ -7,12 +7,12 @@ const RequestMeta = ({ request, canModify }) => {
   return (
     <div className='article-meta'>
 
-      <Link to=''>
+      <Link to={`@${request.poster.username}`}>
         <img src={request.poster.proPic} alt={request.poster.username} />
       </Link>
 
       <div className='info'>
-        <Link to='' className='author'>
+        <Link to={`@${request.poster.username}`} className='author'>
           {request.poster.username}
         </Link>
         <span className='date'>
@@ -21,7 +21,7 @@ const RequestMeta = ({ request, canModify }) => {
       </div>
 
       <RequestActions canModify={canModify} request={request} />
-    
+
     </div>
   )
 }
