@@ -82,6 +82,8 @@ const Comments = {
     requests.get(`/requests/${requestId}/comments`),
   create: (requestId, comment) =>
     requests.post(`/requests/${requestId}/comments`, { comment }),
+  update: (requestId, commentId, comment) =>
+    requests.put(`/requests/${requestId}/comments/${commentId}`, { comment }),
   delete: (requestId, commentId) =>
     requests.del(`/requests/${requestId}/comments/${commentId}`)
 }
