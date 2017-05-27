@@ -583,6 +583,18 @@ Offset number of requests (default is 0):
 
 Authentication required, returns [multiple Requests](#multiple-requests) posted by previously favored Users, ordered by most recent first.
 
+### Wish Request
+
+`POST /api/requests/:request_id/wish`
+
+Authentication required, returns the [Request](#single-request)
+
+### Unwish Request
+
+`DELETE /api/requests/:request_id/wish`
+
+Authentication required, returns the [Request](#single-request)
+
 ### Retrieve Request
 
 `GET /api/requests/:request_id`
@@ -728,18 +740,6 @@ Optional fields: `body`
 `DELETE /api/requests/:request_id/comments/:id`
 
 Authentication required, returns {}
-
-### Wish Request
-
-`POST /api/requests/:request_id/wish`
-
-Authentication required, returns the [Request](#single-request)
-
-### Unwish Request
-
-`DELETE /api/requests/:request_id/wish`
-
-Authentication required, returns the [Request](#single-request)
 
 ### Get Tags
 
