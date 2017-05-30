@@ -3,7 +3,9 @@ import {
   REQUEST_PAGE_UNLOADED,
   ADD_COMMENT,
   UPDATE_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  TAKE_REQUEST,
+  UNTAKE_REQUEST
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -27,7 +29,7 @@ export default (state={}, action) => {
       return {
         ...state,
         updateErrors: action.error ? action.payload.errors : null,
-        comments: action.error ? null : 
+        comments: action.error ? null :
           state.comments.map(comment => {
             if(action.payload.comment.id === comment.id){
               return {
@@ -42,6 +44,12 @@ export default (state={}, action) => {
       return {
         ...state,
         comments: state.comments.filter(comment => action.commentId !== comment.id)
+      }
+    case TAKE_REQUEST:
+    case UNTAKE_REQUEST:
+      return {
+        ...state,
+        request: action.payload.request
       }
     default:
   }

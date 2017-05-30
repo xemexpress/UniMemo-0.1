@@ -31,7 +31,7 @@ const FollowUserButton = props => {
     return null
   }
 
-  const handleClick = ev => {
+  const handleFollow = ev => {
     ev.preventDefault()
     if(props.user.favoring){
       props.unfavor(props.user.username)
@@ -39,10 +39,12 @@ const FollowUserButton = props => {
       props.favor(props.user.username)
     }
   }
+
   return (
     <button
       className={props.user.favoring ? 'btn btn-sm action-btn btn-secondary' : 'btn btn-sm action-btn btn-outline-secondary'}
-      onClick={handleClick}>
+      onClick={handleFollow}>
+      <i className='ion-android-hand'></i>&nbsp;
       {
         props.user.favoring ? 'Unfavor' : 'Favor'
       }

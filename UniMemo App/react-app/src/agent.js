@@ -74,7 +74,11 @@ const Requests = {
   wish: requestId =>
     requests.post(`/requests/${requestId}/wish`),
   unwish: requestId =>
-    requests.del(`/requests/${requestId}/wish`)
+    requests.del(`/requests/${requestId}/wish`),
+  take: requestId =>
+    requests.post(`/requests/${requestId}/take`),
+  untake: requestId =>
+    requests.del(`/requests/${requestId}/take`)
 }
 
 const Comments = {
