@@ -324,6 +324,7 @@
 {
   "requestTags": [
     "ongoing",
+    "ongoing-taken",
     "done",
     "shopping",
     "delivering",
@@ -631,13 +632,13 @@ Authentication required, returns a [List of Helpers' Profile](#list-of-helprs) w
 
 ### Confirm Request
 
-`GET /api/requests/:request_id/confirms/:username`
+`PUT /api/requests/:request_id/confirms/:username`
 
 Authentication required, returns the [Request](#single-request) with `helper` settled
 
 ### End Request
 
-`GET /api/requests/:request_id/ends/:mem`
+`PUT /api/requests/:request_id/ends/:mem`
 
 Authentication required, returns the [Request](#single-request) with 'done' in `tag_list`, `yellowStars` incremented, `mem` updated.
 

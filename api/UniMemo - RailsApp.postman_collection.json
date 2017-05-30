@@ -25,13 +25,13 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\":{\n    \"username\": \"TESTTEST\",\n    \"email\": \"TEST@TEST.com\",\n    \"password\": \"TESTTEST\"\n  }\n}"
+							"raw": "{\n  \"user\":{\n    \"username\": \"test3\",\n    \"email\": \"3@test.com\",\n    \"password\": \"testtest\"\n  }\n}"
 						},
 						"description": "Register an account"
 					},
 					"response": [
 						{
-							"id": "035a67ca-e033-49ad-8da5-a053c1e6f187",
+							"id": "19d6a9a4-78b5-4bd8-8630-c12d48c35b53",
 							"name": "Registration repeated",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/users",
@@ -179,7 +179,7 @@
 							"body": "{\"errors\":{\"email\":[\"has already been taken\"],\"username\":[\"has already been taken\"]}}"
 						},
 						{
-							"id": "6ea4e7b5-963e-4d25-bf74-edd79d4cee12",
+							"id": "241c3c06-006b-4c13-8e6f-20e00b3b0e15",
 							"name": "Register 'asasazxzxz'",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/users",
@@ -366,13 +366,13 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\":{\n    \"email\": \"kate@uni.com\",\n    \"password\": \"unimemo\"\n  }\n}"
+							"raw": "{\n  \"user\": {\n    \"email\": \"test@test\",\n    \"password\": \"testtest\"\n  }\n}"
 						},
 						"description": "Log in an account"
 					},
 					"response": [
 						{
-							"id": "2f056fbc-e462-4dc9-bf5c-7ae003dc9d2f",
+							"id": "5a8830a6-7100-498d-9fe2-0df7ba69a68e",
 							"name": "Log in asasazxzxz",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/users/login",
@@ -545,7 +545,7 @@
 					},
 					"response": [
 						{
-							"id": "71228312-25c8-48c5-b23c-21dc1ad9b0d0",
+							"id": "5e514bdd-d7a9-484d-8b21-78efe4b90a7a",
 							"name": "Get current User object",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/user",
@@ -698,7 +698,7 @@
 					},
 					"response": [
 						{
-							"id": "d00f3a4e-42ca-4bfc-ab9d-228f34a934a9",
+							"id": "582aa204-b378-41be-bd38-235fdd48767d",
 							"name": "Update Bio",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/user",
@@ -943,7 +943,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"gift\": {\n    \"expire_at\": \"2017-11-20T00:00\",\n    \"receiver\": { \"username\": \"KateYuen\" }\n  }\n}"
+							"raw": "{\n  \"gift\": {\n  \t\"expire_at\": \"2017-11-20T00:00\",\n  \t\"receiver\": { \"username\": \"KateYuen\" }\n  }\n}"
 						},
 						"description": ""
 					},
@@ -992,7 +992,7 @@
 				{
 					"name": "Get Profile",
 					"request": {
-						"url": "{{apiUrl}}/profiles/testtest",
+						"url": "{{apiUrl}}/profiles/test3",
 						"method": "GET",
 						"header": [
 							{
@@ -1006,7 +1006,7 @@
 					},
 					"response": [
 						{
-							"id": "157ae430-c19a-4bc5-84fe-9887f94f17fd",
+							"id": "ec36d0a8-9dd8-4c73-8674-74676d1abb21",
 							"name": "Get asasazxzxz's Profile",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/profiles/asasazxzxz",
@@ -1151,7 +1151,7 @@
 					},
 					"response": [
 						{
-							"id": "1b2dc497-1574-424e-8aef-a70331cae6b3",
+							"id": "85e05c1a-78dc-4c92-9492-6a30337cd85b",
 							"name": "Follow xemexpress",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/profiles/xemexpress/follow",
@@ -1320,7 +1320,7 @@
 					},
 					"response": [
 						{
-							"id": "b632f2fc-22c7-40fa-80f6-1189c0a2cbde",
+							"id": "d7b69eda-fdc5-4d09-8a8d-ffb89335fb1f",
 							"name": "Unfollow xemexpress",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/profiles/xemexpress/follow",
@@ -1481,7 +1481,7 @@
 				{
 					"name": "List Requests",
 					"request": {
-						"url": "{{apiUrl}}/requests?tag=ongoing-taken",
+						"url": "{{apiUrl}}/requests",
 						"method": "GET",
 						"header": [
 							{
@@ -1495,7 +1495,7 @@
 					},
 					"response": [
 						{
-							"id": "bfb250a1-d462-45fc-b98e-9fbc6f3353a1",
+							"id": "230c7a96-bd8c-4306-b860-08d9981ec73d",
 							"name": "No filter tags",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles",
@@ -1616,7 +1616,7 @@
 							"body": "{\"articles\":[{\"title\":\"213\",\"slug\":\"213\",\"body\":\"213\",\"createdAt\":\"2017-04-02T06:57:59.630Z\",\"updatedAt\":\"2017-04-02T06:57:59.630Z\",\"tagList\":[],\"description\":\"123\",\"author\":{\"username\":\"deek\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"This is a test article1\",\"slug\":\"this-is-a-test-article1\",\"body\":\"# Test article Header\\nFormat: ![Cool picture](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSvGBbRtzgNfNaHPP9X28Gj6OQF0l6ZaiqgxJlujX5QsE5g35Or18WijxY3)\",\"createdAt\":\"2017-04-02T06:56:11.920Z\",\"updatedAt\":\"2017-04-02T06:56:11.920Z\",\"tagList\":[],\"description\":\"This article will tell the whole world about node \\u0026 angular\",\"author\":{\"username\":\"deek\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"Lorem Ipsum 2\",\"slug\":\"lorem-ipsum-2\",\"body\":\"\\\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\\\"\\n\\\"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...\\\"\\n\\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis volutpat augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis venenatis, sem sit amet tempus placerat, urna lacus pretium lorem, a placerat sapien enim sed odio. In nunc elit, lacinia vitae turpis eget, ultrices fermentum libero. Vivamus mauris ante, aliquam eu aliquam eu, commodo vitae purus. Cras quis nunc vitae lorem sodales eleifend vitae eget lectus. Nunc dictum, turpis dictum vestibulum tempor, velit ligula iaculis tortor, quis luctus ante arcu sed nisl. Suspendisse laoreet in est lobortis tempor. Morbi dolor est, luctus vitae erat bibendum, finibus iaculis diam. Nunc vel eros aliquet, fringilla ipsum nec, vulputate lacus. Quisque nisl nunc, accumsan sed placerat tincidunt, pharetra eget libero.\\n\\nEtiam iaculis eu nisl sit amet posuere. Curabitur arcu quam, aliquam quis lobortis id, feugiat a lectus. Etiam eget rhoncus ante. Mauris tincidunt sodales imperdiet. Ut at tristique felis, ut auctor nibh. Integer neque lorem, luctus et hendrerit nec, facilisis facilisis nibh. Ut semper eget metus ac maximus. Aliquam dignissim enim sit amet ex dignissim, at faucibus ante vehicula. Donec dapibus lectus ultrices erat fermentum pellentesque. Duis luctus scelerisque maximus. Suspendisse sodales pharetra orci eleifend tristique. Suspendisse sagittis consectetur ornare. In vitae lacinia orci, in elementum ex. Quisque eu placerat mi.\\n\\nSuspendisse aliquam eu risus sed semper. In non sapien rhoncus, facilisis elit vitae, mollis lectus. Curabitur tortor lorem, imperdiet efficitur quam ut, malesuada convallis magna. Cras a sagittis felis. Nullam lectus purus, varius in aliquet a, tincidunt in nulla. Morbi et sem vel ex lacinia tempus. Maecenas congue justo egestas urna ullamcorper, quis auctor ex venenatis. Cras eros arcu, molestie eget nisi a, volutpat feugiat orci. Phasellus risus augue, posuere ut purus at, interdum tincidunt est. Ut mauris mi, varius ac erat eu, fermentum ornare lacus. Nulla felis lorem, pretium quis eros in, vestibulum laoreet sem. Quisque ac laoreet nisl. Donec fermentum, tellus sit amet gravida cursus, sapien lacus bibendum eros, quis blandit mauris enim non lacus. Fusce non diam risus. Nunc blandit congue lorem, quis pharetra ante viverra nec. Etiam molestie est id tincidunt consequat.\\n\\nAenean quis justo in risus luctus elementum a eget orci. Duis suscipit elementum ligula quis efficitur. Nulla rhoncus ipsum sed sagittis pretium. Ut massa nulla, varius vel tortor eu, laoreet vestibulum augue. Vestibulum eu lobortis metus. Nullam placerat dui id lacus lacinia auctor. Etiam porta magna et eros fermentum, nec tincidunt tortor viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam euismod, erat vitae mattis placerat, tortor mauris efficitur ex, vel pulvinar massa turpis vel nisi. Aliquam quis convallis eros. Fusce bibendum nulla vel nunc aliquet, a rutrum felis mattis. Vivamus lacus ex, tincidunt vitae neque eleifend, vulputate pharetra urna. Donec auctor eros sed nisl auctor, ut aliquet felis sollicitudin. Nam tempor velit et fermentum faucibus. Etiam sagittis vel lectus ac scelerisque.\\n\\nAliquam non tincidunt nulla. Donec dolor dolor, ornare quis rhoncus vel, sodales vitae orci. Phasellus facilisis semper elit ac malesuada. Cras vitae mi tempus, auctor mi non, porta neque. Vestibulum sit amet libero euismod, venenatis massa at, iaculis lacus. Etiam ultricies nisi a molestie dictum. Nulla non quam at ipsum maximus luctus. Sed rutrum accumsan nisl in laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec rutrum diam. Etiam id justo finibus sapien finibus porta quis ut odio. In rhoncus leo felis, at mollis dolor sagittis sit amet. Suspendisse ac augue finibus, laoreet sem vitae, pretium enim. Aliquam sit amet ipsum a tellus vulputate vehicula eu a justo. Nulla facilisi.\",\"createdAt\":\"2017-04-01T15:12:22.495Z\",\"updatedAt\":\"2017-04-01T15:12:22.495Z\",\"tagList\":[],\"description\":\"\\\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\\\"\",\"author\":{\"username\":\"srdavicho\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"Test Article nguyentoanuit\",\"slug\":\"test-article-nguyentoanuit\",\"body\":\"\\u003ch3\\u003eTest Article\\u003c/h3\\u003e\\n\\u003cp\\u003eTest functionalities of Conduit\\u003c/p\\u003e\",\"createdAt\":\"2017-04-01T14:21:19.924Z\",\"updatedAt\":\"2017-04-01T14:21:19.924Z\",\"tagList\":[],\"description\":\"Test functionalities of Conduit\",\"author\":{\"username\":\"nguyentoanuit\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"Test Article One\",\"slug\":\"test-article-one\",\"body\":\"test article\",\"createdAt\":\"2017-04-01T09:13:48.345Z\",\"updatedAt\":\"2017-04-01T09:13:48.345Z\",\"tagList\":[],\"description\":\"test\",\"author\":{\"username\":\"ngrkd\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"An awesome article\",\"slug\":\"an-awesome-article\",\"body\":\"I love winning.  I am winning\",\"createdAt\":\"2017-04-01T04:57:09.430Z\",\"updatedAt\":\"2017-04-01T04:57:09.430Z\",\"tagList\":[\"winning\",\"killing it\",\"awesome\"],\"description\":\"Killing it\",\"author\":{\"username\":\"dwatson\",\"bio\":\"I am awesome\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"Test Article 999\",\"slug\":\"test-article-999\",\"body\":\"Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article.\\n\\nTesting conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article Testing conduit article\",\"createdAt\":\"2017-04-01T01:09:39.754Z\",\"updatedAt\":\"2017-04-01T01:09:39.754Z\",\"tagList\":[],\"description\":\"Testing conduit article\",\"author\":{\"username\":\"Django\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"WASS UP\",\"slug\":\"wass-up\",\"body\":\"YOOO\",\"createdAt\":\"2017-04-01T00:12:27.283Z\",\"updatedAt\":\"2017-04-01T00:12:27.283Z\",\"tagList\":[],\"description\":\"WASSAAPPPP\",\"author\":{\"username\":\"Tai\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\",ñ,ñ\",\"slug\":\"n-n\",\"body\":\"çñ,çñ.çñ,çñ,\",\"createdAt\":\"2017-03-31T20:14:42.560Z\",\"updatedAt\":\"2017-03-31T20:14:42.560Z\",\"tagList\":[],\"description\":\"ĺnñlknñnñln-., \",\"author\":{\"username\":\"211º3124141\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"9999\",\"slug\":\"9999\",\"body\":\"99kkkk99\",\"createdAt\":\"2017-03-31T16:10:44.600Z\",\"updatedAt\":\"2017-03-31T16:10:44.600Z\",\"tagList\":[],\"description\":\"9kkkk\",\"author\":{\"username\":\"aaa919\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"The first article\",\"slug\":\"the-first-article\",\"body\":\"Hello world!\",\"createdAt\":\"2017-03-31T13:21:00.279Z\",\"updatedAt\":\"2017-03-31T13:21:00.279Z\",\"tagList\":[],\"description\":\"The new topic\",\"author\":{\"username\":\"dot\",\"bio\":\"Some bio. The bio.\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"First article from didier\",\"slug\":\"first-article-from-didier\",\"body\":\"# thanks a lot for this tutorial\",\"createdAt\":\"2017-03-31T09:30:40.586Z\",\"updatedAt\":\"2017-03-31T09:30:40.586Z\",\"tagList\":[],\"description\":\"discover conduit project\",\"author\":{\"username\":\"didierc65\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":3},{\"title\":\"How to read\",\"slug\":\"how-to-read\",\"body\":\"Example article \",\"createdAt\":\"2017-03-31T04:18:41.883Z\",\"updatedAt\":\"2017-03-31T04:18:41.883Z\",\"tagList\":[],\"description\":\"How to read cookbook\",\"author\":{\"username\":\"naveen1\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"this is texst\",\"slug\":\"this-is-texst\",\"body\":\"asdf asdf asdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdf\",\"createdAt\":\"2017-03-31T01:53:16.903Z\",\"updatedAt\":\"2017-03-31T01:53:16.903Z\",\"tagList\":[],\"description\":\"hi i am test\",\"author\":{\"username\":\"tsvmadhav\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"Lee con atencion\",\"slug\":\"lee-con-atencion\",\"body\":\"PUTO EL QUE LO LEA\",\"createdAt\":\"2017-03-31T01:38:07.385Z\",\"updatedAt\":\"2017-03-31T01:38:07.385Z\",\"tagList\":[],\"description\":\"react\",\"author\":{\"username\":\"cualquier cosa\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"test fart fly\",\"slug\":\"test-fart-fly\",\"body\":\"test fart fly\",\"createdAt\":\"2017-03-30T23:17:11.423Z\",\"updatedAt\":\"2017-03-30T23:17:35.960Z\",\"tagList\":[],\"description\":\"test fart fly\",\"author\":{\"username\":\"joejoejoe1\",\"bio\":\"i test, i fart, and i fly\",\"image\":\"\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"The Body Within\",\"slug\":\"the-body-within\",\"body\":\"The body has so many parts that you can't control even if you are the owner of that body. What if you can control every tiny living cell in your body?\",\"createdAt\":\"2017-03-30T22:51:52.888Z\",\"updatedAt\":\"2017-03-30T22:51:52.888Z\",\"tagList\":[],\"description\":\"About the body\",\"author\":{\"username\":\"JeanDoe\",\"bio\":\"I love John Doe because I am Jean Doe\",\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":0},{\"title\":\"about a sea\",\"slug\":\"about-a-sea\",\"body\":\"The Salton Sea is inland.   And below sea level.\",\"createdAt\":\"2017-03-30T21:42:42.627Z\",\"updatedAt\":\"2017-03-30T21:42:42.627Z\",\"tagList\":[],\"description\":\"a sea\",\"author\":{\"username\":\"donovan\",\"bio\":null,\"image\":\"https://launchbit.com/carbon-i/6803-toptal_fem_A_02_Carbon.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":2},{\"title\":\"dfvv\",\"slug\":\"dfvv\",\"body\":\"Dfgg\",\"createdAt\":\"2017-03-30T15:43:15.436Z\",\"updatedAt\":\"2017-03-30T15:43:15.436Z\",\"tagList\":[],\"description\":\"cfvh\",\"author\":{\"username\":\"cv\",\"bio\":null,\"image\":\"ccv\",\"following\":false},\"favorited\":false,\"favoritesCount\":1},{\"title\":\"pedrogomes\",\"slug\":\"pedrogomes\",\"body\":\"asdasdasd\",\"createdAt\":\"2017-03-30T11:47:58.367Z\",\"updatedAt\":\"2017-03-30T11:47:58.367Z\",\"tagList\":[],\"description\":\"asdasdasd\",\"author\":{\"username\":\"pgomes\",\"bio\":null,\"image\":\"https://static.productionready.io/images/smiley-cyrus.jpg\",\"following\":false},\"favorited\":false,\"favoritesCount\":5}],\"articlesCount\":2253}"
 						},
 						{
-							"id": "b545315c-028d-461a-9e20-a61e1823eaa3",
+							"id": "bafbd882-631b-423e-99c0-eee737db0e12",
 							"name": "tag=AngularJS",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles?tag=AngularJS",
@@ -1741,7 +1741,7 @@
 				{
 					"name": "Retrieve Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m",
+						"url": "{{apiUrl}}/requests/beoyR33z",
 						"method": "GET",
 						"header": [
 							{
@@ -1755,7 +1755,7 @@
 					},
 					"response": [
 						{
-							"id": "592a5a18-3193-414c-8c7d-787f2c45e8b5",
+							"id": "5ccd9eaa-0ee1-4b80-930e-e6f5a9282516",
 							"name": "get an article",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons",
@@ -1880,7 +1880,7 @@
 				{
 					"name": "Collect Requests",
 					"request": {
-						"url": "{{apiUrl}}/requests/collect?tag=ongoing",
+						"url": "{{apiUrl}}/requests/collect",
 						"method": "GET",
 						"header": [
 							{
@@ -1894,7 +1894,7 @@
 					},
 					"response": [
 						{
-							"id": "3cad1775-52df-4136-9c77-2404402abc4f",
+							"id": "af52a382-e533-45ec-8277-89ccdbdaa509",
 							"name": "If not following",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles/feed",
@@ -2027,7 +2027,7 @@
 				{
 					"name": "Wish Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/wish",
+						"url": "{{apiUrl}}/requests/i4jPdd34/wish",
 						"method": "POST",
 						"header": [
 							{
@@ -2083,7 +2083,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"request\": {\n    \"tag_list\": [\"ongoing\", \"production\"],\n    \"start_time\": \"2017-04-11T19:00\",\n    \"start_place\": \"Yin Chong St, Mong Kok\",\n    \"end_time\": \"2017-04-18\",\n    \"end_place\": \"We Decide\",\n    \"text\": \"有冇人可以幫我寄養「鴨腳木」一個星期？\",\n    \"image\": \"https://photouploads.com/image/ybr\"\n  }\n}"
+							"raw": "{\n  \"request\": {\n    \"tag_list\": [\"ongoing\", \"production\"],\n    \"start_time\": \"\",\n    \"start_place\": \"Olympian City, Hoi Wang Road\",\n    \"end_time\": \"this friday\",\n    \"end_place\": \"Yin Chong St, Mong Kok\",\n    \"text\": \"Deliver 10 namecards from 奧海城 to 煙廠街\",\n    \"image\": \"https://photouploads.com/image/ybr\"\n  }\n}"
 						},
 						"description": "In the example, we post:\n\n{\n  \"article\": {\n    \"title\": \"How to train your dragons\",\n    \"description\": \"Ever wonder how?\",\n    \"body\": \"You have to believe!!\",\n    \"tagList\": [\"reactjs\", \"angularjs\", \"dragons\"]\n  }\n}\n\n\nRequired fields: title, description, body\n\nOptional fields: tagList as an array of Strings"
 					},
@@ -2092,7 +2092,7 @@
 				{
 					"name": "Update Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/jqeY9z5s",
+						"url": "{{apiUrl}}/requests/nxyd0ayj",
 						"method": "PUT",
 						"header": [
 							{
@@ -2108,7 +2108,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"request\": {\n    \"tag_list\": [\"done\", \"production\"]\n  }\n}"
+							"raw": "{\n  \"request\": {\n    \"image\": \"https://freenaturestock.s3.amazonaws.com/869.jpg\"\n  }\n}"
 						},
 						"description": "In the example, we update the title:\n{\n  \"article\": {\n    \"title\": \"Did you train your dragons?\"\n  }\n}\n\nOptional fields: title, description, body\n\n"
 					},
@@ -2117,7 +2117,7 @@
 				{
 					"name": "Delete Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/h73N730a",
+						"url": "{{apiUrl}}/requests/3yiOwvgb",
 						"method": "DELETE",
 						"header": [
 							{
@@ -2134,7 +2134,7 @@
 				{
 					"name": "List Request's Helpers",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/confirms",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/confirms",
 						"method": "GET",
 						"header": [
 							{
@@ -2151,8 +2151,8 @@
 				{
 					"name": "Confirm Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/confirms/testtest",
-						"method": "GET",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/confirms/testtest",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -2168,8 +2168,8 @@
 				{
 					"name": "End Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/ends/60",
-						"method": "GET",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/ends/10",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -2191,7 +2191,7 @@
 				{
 					"name": "Help Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/take",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/take",
 						"method": "POST",
 						"header": [
 							{
@@ -2231,7 +2231,7 @@
 				{
 					"name": "Get Comments from a Request",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/comments",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/comments",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -2264,7 +2264,7 @@
 					},
 					"response": [
 						{
-							"id": "cccfe45e-3863-492a-9e3b-cd4b89a23e4c",
+							"id": "01c0759b-82b8-420f-bbb7-0947edd7e8e0",
 							"name": "make a comment",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons/comments",
@@ -2495,7 +2495,7 @@
 				{
 					"name": "Update Comment",
 					"request": {
-						"url": "{{apiUrl}}/requests/cg056e5m/comments/4",
+						"url": "{{apiUrl}}/requests/qbmBMn19e/comments/16",
 						"method": "PUT",
 						"header": [
 							{
@@ -2511,7 +2511,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"comment\": {\n    \"body\": \"Thank you!\"\n  }\n}"
+							"raw": "{\n  \"comment\": {\n    \"body\": \"I have some comments on this. :)\"\n  }\n}"
 						},
 						"description": ""
 					},
@@ -2534,7 +2534,7 @@
 					},
 					"response": [
 						{
-							"id": "b37eb3e0-966c-4aa9-b594-95c7433be6ed",
+							"id": "dec7b1d2-0441-48ac-8a69-b120e07918da",
 							"name": "Delete a comment with id 2115",
 							"originalRequest": {
 								"url": "https://conduit.productionready.io/api/articles/did-you-train-your-dragons/comments/2115",
