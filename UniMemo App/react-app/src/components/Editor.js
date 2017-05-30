@@ -60,7 +60,7 @@ class Editor extends React.Component {
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
 
     this.watchForEnter = ev => {
-      if(ev.keyCode === 13){
+      if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done'].indexOf(this.props.tagInput) === -1){
         ev.preventDefault()
         this.props.onAddTag()
       }
@@ -195,7 +195,8 @@ class Editor extends React.Component {
                     <input
                       className='form-control form-control-lg'
                       type='text'
-                      placeholder='Enter tags'
+                      placeholder='Enter tags. Recommend &#39;delivering&#39;, &#39;production&#39;, &#39;shopping&#39;'
+                      // except &#39;ongoing&#39;, &#39;ongoing-taken&#39;, &#39;done&#39;
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter} />
@@ -207,9 +208,11 @@ class Editor extends React.Component {
                             <span
                               className='tag-default tag-pill'
                               key={tag}>
-                              <i
-                                className='ion-close-round'
-                                onClick={this.removeTag(tag)}></i>
+                              {
+                                ['ongoing', 'ongoing-taken', 'done'].indexOf(tag) === -1 ?
+                                <i className='ion-close-round' onClick={this.removeTag(tag)}></i>
+                                : null
+                              }
                               {tag}
                             </span>
                           )
