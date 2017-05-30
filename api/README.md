@@ -604,13 +604,13 @@ Authentication optional, returns [single Request](#single-request)
 
 ### Take Request
 
-`POST /api/requests/:request_id/help`
+`POST /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
 ### Unhelp Request
 
-`DELETE /api/requests/:request_id/help`
+`DELETE /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
