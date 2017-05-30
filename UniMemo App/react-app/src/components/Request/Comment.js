@@ -116,18 +116,23 @@ class Comment extends React.Component {
           &nbsp;
           {
             // Update-Submit Button
-            show && this.state.canEdit ?
+            show ?
             <span className='mod-options'>
-              <button
-                className='btn btn-sm btn-primary'
-                onClick={this.updateComment}>
-                Update Comment
-              </button>
+              {
+                this.state.canEdit ?
+                <button
+                  className='btn btn-sm btn-primary'
+                  onClick={this.updateComment}>
+                  Update Comment
+                </button>
+                :
+                <span className='mod-options'>
+                  <i className='ion-edit' onClick={this.canEdit}></i>
+                </span>
+              }
             </span>
             :
-            <span className='mod-options'>
-              <i className='ion-edit' onClick={this.canEdit}></i>
-            </span>
+            null
           }
         </div>
 
