@@ -179,7 +179,7 @@ class Profile extends React.Component {
                 requests={this.props.requests}
                 requestsCount={this.props.requestsCount}
                 currentPage={this.props.currentPage}
-                onSetPage={onSetPage}/>
+                onSetPage={onSetPage} />
 
             </div>
           </div>

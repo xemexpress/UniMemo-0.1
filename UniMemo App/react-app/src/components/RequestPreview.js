@@ -42,7 +42,7 @@ const RequestPreview = props => {
         <Link
           className='author'
           to={`@${request.poster.username}`}>
-          <img src={request.poster.proPic} alt={request.poster.username}/>
+          <img src={request.poster.proPic} alt={request.poster.username} />
         </Link>
 
         <div className='info'>

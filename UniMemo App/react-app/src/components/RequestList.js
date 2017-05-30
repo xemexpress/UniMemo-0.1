@@ -25,7 +25,7 @@ const RequestList = props => {
       {
         props.requests.map(request => {
           return (
-            <RequestPreview request={request} key={request.requestId}/>
+            <RequestPreview request={request} key={request.requestId} />
           )
         })
       }
