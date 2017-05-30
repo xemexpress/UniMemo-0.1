@@ -195,7 +195,7 @@ class Editor extends React.Component {
                     <input
                       className='form-control form-control-lg'
                       type='text'
-                      placeholder='Enter tags. Recommend &#39;delivering&#39;, &#39;production&#39;, &#39;shopping&#39;'
+                      placeholder='Enter tags. Recommend choosing 1 from &#39;delivering&#39;, &#39;production&#39; & &#39;shopping&#39;'
                       // except &#39;ongoing&#39;, &#39;ongoing-taken&#39;, &#39;done&#39;
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
