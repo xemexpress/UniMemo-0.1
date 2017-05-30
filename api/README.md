@@ -608,7 +608,7 @@ Authentication optional, returns [single Request](#single-request)
 
 Authentication required, returns the [Request](#single-request)
 
-### Unhelp Request
+### Untake Request
 
 `DELETE /api/requests/:request_id/take`
 
