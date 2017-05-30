@@ -30,6 +30,6 @@ export const ADD_TAG = 'ADD_TAG'
 export const REMOVE_TAG = 'REMOVE_TAG'
 export const REQUEST_WISHED = 'REQUEST_WISHED'
 export const REQUEST_UNWISHED = 'REQUEST_UNWISHED'
-// export const
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 // export const
 // export const

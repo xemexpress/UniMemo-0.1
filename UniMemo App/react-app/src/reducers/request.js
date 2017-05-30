@@ -2,6 +2,7 @@ import {
   REQUEST_PAGE_LOADED,
   REQUEST_PAGE_UNLOADED,
   ADD_COMMENT,
+  UPDATE_COMMENT,
   DELETE_COMMENT
 } from '../constants/actionTypes'
 
@@ -21,6 +22,21 @@ export default (state={}, action) => {
         commentErrors: action.error ? action.payload.errors : null,
         comments: action.error ? null :
           (state.comments || []).concat([action.payload.comment])
+      }
+    case UPDATE_COMMENT:
+      return {
+        ...state,
+        updateErrors: action.error ? action.payload.errors : null,
+        comments: action.error ? null : 
+          state.comments.map(comment => {
+            if(action.payload.comment.id === comment.id){
+              return {
+                ...comment,
+                body: action.payload.comment.body
+              }
+            }
+            return comment
+          })
       }
     case DELETE_COMMENT:
       return {

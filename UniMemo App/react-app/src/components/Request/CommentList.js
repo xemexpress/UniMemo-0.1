@@ -9,6 +9,7 @@ const CommentList = props => {
         props.comments.map(comment => {
           return (
             <Comment
+              errors={props.errors}
               comment={comment}
               requestId={props.requestId}
               currentUser={props.currentUser}

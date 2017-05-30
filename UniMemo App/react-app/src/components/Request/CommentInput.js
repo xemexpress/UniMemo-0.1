@@ -42,7 +42,7 @@ class CommentInput extends React.Component {
     return (
       <div>
         <ListErrors errors={this.props.errors} />
-      <form className='card comment-form' onSubmit={this.createComment}>
+        <form className='card comment-form' onSubmit={this.createComment}>
           <div className='card-block'>
             <textarea
               className='form-control'
