@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :comments, except: [:edit, :new, :show]
       resources :confirms, param: :username, only: [:index, :update]
       resources :ends, param: :mem, only: [:update]
+      get :taking, on: :collection
       get :collect, on: :collection
     end
 
