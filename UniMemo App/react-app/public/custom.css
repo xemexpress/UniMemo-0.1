@@ -33,24 +33,11 @@
   background-color: #FFF;
 }
 
-/*.navbar {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  background-color: #EEE;
-  width: 100%;
+.mem {
+  display: intial;
+  width: 50px;
+  color: #FFF;
+  background-color: #333;
+  border-radius: 5px;
+  text-align: center;
 }
-
-@media (min-width: 544px) {
-    .navbar {
-      border-radius: 0.25rem; } }
-
-#root {
-  margin-top: 90px;
-}
-
-@media only screen and (min-width: 544px) {
-  #root {
-    margin-top: 56px;
-  }
-}*/
