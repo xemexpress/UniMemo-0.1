@@ -12,6 +12,7 @@ import Request from './components/Request'
 import Editor from './components/Editor'
 import Profile from './components/Profile'
 import ProfileWishes from './components/ProfileWishes'
+import ProfileTaken from './components/ProfileTaken'
 import store from './store'
 
 ReactDOM.render((
@@ -23,6 +24,7 @@ ReactDOM.render((
         <Route path='register' component={Register} />
         <Route path='settings' component={Settings} />
         <Route path='request/:requestId' component={Request} />
+        <Route path='@:username/taken' component={ProfileTaken} />
         <Route path='@:username' component={Profile} />
         <Route path='@:username/wishes' component={ProfileWishes} />
         <Route path='editor' component={Editor} />

@@ -82,6 +82,15 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class Profile extends React.Component {
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     canEdit: this.props.currentUser &&
+  //       this.props.currentUser.username === this.props.profile.username,
+  //     canFollow: this.props.currentUser &&
+  //       this.props.currentUser.username !== this.props.profile.username
+  //   }
+  // }
   componentWillMount(){
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.params.username),
@@ -93,9 +102,21 @@ class Profile extends React.Component {
     this.props.onUnload()
   }
 
-  renderTabs(){
+  renderTabs(canEdit){
     return (
       <ul className='nav nav-pills outline-active'>
+        {
+          canEdit ?
+          <li className='nav-item'>
+            <Link
+              className='nav-link'
+              to={`@${this.props.profile.username}/taken`}>
+              My Undertakings
+            </Link>
+          </li>
+          : null
+        }
+
         <li className='nav-item'>
           <Link
             className='nav-link active'
@@ -129,13 +150,12 @@ class Profile extends React.Component {
       return null
     }
 
-    const canEdit = this.props.currentUser &&
-      this.props.currentUser.username === profile.username
-
-    const canFollow = this.props.currentUser &&
-      this.props.currentUser.username !== profile.username
-
     const onSetPage = page => this.onSetPage(page)
+
+    const canEdit = this.props.currentUser &&
+      this.props.currentUser.username === this.props.profile.username
+    const canFollow = this.props.currentUser &&
+      this.props.currentUser.username !== this.props.profile.username
 
     return (
       <div className='profile-page'>
@@ -174,7 +194,7 @@ class Profile extends React.Component {
           <div className='row'>
             <div className='col-xs-12 col-md-10 offset-md-1'>
               <div className='articles-toggle'>
-                {this.renderTabs()}
+                {this.renderTabs(canEdit)}
               </div>
 
               <RequestList

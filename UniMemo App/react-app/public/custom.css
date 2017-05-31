@@ -28,3 +28,29 @@
 .helper:hover .confirmButton {
   display: initial;
 }
+
+.navbar {
+  background-color: #FFF;
+}
+
+/*.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  background-color: #EEE;
+  width: 100%;
+}
+
+@media (min-width: 544px) {
+    .navbar {
+      border-radius: 0.25rem; } }
+
+#root {
+  margin-top: 90px;
+}
+
+@media only screen and (min-width: 544px) {
+  #root {
+    margin-top: 56px;
+  }
+}*/

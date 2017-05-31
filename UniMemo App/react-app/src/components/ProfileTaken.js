@@ -6,11 +6,11 @@ import agent from '../agent'
 
 import { Profile, mapStateToProps, mapDispatchToProps} from './Profile'
 
-class ProfileWishes extends Profile {
+class ProfileTaken extends Profile {
   componentWillMount(){
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.params.username),
-      agent.Requests.wishedBy(this.props.params.username)
+      agent.Requests.helpedBy(this.props.params.username)
     ]))
   }
 
@@ -21,7 +21,7 @@ class ProfileWishes extends Profile {
           canEdit ?
           <li className='nav-item'>
             <Link
-              className='nav-link'
+              className='nav-link active'
               to={`@${this.props.profile.username}/taken`}>
               My Undertakings
             </Link>
@@ -39,7 +39,7 @@ class ProfileWishes extends Profile {
 
         <li className='nav-item'>
           <Link
-            className='nav-link active'
+            className='nav-link'
             to={`@${this.props.profile.username}/wishes`}>
             Wished Requests
           </Link>
@@ -51,9 +51,9 @@ class ProfileWishes extends Profile {
   onSetPage(page){
     this.props.onSetPage(
       page,
-      agent.Requests.wishedBy(this.props.profile.username, page)
+      agent.Requests.helpedBy(this.props.profile.username, page)
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileWishes)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileTaken)

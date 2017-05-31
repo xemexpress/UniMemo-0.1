@@ -60,7 +60,9 @@ const Requests = {
   byTag: (tag, page) =>
     requests.get(`/requests?tag=ongoing,${tag}&${limit(PER_PAGE, page)}`),
   postedBy: (username, page) =>
-    requests.get(`/requests?poster=${username}&${limit(PER_PAGE, page)}`),
+    requests.get(`/requests?tag=ongoing&poster=${username}&${limit(PER_PAGE, page)}`),
+  helpedBy: (username, page) =>
+    requests.get(`/requests?tag=ongoing&helper=${username}&${limit(PER_PAGE, page)}`),
   wishedBy: (username, page) =>
     requests.get(`/requests?wisher=${username}&${limit(PER_PAGE, page)}`),
   get: requestId =>
