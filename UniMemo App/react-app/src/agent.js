@@ -57,12 +57,14 @@ const Requests = {
     requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
   collect: page =>
     requests.get(`/requests/collect?tag=ongoing&${limit(PER_PAGE, page)}`),
+  taking: page =>
+    requests.get(`/requests/taking?tag=ongoing&${limit(PER_PAGE, page)}`),
   byTag: (tag, page) =>
     requests.get(`/requests?tag=ongoing,${tag}&${limit(PER_PAGE, page)}`),
   postedBy: (username, page) =>
-    requests.get(`/requests?tag=ongoing&poster=${username}&${limit(PER_PAGE, page)}`),
+    requests.get(`/requests?not_this_tag=done&poster=${username}&${limit(PER_PAGE, page)}`),
   helpedBy: (username, page) =>
-    requests.get(`/requests?tag=ongoing&helper=${username}&${limit(PER_PAGE, page)}`),
+    requests.get(`/requests?tag=ongoing-taken&helper=${username}&${limit(PER_PAGE, page)}`),
   wishedBy: (username, page) =>
     requests.get(`/requests?wisher=${username}&${limit(PER_PAGE, page)}`),
   get: requestId =>
@@ -84,7 +86,9 @@ const Requests = {
   listHelpers: (requestId, page) =>
     requests.get(`/requests/${requestId}/confirms?${limit(PER_PAGE, page)}`),
   confirmHelper: (requestId, username) =>
-    requests.put(`/requests/${requestId}/confirms/${username}`)
+    requests.put(`/requests/${requestId}/confirms/${username}`),
+  end: (requestId, mem) =>
+    requests.put(`/requests/${requestId}/ends/${mem}`)
 }
 
 const Comments = {
