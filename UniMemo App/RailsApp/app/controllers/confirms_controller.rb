@@ -14,14 +14,14 @@ class ConfirmsController < ApplicationController
     end
   end
 
-  def show
+  def update
     if @request.poster_id == @current_user_id
       @helpers = User.where(id: @request.user_followers.pluck(:id))
       @helper = User.find_by_username!(params[:username])
       if @helpers.include?(@helper)
         @request.tag_list.remove("ongoing").add("ongoing-taken")
         @request.update_attributes(:helper => @helper)
-        
+
         render 'requests/show'
       else
         render json: { errors: { helper: ['not valid']}}

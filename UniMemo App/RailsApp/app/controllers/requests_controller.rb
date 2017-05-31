@@ -3,15 +3,15 @@ class RequestsController < ApplicationController
   before_action :fix_expired_and_old, except: [:create]
 
   def index
-    @requests = Request.includes(:poster)
+    @requests = Request.includes(:poster, :helper)
+
+    @requests = @requests.where.not(id: @requests.tagged_with(params[:not_this_tag]).pluck(:id)) if params[:not_this_tag].present?
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
 
-    # This corrupts Privacy, and may hurt Users due to others' limited understanding of the whole picture.
-    #@requests = @requests.posted_by(params[:poster]) if params[:poster].present?
+    @requests = @requests.posted_by(params[:poster]) if params[:poster].present?
 
-    # This is considered less aggressive. But still, it can indirectly harm Users.
-    #@requests = @requests.helped_by(params[:helper]) if params[:helper].present?
+    @requests = @requests.helped_by(params[:helper]) if params[:helper].present?
 
     @requests = @requests.wished_by(params[:wisher]) if params[:wisher].present?
 
@@ -28,6 +28,18 @@ class RequestsController < ApplicationController
     @requests_count = @requests.count
 
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
+
+    render :index
+  end
+
+  def taking
+    @requests = current_user.following_requests
+
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
+
+    @requests_count = @requests.count
+
+    @requests = @requests.order(:created_at).offset(params[:offset] || 0).limit(params[:limit] || 10)
 
     render :index
   end

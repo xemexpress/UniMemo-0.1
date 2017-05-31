@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
     devise_for :users, controllers: { sessions: :sessions },
                        path_names: { sign_in: :login }
-                       
+
     resource :user, only: [:show, :update] do
       resources :gifts, param: :gift_id, except: [:edit, :new] do
         get :switch, on: :member
@@ -17,8 +17,9 @@ Rails.application.routes.draw do
       resource :wish, only: [:create, :destroy]
       resource :take, only: [:create, :destroy]
       resources :comments, except: [:edit, :new, :show]
-      resources :confirms, param: :username, only: [:index, :show]
-      resources :ends, param: :mem, only: [:show]
+      resources :confirms, param: :username, only: [:index, :update]
+      resources :ends, param: :mem, only: [:update]
+      get :taking, on: :collection
       get :collect, on: :collection
     end
 

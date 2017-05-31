@@ -1,6 +1,7 @@
 import React from 'react'
 
 import RequestPreview from './RequestPreview'
+import ListPagination from './ListPagination'
 
 const RequestList = props => {
   if(!props.requests){
@@ -24,10 +25,15 @@ const RequestList = props => {
       {
         props.requests.map(request => {
           return (
-            <RequestPreview request={request} key={request.requestId}/>
+            <RequestPreview request={request} key={request.requestId} />
           )
         })
       }
+
+      <ListPagination
+        requestsCount={props.requestsCount}
+        currentPage={props.currentPage}
+        onSetPage={props.onSetPage} />
     </div>
   )
 }

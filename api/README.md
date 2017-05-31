@@ -324,6 +324,7 @@
 {
   "requestTags": [
     "ongoing",
+    "ongoing-taken",
     "done",
     "shopping",
     "delivering",
@@ -499,7 +500,7 @@ Optional fields: `text`, `image`, `expire_at`, `receiver` (accepting an object w
 
 Notes:
 - When Receivers update their received Gift (as the only action), it will be returned to its provider.
-- When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`. 
+- When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`.
 
 ### Toggle Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
@@ -531,7 +532,7 @@ Authentication required, returns the favored User's [Profile](#profile)
 
 Authentication required, returns the unfavored User's [Profile](#profile)
 
-### List Requests
+### equests
 
 `GET /api/requests`
 
@@ -541,11 +542,15 @@ Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Filter by poster: *(reserved due to its aggressiveness)*
+Filter by not_this_tag:
+
+`?not_this_tag=done`
+
+Filter by poster:
 
 `?poster=xemexpress`
 
-Filter by helper: *(reserved due to its aggressiveness)*
+Filter by helper: *(Requests that are done 2 weeks ago would be destroyed)*
 
 `?helper=xemexpress`
 
@@ -581,7 +586,39 @@ Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication required, returns [multiple Requests](#multiple-requests) posted by previously favored Users, ordered by most recent first.
+Authentication required, returns [multiple Requests](#multiple-requests) posted by Users previously favored by Current User, ordered by most recent first.
+
+### List Requests taken by Current User
+
+`GET /api/requests/taking`
+
+Query Parameters:
+
+Filter by tag:
+
+`?tag=ongoing`
+
+Limit number of requests (default is 10):
+
+`?limit=10`
+
+Offset number of requests (default is 0):
+
+`?offset=0`
+
+Authentication required, returns [multiple Requests](#multiple-requests) taken by Users, ordered by eldest first.
+
+### Wish Request
+
+`POST /api/requests/:request_id/wish`
+
+Authentication required, returns the [Request](#single-request)
+
+### Unwish Request
+
+`DELETE /api/requests/:request_id/wish`
+
+Authentication required, returns the [Request](#single-request)
 
 ### Retrieve Request
 
@@ -591,13 +628,13 @@ Authentication optional, returns [single Request](#single-request)
 
 ### Take Request
 
-`POST /api/requests/:request_id/help`
+`POST /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
-### Unhelp Request
+### Untake Request
 
-`DELETE /api/requests/:request_id/help`
+`DELETE /api/requests/:request_id/take`
 
 Authentication required, returns the [Request](#single-request)
 
@@ -619,13 +656,13 @@ Authentication required, returns a [List of Helpers' Profile](#list-of-helprs) w
 
 ### Confirm Request
 
-`GET /api/requests/:request_id/confirms/:username`
+`PUT /api/requests/:request_id/confirms/:username`
 
 Authentication required, returns the [Request](#single-request) with `helper` settled
 
 ### End Request
 
-`GET /api/requests/:request_id/ends/:mem`
+`PUT /api/requests/:request_id/ends/:mem`
 
 Authentication required, returns the [Request](#single-request) with 'done' in `tag_list`, `yellowStars` incremented, `mem` updated.
 
@@ -728,18 +765,6 @@ Optional fields: `body`
 `DELETE /api/requests/:request_id/comments/:id`
 
 Authentication required, returns {}
-
-### Wish Request
-
-`POST /api/requests/:request_id/wish`
-
-Authentication required, returns the [Request](#single-request)
-
-### Unwish Request
-
-`DELETE /api/requests/:request_id/wish`
-
-Authentication required, returns the [Request](#single-request)
 
 ### Get Tags
 

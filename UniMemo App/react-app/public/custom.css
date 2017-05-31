@@ -1,0 +1,43 @@
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#toggle:checked ~ #expand {
+  height: 200px;
+}
+
+.helper {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  /*transition: background-color 0.5s ease-in-out;*/
+}
+
+.confirmButton {
+  display: none;
+}
+
+.helper:hover {
+  font-size: 120%;
+  color: #FFF;
+  background-color: #333;
+}
+
+.helper:hover .confirmButton {
+  display: initial;
+}
+
+.navbar {
+  background-color: #FFF;
+}
+
+.mem {
+  display: intial;
+  width: 50px;
+  color: #FFF;
+  background-color: #333;
+  border-radius: 5px;
+  text-align: center;
+}

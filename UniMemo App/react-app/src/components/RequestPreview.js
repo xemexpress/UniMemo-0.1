@@ -1,19 +1,59 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+
+import agent from '../agent'
+
+import {
+  WISH_REQUEST,
+  UNWISH_REQUEST
+} from '../constants/actionTypes'
+
+const mapDispatchToProps = dispatch => ({
+  wish: requestId => dispatch({
+    type: WISH_REQUEST,
+    payload: agent.Requests.wish(requestId)
+  }),
+  unwish: requestId => dispatch({
+    type: UNWISH_REQUEST,
+    payload: agent.Requests.unwish(requestId)
+  })
+})
 
 const RequestPreview = props => {
   const request = props.request
+
+  const wishButtonClass = request.wished ?
+    'btn btn-sm btn-primary' : 'btn btn-sm btn-outline-primary'
+
+  const handleClick = ev => {
+    ev.preventDefault()
+    if(request.wished){
+      props.unwish(request.requestId)
+    }else{
+      props.wish(request.requestId)
+    }
+  }
+
   return (
     <div className='article-preview'>
 
       <div className='article-meta'>
-        <a>
-          <img src={request.poster.image} alt={request.poster.username}/>
-        </a>
+        <Link
+          className='author'
+          to={`@${request.poster.username}`}>
+          <img src={request.poster.proPic} alt={request.poster.username} />
+        </Link>
 
         <div className='info'>
-          <a className='author'>
+          <Link
+            className='author'
+            to={`@${request.poster.username}`}>
             {request.poster.username}
-          </a>
+            {/* <span style={{color:'lightyellow'}}>        // yellowStars
+              <i className='ion-star'></i>&nbsp;{request.poster.yellowStars}
+            </span> */}
+          </Link>
           <span className='date'>
             {new Date(request.createdAt).toDateString()}
           </span>
@@ -21,17 +61,22 @@ const RequestPreview = props => {
 
         <div className='pull-xs-right'>
           <button
-            className='btn btn-sm btn-outline-primary'>
+            className={wishButtonClass}
+            onClick={handleClick}>
             <i className='ion-help-buoy'></i> {request.wishesCount}
           </button>
         </div>
       </div>
 
-      <a to={`request/${request.requestId}`} className='preview-link'>
+      <Link to={`request/${request.requestId}`} className='preview-link'>
 
         <h1>{request.text}</h1>
 
         <p>
+          Start Time:&nbsp;{request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}
+          <br />
+          Start Place:&nbsp;{request.startPlace ? request.startPlace : 'Not determined yet :)'}
+          <br /><br />
           End Time:&nbsp;{new Date(request.endTime).toDateString()}
           <br />
           End Place:&nbsp;{request.endPlace}
@@ -51,9 +96,9 @@ const RequestPreview = props => {
           }
         </ul>
 
-      </a>
+      </Link>
     </div>
   )
 }
 
-export default RequestPreview
+export default connect(()=>({}), mapDispatchToProps)(RequestPreview)

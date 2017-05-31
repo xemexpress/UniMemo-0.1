@@ -14,7 +14,7 @@ class GiftsController < ApplicationController
   def create
     @gift = Gift.new(gift_params)
     @gift.provider = current_user
-    if params[:gift].key?("receiver")
+    if params[:gift].has_key?('receiver')
       if @gift.last_for_at_least_three_days?
         @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
         @gift.save!
@@ -42,7 +42,7 @@ class GiftsController < ApplicationController
   def update
     if @gift.provider_id == @current_user_id
       @gift.update_attributes(gift_params)
-      if params[:gift].has_key?("receiver")
+      if params[:gift].has_key?('receiver')
         if @gift.last_for_at_least_three_days?
           @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
           @gift.save!
