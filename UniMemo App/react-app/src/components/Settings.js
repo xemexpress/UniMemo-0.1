@@ -54,8 +54,8 @@ class SettingsForm extends React.Component {
       this.setState({
         proPic: nextProps.currentUser.proPic || '',
         username: nextProps.currentUser.username,
-        bio: nextProps.currentUser.bio,
-        mobileNum: nextProps.currentUser.mobileNum
+        bio: nextProps.currentUser.bio || '',
+        mobileNum: nextProps.currentUser.mobileNum || ''
       })
     }
   }
@@ -97,8 +97,7 @@ class SettingsForm extends React.Component {
               rows='8'
               placeholder='Short bio about you'
               value={this.state.bio}
-              onChange={this.updateState('bio')}>
-            </textarea>
+              onChange={this.updateState('bio')} />
           </fieldset>
 
           <fieldset className='form-group'>

@@ -78,8 +78,7 @@ class Comment extends React.Component {
                 placeholder='Update Comment...'
                 rows='3'
                 value={this.state.body}
-                onChange={this.setBody}>
-              </textarea>
+                onChange={this.setBody} />
               : comment.body
             }
           </div>

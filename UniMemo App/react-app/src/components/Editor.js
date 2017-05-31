@@ -138,7 +138,7 @@ class Editor extends React.Component {
                       rows='5'
                       placeholder="What's this request about"
                       value={this.props.text}
-                      onChange={this.changeText}></textarea>
+                      onChange={this.changeText} />
                   </fieldset>
 
                   <label htmlFor='toggle'>

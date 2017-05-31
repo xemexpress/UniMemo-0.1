@@ -49,8 +49,7 @@ class CommentInput extends React.Component {
               placeholder='Write a Comment...'
               rows='3'
               value={this.state.body}
-              onChange={this.setBody}>
-            </textarea>
+              onChange={this.setBody} />
           </div>
 
           <div className='card-footer'>

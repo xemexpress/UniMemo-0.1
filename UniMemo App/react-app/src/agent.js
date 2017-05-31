@@ -81,8 +81,8 @@ const Requests = {
     requests.del(`/requests/${requestId}/take`),
   listHelpers: (requestId, page) =>
     requests.get(`/requests/${requestId}/confirms?${limit(PER_PAGE, page)}`),
-  // confirmHelper: (requestId, username) =>
-  //   requests.put(`/requests/${requestId}/confirms/${username}`)
+  confirmHelper: (requestId, username) =>
+    requests.put(`/requests/${requestId}/confirms/${username}`)
 }
 
 const Comments = {

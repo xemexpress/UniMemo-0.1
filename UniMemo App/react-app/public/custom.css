@@ -10,17 +10,21 @@
 
 .helper {
   display: block;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 5px;
   /*transition: background-color 0.5s ease-in-out;*/
 }
 
-.helper:hover{
+.confirmButton {
+  display: none;
+}
+
+.helper:hover {
   font-size: 120%;
   color: #FFF;
   background-color: #333;
 }
 
-.helper:hover:after{
-  content: " (confirm helper)"
+.helper:hover .confirmButton {
+  display: initial;
 }

@@ -14,7 +14,8 @@ import agent from '../../agent'
 import {
   REQUEST_PAGE_LOADED,
   REQUEST_PAGE_UNLOADED,
-  HELPER_LOADED
+  HELPER_LOADED,
+  HELPER_CONFIRMED
 } from '../../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -30,6 +31,10 @@ const mapDispatchToProps = dispatch => ({
   onHelperLoad: requestId => dispatch({
     type: HELPER_LOADED,
     payload: agent.Requests.listHelpers(requestId)
+  }),
+  onHelperConfirm: (requestId, username) => dispatch({
+    type: HELPER_CONFIRMED,
+    payload: agent.Requests.confirmHelper(requestId, username)
   }),
   onUnload: () => dispatch({
     type: REQUEST_PAGE_UNLOADED
@@ -106,11 +111,12 @@ class Request extends React.Component {
 
               <HelperList
                 onHelperLoad={this.props.onHelperLoad}
+                onHelperConfirm={this.props.onHelperConfirm}
                 posterName={request.poster.username}
                 currentUserName={this.props.currentUser.username}
-                requestId={request.requestId}
+                request={request}
                 helpers={this.props.helpers} />
-              
+
               <hr />
 
               <div dangerouslySetInnerHTML={markup}></div>

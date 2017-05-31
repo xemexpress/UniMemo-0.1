@@ -6,7 +6,8 @@ import {
   DELETE_COMMENT,
   TAKE_REQUEST,
   UNTAKE_REQUEST,
-  HELPER_LOADED
+  HELPER_LOADED,
+  HELPER_CONFIRMED
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -21,6 +22,11 @@ export default (state={}, action) => {
       return {
         ...state,
         helpers: action.error ? null : action.payload.helpers
+      }
+    case HELPER_CONFIRMED:
+      return {
+        ...state,
+        request: action.error ? null : action.payload.request
       }
     case REQUEST_PAGE_UNLOADED:
       return {}
