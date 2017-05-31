@@ -10,7 +10,8 @@ import {
   PROFILE_PAGE_UNLOADED,
   FOLLOW_USER,
   UNFOLLOW_USER,
-  SET_PAGE
+  SET_PAGE,
+  SWITCH_TAKING
 } from '../constants/actionTypes'
 
 const EditProfileSettings = props => {
@@ -74,6 +75,14 @@ const mapDispatchToProps = dispatch => ({
     type: UNFOLLOW_USER,
     payload: agent.Profile.unfavor(username)
   }),
+  onSwitchOngoing: () => dispatch({
+    type: SWITCH_TAKING,
+    payload: agent.Requests.taking()
+  }),
+  onSwitchTaken: username => dispatch({
+    type: SWITCH_TAKING,
+    payload: agent.Requests.helpedBy(username)
+  }),
   onSetPage: (p, payload) => dispatch({
     type: SET_PAGE,
     page: p,
@@ -82,15 +91,13 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class Profile extends React.Component {
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     canEdit: this.props.currentUser &&
-  //       this.props.currentUser.username === this.props.profile.username,
-  //     canFollow: this.props.currentUser &&
-  //       this.props.currentUser.username !== this.props.profile.username
-  //   }
-  // }
+  constructor(){
+    super()
+    this.state = {
+      content: ''
+    }
+  }
+
   componentWillMount(){
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.params.username),
@@ -202,7 +209,6 @@ class Profile extends React.Component {
                 requestsCount={this.props.requestsCount}
                 currentPage={this.props.currentPage}
                 onSetPage={onSetPage} />
-
             </div>
           </div>
         </div>

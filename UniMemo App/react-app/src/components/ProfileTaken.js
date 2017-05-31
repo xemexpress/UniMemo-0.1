@@ -12,20 +12,49 @@ class ProfileTaken extends Profile {
       agent.Profile.get(this.props.params.username),
       agent.Requests.helpedBy(this.props.params.username)
     ]))
+
+    this.setState({
+      content: 'myTakens'
+    })
   }
 
   renderTabs(canEdit){
+    const ongoings = ev => {
+      ev.preventDefault()
+      this.setState({
+        content: 'myOngoings'
+      })
+      this.props.onSwitchOngoing()
+    }
+
+    const takens = username => ev => {
+      ev.preventDefault()
+      this.setState({
+        content: 'myTakens'
+      })
+      this.props.onSwitchTaken(username)
+    }
+
     return (
       <ul className='nav nav-pills outline-active'>
         {
-          canEdit ?
-          <li className='nav-item'>
-            <Link
-              className='nav-link active'
-              to={`@${this.props.profile.username}/taken`}>
-              My Undertakings
-            </Link>
-          </li>
+          canEdit && ['myTakens', 'myOngoings'].indexOf(this.state.content) !== -1 ?
+          <span>
+            <li className='nav-item'>
+              <Link
+                className={this.state.content === 'myTakens' ? 'nav-link active' : 'nav-link'}
+                onClick={takens(this.props.profile.username)}>
+                Confirmed
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <span
+                className={this.state.content === 'myOngoings' ? 'nav-link active' : 'nav-link'}
+                onClick={ongoings}>
+                Waiting
+              </span>
+            </li>
+          </span>
           : null
         }
 
@@ -49,10 +78,17 @@ class ProfileTaken extends Profile {
   }
 
   onSetPage(page){
-    this.props.onSetPage(
-      page,
-      agent.Requests.helpedBy(this.props.profile.username, page)
-    )
+    if(this.state.content === 'myTakens'){
+      this.props.onSetPage(
+        page,
+        agent.Requests.helpedBy(this.props.profile.username, page)
+      )
+    }else if(this.state.content === 'myOngoings'){
+      this.props.onSetPage(
+        page,
+        agent.Requests.taking()
+      )
+    }
   }
 }
 

@@ -7,7 +7,8 @@ import {
   TAKE_REQUEST,
   UNTAKE_REQUEST,
   HELPER_LOADED,
-  HELPER_CONFIRMED
+  CONFIRM_HELPER,
+  END_REQUEST
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -23,7 +24,7 @@ export default (state={}, action) => {
         ...state,
         helpers: action.error ? null : action.payload.helpers
       }
-    case HELPER_CONFIRMED:
+    case CONFIRM_HELPER:
       return {
         ...state,
         request: action.error ? null : action.payload.request
@@ -62,6 +63,12 @@ export default (state={}, action) => {
       return {
         ...state,
         request: action.payload.request
+      }
+    case END_REQUEST:
+      return {
+        ...state,
+        memErrors: action.error ? action.payload.errors : null,
+        request: action.error ? state.request : action.payload.request
       }
     default:
   }
