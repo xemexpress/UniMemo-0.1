@@ -43,8 +43,8 @@ class SettingsForm extends React.Component {
       this.setState({
         proPic: this.props.currentUser.proPic || '',
         username: this.props.currentUser.username,
-        bio: this.props.currentUser.bio,
-        mobileNum: this.props.currentUser.mobileNum
+        bio: this.props.currentUser.bio || '',
+        mobileNum: this.props.currentUser.mobileNum || ''
       })
     }
   }

@@ -78,7 +78,11 @@ const Requests = {
   take: requestId =>
     requests.post(`/requests/${requestId}/take`),
   untake: requestId =>
-    requests.del(`/requests/${requestId}/take`)
+    requests.del(`/requests/${requestId}/take`),
+  listHelpers: (requestId, page) =>
+    requests.get(`/requests/${requestId}/confirms?${limit(PER_PAGE, page)}`),
+  // confirmHelper: (requestId, username) =>
+  //   requests.put(`/requests/${requestId}/confirms/${username}`)
 }
 
 const Comments = {

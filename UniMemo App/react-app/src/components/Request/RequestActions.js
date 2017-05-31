@@ -53,7 +53,7 @@ const RequestActions = props => {
           </Link>
           : null
         }
-
+        &nbsp;&nbsp;&nbsp;
         <button
           className='btn btn-outline-danger btn-sm'
           onClick={del}>

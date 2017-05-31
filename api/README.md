@@ -439,9 +439,9 @@ Filter by tag:
 
 `?tag=giveOrLend`
 
-Limit number of gifts (default is 10):
+Limit number of gifts (default is 3):
 
-`?limit=10`
+`?limit=3`
 
 Offset number of gifts (default is 0):
 
@@ -554,9 +554,9 @@ Wished by user:
 
 `?wisher=xemexpress`
 
-Limit number of requests (default is 10):
+Limit number of requests (default is 3):
 
-`?limit=10`
+`?limit=3`
 
 Offset number of requests (default is 0):
 
@@ -574,9 +574,9 @@ Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Limit number of requests (default is 10):
+Limit number of requests (default is 3):
 
-`?limit=10`
+`?limit=3`
 
 Offset number of requests (default is 0):
 
@@ -620,9 +620,9 @@ Authentication required, returns the [Request](#single-request)
 
 Query Parameters:
 
-Limit number of requests (default is 10):
+Limit number of requests (default is 3):
 
-`?limit=10`
+`?limit=3`
 
 Offset number of requests (default is 0):
 

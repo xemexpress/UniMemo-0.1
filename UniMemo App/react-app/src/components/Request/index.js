@@ -7,12 +7,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import RequestMeta from './RequestMeta'
+import HelperList from './HelperList'
 import CommentContainer from './CommentContainer'
 import agent from '../../agent'
 
 import {
   REQUEST_PAGE_LOADED,
-  REQUEST_PAGE_UNLOADED
+  REQUEST_PAGE_UNLOADED,
+  HELPER_LOADED
 } from '../../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -24,6 +26,10 @@ const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({
     type: REQUEST_PAGE_LOADED,
     payload
+  }),
+  onHelperLoad: requestId => dispatch({
+    type: HELPER_LOADED,
+    payload: agent.Requests.listHelpers(requestId)
   }),
   onUnload: () => dispatch({
     type: REQUEST_PAGE_UNLOADED
@@ -97,6 +103,16 @@ class Request extends React.Component {
         <div className='container page'>
           <div className='row article-content'>
             <div className='col-xs-12'>
+
+              <HelperList
+                onHelperLoad={this.props.onHelperLoad}
+                posterName={request.poster.username}
+                currentUserName={this.props.currentUser.username}
+                requestId={request.requestId}
+                helpers={this.props.helpers} />
+              
+              <hr />
+
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className='tag-list'>
