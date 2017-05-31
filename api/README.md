@@ -439,9 +439,9 @@ Filter by tag:
 
 `?tag=giveOrLend`
 
-Limit number of gifts (default is 3):
+Limit number of gifts (default is 10):
 
-`?limit=3`
+`?limit=10`
 
 Offset number of gifts (default is 0):
 
@@ -532,7 +532,7 @@ Authentication required, returns the favored User's [Profile](#profile)
 
 Authentication required, returns the unfavored User's [Profile](#profile)
 
-### List Requests
+### equests
 
 `GET /api/requests`
 
@@ -542,7 +542,11 @@ Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Filter by poster: *(Binded with tagged_with('ongoing'))*
+Filter by not_this_tag:
+
+`?not_this_tag=done`
+
+Filter by poster:
 
 `?poster=xemexpress`
 
@@ -554,9 +558,9 @@ Wished by user:
 
 `?wisher=xemexpress`
 
-Limit number of requests (default is 3):
+Limit number of requests (default is 10):
 
-`?limit=3`
+`?limit=10`
 
 Offset number of requests (default is 0):
 
@@ -574,15 +578,35 @@ Filter by tag:
 
 `?tag=ongoing,shopping`
 
-Limit number of requests (default is 3):
+Limit number of requests (default is 10):
 
-`?limit=3`
+`?limit=10`
 
 Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication required, returns [multiple Requests](#multiple-requests) posted by previously favored Users, ordered by most recent first.
+Authentication required, returns [multiple Requests](#multiple-requests) posted by Users previously favored by Current User, ordered by most recent first.
+
+### List Requests taken by Current User
+
+`GET /api/requests/taking`
+
+Query Parameters:
+
+Filter by tag:
+
+`?tag=ongoing`
+
+Limit number of requests (default is 10):
+
+`?limit=10`
+
+Offset number of requests (default is 0):
+
+`?offset=0`
+
+Authentication required, returns [multiple Requests](#multiple-requests) taken by Users, ordered by eldest first.
 
 ### Wish Request
 
@@ -620,9 +644,9 @@ Authentication required, returns the [Request](#single-request)
 
 Query Parameters:
 
-Limit number of requests (default is 3):
+Limit number of requests (default is 10):
 
-`?limit=3`
+`?limit=10`
 
 Offset number of requests (default is 0):
 
