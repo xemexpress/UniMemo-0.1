@@ -20,7 +20,9 @@ const RequestMeta = ({ request, canModify }) => {
         </span>
       </div>
 
-      <RequestActions canModify={canModify} request={request} />
+      <RequestActions
+        canModify={canModify}
+        request={request} />
 
     </div>
   )

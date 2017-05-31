@@ -3,10 +3,10 @@ import {
   REDIRECT,
   LOGIN,
   REGISTER,
-  SETTINGS_SAVED,
+  SAVE_SETTINGS,
   LOGOUT,
   DELETE_REQUEST,
-  REQUEST_SUBMITTED
+  SUBMIT_REQUEST
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -36,7 +36,7 @@ export default (state=defaultState, action) => {
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       }
-    case SETTINGS_SAVED:
+    case SAVE_SETTINGS:
       return {
         ...state,
         redirectTo: action.error ? null : '/',
@@ -54,7 +54,7 @@ export default (state=defaultState, action) => {
         ...state,
         redirectTo: '/'
       }
-    case REQUEST_SUBMITTED:
+    case SUBMIT_REQUEST:
       if(action.error){
         return {
           ...state

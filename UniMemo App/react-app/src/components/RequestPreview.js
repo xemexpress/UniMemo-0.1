@@ -5,17 +5,17 @@ import { Link } from 'react-router'
 import agent from '../agent'
 
 import {
-  REQUEST_WISHED,
-  REQUEST_UNWISHED
+  WISH_REQUEST,
+  UNWISH_REQUEST
 } from '../constants/actionTypes'
 
 const mapDispatchToProps = dispatch => ({
   wish: requestId => dispatch({
-    type: REQUEST_WISHED,
+    type: WISH_REQUEST,
     payload: agent.Requests.wish(requestId)
   }),
   unwish: requestId => dispatch({
-    type: REQUEST_UNWISHED,
+    type: UNWISH_REQUEST,
     payload: agent.Requests.unwish(requestId)
   })
 })

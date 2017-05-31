@@ -5,7 +5,7 @@ import ListErrors from './ListErrors'
 import agent from '../agent'
 
 import {
-  SETTINGS_SAVED,
+  SAVE_SETTINGS,
   LOGOUT
 } from '../constants/actionTypes'
 
@@ -129,7 +129,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSubmitForm: user => dispatch({
-    type: SETTINGS_SAVED,
+    type: SAVE_SETTINGS,
     payload: agent.Auth.save(user)
   }),
   onClickLogout: () => dispatch({

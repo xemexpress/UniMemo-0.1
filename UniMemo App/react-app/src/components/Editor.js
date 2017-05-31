@@ -5,7 +5,7 @@ import ListErrors from './ListErrors'
 import agent from '../agent'
 
 import {
-  REQUEST_SUBMITTED,
+  SUBMIT_REQUEST,
   EDITOR_PAGE_LOADED,
   UPDATE_FIELD_EDITOR,
   EDITOR_PAGE_UNLOADED,
@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
     tag
   }),
   onSubmit: payload => dispatch({
-    type: REQUEST_SUBMITTED,
+    type: SUBMIT_REQUEST,
     payload
   })
 })

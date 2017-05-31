@@ -15,7 +15,7 @@ import {
   REQUEST_PAGE_LOADED,
   REQUEST_PAGE_UNLOADED,
   HELPER_LOADED,
-  HELPER_CONFIRMED
+  CONFIRM_HELPER
 } from '../../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
     payload: agent.Requests.listHelpers(requestId)
   }),
   onHelperConfirm: (requestId, username) => dispatch({
-    type: HELPER_CONFIRMED,
+    type: CONFIRM_HELPER,
     payload: agent.Requests.confirmHelper(requestId, username)
   }),
   onUnload: () => dispatch({
@@ -152,9 +152,9 @@ class Request extends React.Component {
 
           <div className='row'>
             <CommentContainer
-              comments={this.props.comments || []}
               commentErrors={this.props.commentErrors}
               updateErrors={this.props.updateErrors}
+              comments={this.props.comments || []}
               requestId={this.props.params.requestId}
               currentUser={this.props.currentUser} />
           </div>

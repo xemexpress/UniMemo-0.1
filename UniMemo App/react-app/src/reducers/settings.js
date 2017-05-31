@@ -1,11 +1,11 @@
 import {
-  SETTINGS_SAVED,
+  SAVE_SETTINGS,
   ASYNC_START
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
   switch(action.type){
-    case SETTINGS_SAVED:
+    case SAVE_SETTINGS:
       return {
         ...state,
         inProgress: false,

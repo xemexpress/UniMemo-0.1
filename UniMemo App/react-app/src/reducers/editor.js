@@ -1,5 +1,5 @@
 import {
-  REQUEST_SUBMITTED,
+  SUBMIT_REQUEST,
   EDITOR_PAGE_LOADED,
   UPDATE_FIELD_EDITOR,
   EDITOR_PAGE_UNLOADED,
@@ -50,14 +50,14 @@ export default (state=defaultState, action) => {
         tagList: state.tagList.filter(tag => tag !== action.tag)
       }
     case ASYNC_START:
-      if(action.subtype === REQUEST_SUBMITTED){
+      if(action.subtype === SUBMIT_REQUEST){
         return {
           ...state,
           inProgress: true
         }
       }
       break
-    case REQUEST_SUBMITTED:
+    case SUBMIT_REQUEST:
       return {
         ...state,
         inProgress: false,

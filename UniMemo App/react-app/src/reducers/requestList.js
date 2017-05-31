@@ -4,10 +4,11 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
   CHANGE_TAB,
+  SWITCH_TAKING,
   APPLY_TAG_FILTER,
   SET_PAGE,
-  REQUEST_WISHED,
-  REQUEST_UNWISHED
+  WISH_REQUEST,
+  UNWISH_REQUEST
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -32,26 +33,18 @@ export default (state={}, action) => {
       }
     case PROFILE_PAGE_UNLOADED:
       return {}
-    case REQUEST_WISHED:
-    case REQUEST_UNWISHED:
-      return {
-        ...state,
-        requests: state.requests.map(request => {
-          if(action.payload.request.requestId === request.requestId){
-            return {
-              ...request,
-              wished: action.payload.request.wished,
-              wishesCount: action.payload.request.wishesCount
-            }
-          }
-          return request
-        })
-      }
     case CHANGE_TAB:
       return {
         ...state,
         tag: null,
         tab: action.tab,
+        requests: action.payload.requests,
+        requestsCount: action.payload.requestsCount,
+        currentPage: 0
+      }
+    case SWITCH_TAKING:
+      return {
+        ...state,
         requests: action.payload.requests,
         requestsCount: action.payload.requestsCount,
         currentPage: 0
@@ -64,6 +57,21 @@ export default (state={}, action) => {
         requests: action.payload.requests,
         requestsCount: action.payload.requestsCount,
         currentPage: 0
+      }
+    case WISH_REQUEST:
+    case UNWISH_REQUEST:
+      return {
+        ...state,
+        requests: state.requests.map(request => {
+          if(action.payload.request.requestId === request.requestId){
+            return {
+              ...request,
+              wished: action.payload.request.wished,
+              wishesCount: action.payload.request.wishesCount
+            }
+          }
+          return request
+        })
       }
     case SET_PAGE:
       return {
