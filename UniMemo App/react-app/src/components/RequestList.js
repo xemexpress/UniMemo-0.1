@@ -1,7 +1,7 @@
 import React from 'react'
 
 import RequestPreview from './RequestPreview'
-import ListPagination from './ListPagination'
+import ListPagination from './common/ListPagination'
 
 const RequestList = props => {
   if(!props.requests){
