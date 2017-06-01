@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ListErrors from './ListErrors'
+import ListErrors from './common/ListErrors'
 import agent from '../agent'
 
 import {
@@ -22,8 +22,8 @@ class SettingsForm extends React.Component {
     }
 
     this.updateState = field => ev => {
-      const newState = Object.assign(this.state, { [field]: ev.target.value })
-      this.setState(newState)
+      // const newState = Object.assign(this.state, { [field]: ev.target.value })
+      this.setState({ [field]: ev.target.value })
     }
 
     this.submitForm = ev => {

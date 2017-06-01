@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ListErrors from './ListErrors'
+import ListErrors from './common/ListErrors'
 import agent from '../agent'
 
 import {
