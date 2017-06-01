@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 import RequestMeta from './RequestMeta'
 import HelperList from './HelperList'
-import CommentContainer from './CommentContainer'
+import CommentContainer from '../common/CommentContainer'
 import agent from '../../agent'
 
 import {

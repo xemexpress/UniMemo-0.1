@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ListErrors from '../ListErrors'
-import agent from '../../agent'
+import ListErrors from '../../ListErrors'
+import agent from '../../../agent'
 
 import {
   ADD_COMMENT
-} from '../../constants/actionTypes'
+} from '../../../constants/actionTypes'
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: payload => dispatch({
