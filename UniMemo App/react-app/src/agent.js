@@ -54,7 +54,8 @@ const omitRequestId = request => Object.assign(request, { request_id: undefined 
 
 const Requests = {
   all: page =>
-    requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
+  requests.get(`/requests?${limit(PER_PAGE, page)}`),
+    // requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
   collect: page =>
     requests.get(`/requests/collect?tag=ongoing&${limit(PER_PAGE, page)}`),
   taking: page =>
@@ -92,8 +93,12 @@ const Requests = {
 }
 
 const Gifts = {
-  all: page =>
-    requests.get(`/user/gifts`)
+  byTag: (tag, page) =>
+    requests.get(`/user/gifts?tag=${tag}&${limit(PER_PAGE, page)}`),
+  providedBy: (username, page) =>
+    requests.get(`/user/gifts?provider=${username}&${limit(PER_PAGE, page)}`),
+  receivedBy: (username, page) =>
+    requests.get(`/user/gifts?receiver=${username}&${limit(PER_PAGE, page)}`)
 }
 
 const Comments = {
@@ -108,8 +113,10 @@ const Comments = {
 }
 
 const Tags = {
-  getAll: () =>
-    requests.get('/tags')
+  getRequests: () =>
+    requests.get('/tags?tag=requests'),
+  getGifts: () =>
+    requests.get('/tags?tag=gifts')
 }
 
 export default {

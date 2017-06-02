@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import RequestList from './common/RequestList'
+import UnitsList from './common/UnitsList'
 import agent from '../agent'
 
 import {
@@ -11,7 +11,7 @@ import {
   FOLLOW_USER,
   UNFOLLOW_USER,
   SET_PAGE,
-  SWITCH_TAKING
+  SWITCH_TAKINGS
 } from '../constants/actionTypes'
 
 const EditProfileSettings = props => {
@@ -76,11 +76,11 @@ const mapDispatchToProps = dispatch => ({
     payload: agent.Profile.unfavor(username)
   }),
   onSwitchOngoing: () => dispatch({
-    type: SWITCH_TAKING,
+    type: SWITCH_TAKINGS,
     payload: agent.Requests.taking()
   }),
   onSwitchTaken: username => dispatch({
-    type: SWITCH_TAKING,
+    type: SWITCH_TAKINGS,
     payload: agent.Requests.helpedBy(username)
   }),
   onSetPage: (p, payload) => dispatch({
@@ -204,7 +204,7 @@ class Profile extends React.Component {
                 {this.renderTabs(canEdit)}
               </div>
 
-              <RequestList
+              <UnitsList
                 requests={this.props.requests}
                 requestsCount={this.props.requestsCount}
                 currentPage={this.props.currentPage}

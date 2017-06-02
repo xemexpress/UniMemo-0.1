@@ -40,7 +40,7 @@ class Home extends React.Component {
     const requestsPromise = this.props.token ?
       agent.Requests.collect() : agent.Requests.all()
 
-    this.props.onLoad(tab, Promise.all([agent.Tags.getAll(), requestsPromise]))
+    this.props.onLoad(tab, Promise.all([agent.Tags.getRequests(), requestsPromise]))
   }
 
   componentWillUnmount(){
@@ -54,15 +54,17 @@ class Home extends React.Component {
         <Banner appName={this.props.appName} />
 
         <div className='container page'>
-            <div className='row'>
-              <MainView />
+          <div className='row'>
+            <MainView />
 
-              <div className='col-md-3'>
-                <div className='sidebar'>
-                  <p>Popular Tags</p>
-                  <Tags
-                    tags={this.props.tags}
-                    onClickTag={this.props.onClickTag} />
+            <div className='col-md-3'>
+              <div className='sidebar'>
+                <p>Popular Tags</p>
+              
+                <Tags
+                  tagType={this.props.tagType}
+                  tags={this.props.tags}
+                  onClickTag={this.props.onClickTag} />
               </div>
             </div>
           </div>

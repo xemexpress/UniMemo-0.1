@@ -4,7 +4,7 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
   CHANGE_TAB,
-  SWITCH_TAKING,
+  SWITCH_TAKINGS,
   APPLY_TAG_FILTER,
   SET_PAGE,
   WISH_REQUEST,
@@ -33,6 +33,13 @@ export default (state={}, action) => {
         requestsCount: action.payload[1].requestsCount,
         currentPage: 0
       }
+    case SWITCH_TAKINGS:
+      return {
+        ...state,
+        requests: action.payload.requests,
+        requestsCount: action.payload.requestsCount,
+        currentPage: 0
+      }
     case PROFILE_PAGE_UNLOADED:
       return {}
     case CHANGE_TAB:
@@ -40,15 +47,10 @@ export default (state={}, action) => {
         ...state,
         tag: null,
         tab: action.tab,
-        requests: action.payload.requests,
-        requestsCount: action.payload.requestsCount,
-        currentPage: 0
-      }
-    case SWITCH_TAKING:
-      return {
-        ...state,
-        requests: action.payload.requests,
-        requestsCount: action.payload.requestsCount,
+        requests: action.payload.requests ? action.payload.requests : null,
+        requestsCount: action.payload.requestsCount ? action.payload.requestsCount : null,
+        gifts: action.payload.gifts ? action.payload.gifts : null,
+        giftsCount: action.payload.giftsCount ? action.payload.giftsCount : null,
         currentPage: 0
       }
     case APPLY_TAG_FILTER:
@@ -56,8 +58,10 @@ export default (state={}, action) => {
         ...state,
         tag: action.tag,
         tab: null,
-        requests: action.payload.requests,
-        requestsCount: action.payload.requestsCount,
+        requests: action.payload.requests ? action.payload.requests : null,
+        requestsCount: action.payload.requestsCount ? action.payload.requestsCount : null,
+        gifts: action.payload.gifts ? action.payload.gifts : null,
+        giftsCount: action.payload.giftsCount ? action.payload.giftsCount : null,
         currentPage: 0
       }
     case WISH_REQUEST:
@@ -79,8 +83,10 @@ export default (state={}, action) => {
       return {
         ...state,
         currentPage: action.page,
-        requests: action.payload.requests,
-        requestsCount: action.payload.requestsCount
+        requests: action.payload.requests ? action.payload.requests : null,
+        requestsCount: action.payload.requestsCount ? action.payload.requestsCount : null,
+        gifts: action.payload.gifts ? action.payload.gifts : null,
+        giftsCount: action.payload.giftsCount ? action.payload.giftsCount : null,
       }
     default:
   }

@@ -1,16 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import RequestList from '../common/RequestList'
+import UnitsList from '../common/UnitsList'
 import agent from '../../agent'
 
 import {
   CHANGE_TAB,
+  TOGGLE_TYPES,
   SET_PAGE
 } from '../../constants/actionTypes'
 
+// Request Tabs
 const YourCollectionTab = props => {
-  if(props.token){
+  if(props.currentUser){
     const handleClick = ev => {
       ev.preventDefault()
       props.onTabClick('collect', agent.Requests.collect())
@@ -44,6 +46,39 @@ const GlobalFeedTab = props => {
   )
 }
 
+// Gift Tabs
+const ProvideTab = props => {
+  const handleClick = ev => {
+    ev.preventDefault()
+    props.onTabClick('provide', agent.Gifts.providedBy(props.currentUser.username))
+  }
+  return (
+    <li className='nav-item'>
+      <a
+        className={props.tab === 'provide' ? 'nav-link active' : 'nav-link'}
+        onClick={handleClick}>
+        Gifts I provide
+      </a>
+    </li>
+  )
+}
+
+const ReceiveTab = props => {
+  const handleClick = ev => {
+    ev.preventDefault()
+    props.onTabClick('receive', agent.Gifts.receivedBy(props.currentUser.username))
+  }
+  return (
+    <li className='nav-item'>
+      <a
+        className={props.tab === 'receive' ? 'nav-link active' : 'nav-link'}
+        onClick={handleClick}>
+        Gifts I could use
+      </a>
+    </li>
+  )
+}
+
 const TagTab = props => {
   if(!props.tag){
     return null
@@ -60,7 +95,7 @@ const TagTab = props => {
 
 const mapStateToProps = state => ({
   ...state.contentList,
-  token: state.common.token
+  currentUser: state.common.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -69,52 +104,111 @@ const mapDispatchToProps = dispatch => ({
     payload,
     tab
   }),
-  onSetPage: (tab, p, tag) => dispatch({
+  onToggle: payload => dispatch({
+    type: TOGGLE_TYPES,
+    payload
+  }),
+  onSetPage: (p, payload) => dispatch({
     type: SET_PAGE,
     page: p,
-    payload: tab === 'all' ? agent.Requests.all(p) :
-      tag ? agent.Requests.byTag(tag, p) : agent.Requests.collect(p)
+    payload
   })
 })
 
-const MainView = props => {
-  const onSetPage = page => props.onSetPage(props.tab, page, props.tag)
+class MainView extends React.Component {
+  constructor(){
+    super()
 
-  const requestLoaded = props.requests ? true : false
+    this.state = {
+      loadRequest: true
+    }
 
-  return (
-    <div className='col-md-9'>
+    this.handleToggle = () => {
+      if(this.state.loadRequest){
+        this.props.onTabClick('provide', agent.Gifts.providedBy(this.props.currentUser.username))
+        this.props.onToggle(agent.Tags.getGifts())
+      }else{
+        this.props.onTabClick('collect', agent.Requests.collect())
+        this.props.onToggle(agent.Tags.getRequests())
+      }
+      this.setState({loadRequest: !this.state.loadRequest})
+    }
+  }
 
-      <div className='feed-toggle'>
-        <ul className='nav nav-pills outline-active'>
+  onSetPage(page){
+    let payload
+    if(this.state.loadRequest){
+      payload = this.props.tab === 'all' ? agent.Requests.all(page) :
+        this.props.tag ? agent.Requests.byTag(this.props.tag, page) :
+        agent.Requests.collect(page)
+    }else{
+      payload = this.props.tab === 'provide' ? agent.Gifts.providedBy(this.props.currentUser.username, page) :
+        this.props.tag ? agent.Gifts.byTag(this.props.tag, page) :
+        agent.Gifts.receivedBy(this.props.currentUser.username, page)
+    }
 
-          <YourCollectionTab
-            token={props.token}
-            tab={props.tab}
-            onTabClick={props.onTabClick} />
+    this.props.onSetPage(page, payload)
+  }
 
-          <GlobalFeedTab
-            tab={props.tab}
-            onTabClick={props.onTabClick} />
+  render(){
+    const onSetPage = page => this.onSetPage(page)
+    const currentUser = this.props.currentUser
+    return (
+      <div className='col-md-9'>
 
-          <TagTab tag={props.tag} />
+        <div className='feed-toggle'>
+          <ul className='nav nav-pills outline-active'>
 
-          <label className="switch pull-md-right">
-            <input type="checkbox" checked={requestLoaded}/>
-            <div className="slider round"></div>
-          </label>
+            {
+              this.state.loadRequest ?
+              <span>
+                <YourCollectionTab
+                  currentUser={currentUser}
+                  tab={this.props.tab}
+                  onTabClick={this.props.onTabClick} />
 
-        </ul>
+                <GlobalFeedTab
+                  tab={this.props.tab}
+                  onTabClick={this.props.onTabClick} />
+              </span>
+              :
+              <span>
+                <ProvideTab
+                  currentUser={currentUser}
+                  tab={this.props.tab}
+                  onTabClick={this.props.onTabClick} />
+                <ReceiveTab
+                  currentUser={currentUser}
+                  tab={this.props.tab}
+                  onTabClick={this.props.onTabClick} />
+              </span>
+            }
+
+            <TagTab tag={this.props.tag} />
+
+            {
+              currentUser ?
+              <label className="switch pull-xs-right">
+                <input type="checkbox" onChange={this.handleToggle} checked={this.state.loadRequest}/>
+                <div className="slider round"></div>
+              </label>
+              : null
+            }
+
+          </ul>
+        </div>
+
+        <UnitsList
+          requests={this.props.requests}
+          requestsCount={this.props.requestsCount}
+          gifts={this.props.gifts}
+          giftsCount={this.props.giftsCount}
+          currentPage={this.props.currentPage}
+          onSetPage={onSetPage} />
+
       </div>
-
-      <RequestList
-        requests={props.requests}
-        requestsCount={props.requestsCount}
-        currentPage={props.currentPage}
-        onSetPage={onSetPage} />
-
-    </div>
-  )
+    )
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView)
