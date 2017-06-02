@@ -6,7 +6,7 @@ import home from './reducers/home'
 import profile from './reducers/profile'
 import settings from './reducers/settings'
 import request from './reducers/request'
-import requestList from './reducers/requestList'
+import contentList from './reducers/contentList'
 import editor from './reducers/editor'
 import { promiseMiddleware, localStorageMiddleware } from './middleware'
 
@@ -17,7 +17,7 @@ const reducer = combineReducers({
   profile,
   settings,
   request,
-  requestList,
+  contentList,
   editor
 })
 

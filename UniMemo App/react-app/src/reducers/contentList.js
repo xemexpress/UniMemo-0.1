@@ -18,8 +18,10 @@ export default (state={}, action) => {
         ...state,
         tab: action.tab,
         tag: null,
-        requests: action.payload[1].requests,
-        requestsCount: action.payload[1].requestsCount,
+        requests: action.payload[1].requests ? action.payload[1].requests : null,
+        requestsCount: action.payload[1].requestsCount ? action.payload[1].requestsCount : null,
+        gifts: action.payload[1].gifts ? action.payload[1].gifts : null,
+        giftsCount: action.payload[1].giftsCount ? action.payload[1].giftsCount : null,
         currentPage: 0
       }
     case HOME_PAGE_UNLOADED:

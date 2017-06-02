@@ -15,7 +15,7 @@ class Statement extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentPage: state.requestList.currentPage
+  currentPage: state.contentList.currentPage
 })
 
 const Banner = props => {
