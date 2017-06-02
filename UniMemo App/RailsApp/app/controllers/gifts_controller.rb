@@ -4,7 +4,7 @@ class GiftsController < ApplicationController
   before_action :find_gift!, except: [:index, :create]
 
   def index
-    @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
+    @gifts = @gifts.received_by(current_user.username).tagged_with(params[:tag]) if params[:tag].present?
 
     @gifts = @gifts.provided_by(params[:provider]) if params[:provider].present?
 
