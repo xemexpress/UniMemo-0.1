@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import agent from '../agent'
+import agent from '../../../agent'
 
 import {
   WISH_REQUEST,
   UNWISH_REQUEST
-} from '../constants/actionTypes'
+} from '../../../constants/actionTypes'
 
 const mapDispatchToProps = dispatch => ({
   wish: requestId => dispatch({

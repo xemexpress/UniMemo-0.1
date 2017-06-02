@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import RequestList from './RequestList'
+import RequestList from './common/RequestList'
 import agent from '../agent'
 
 import {
@@ -54,7 +54,7 @@ const FollowUserButton = props => {
 }
 
 const mapStateToProps = state => ({
-  ...state.requestList,
+  ...state.contentList,
   profile: state.profile,
   currentUser: state.common.currentUser
 })
