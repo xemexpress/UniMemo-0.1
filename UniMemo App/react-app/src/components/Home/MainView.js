@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import RequestList from '../RequestList'
+import RequestList from '../common/RequestList'
 import agent from '../../agent'
 
 import {
@@ -59,7 +59,7 @@ const TagTab = props => {
 }
 
 const mapStateToProps = state => ({
-  ...state.requestList,
+  ...state.contentList,
   token: state.common.token
 })
 
@@ -80,11 +80,14 @@ const mapDispatchToProps = dispatch => ({
 const MainView = props => {
   const onSetPage = page => props.onSetPage(props.tab, page, props.tag)
 
+  const requestLoaded = props.requests ? true : false
+
   return (
     <div className='col-md-9'>
 
       <div className='feed-toggle'>
         <ul className='nav nav-pills outline-active'>
+
           <YourCollectionTab
             token={props.token}
             tab={props.tab}
@@ -95,6 +98,12 @@ const MainView = props => {
             onTabClick={props.onTabClick} />
 
           <TagTab tag={props.tag} />
+
+          <label className="switch pull-md-right">
+            <input type="checkbox" checked={requestLoaded}/>
+            <div className="slider round"></div>
+          </label>
+
         </ul>
       </div>
 
