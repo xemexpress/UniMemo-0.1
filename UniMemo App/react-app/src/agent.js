@@ -91,6 +91,11 @@ const Requests = {
     requests.put(`/requests/${requestId}/ends/${mem}`)
 }
 
+const Gifts = {
+  all: page =>
+    requests.get(`/user/gifts`)
+}
+
 const Comments = {
   forRequest: requestId =>
     requests.get(`/requests/${requestId}/comments`),
@@ -111,6 +116,7 @@ export default {
   Auth,
   Profile,
   Requests,
+  Gifts,
   Comments,
   Tags,
   setToken: _token => { token = _token }
