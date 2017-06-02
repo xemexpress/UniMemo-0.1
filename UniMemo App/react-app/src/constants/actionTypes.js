@@ -36,8 +36,8 @@ export const UNTAKE_REQUEST = 'UNTAKE_REQUEST'
 export const HELPER_LOADED = 'HELPER_LOADED'
 export const CONFIRM_HELPER = 'CONFIRM_HELPER'
 export const END_REQUEST = 'END_REQUEST'
-export const SWITCH_TAKING = 'SWITCH_TAKING'
-// export const
+export const SWITCH_TAKINGS = 'SWITCH_TAKINGS'
+export const TOGGLE_TYPES = 'TOGGLE_TYPES'
 // export const
 // export const
 // export const
