@@ -24,6 +24,7 @@ ReactDOM.render((
         <Route path='register' component={Register} />
         <Route path='settings' component={Settings} />
         <Route path='request/:requestId' component={Request} />
+        <Route path='gift/:giftId' component={null} />
         <Route path='@:username/taken' component={ProfileTaken} />
         <Route path='@:username' component={Profile} />
         <Route path='@:username/wishes' component={ProfileWishes} />
