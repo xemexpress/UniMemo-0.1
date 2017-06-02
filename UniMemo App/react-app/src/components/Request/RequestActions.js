@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import ListErrors from '../ListErrors'
+import ListErrors from '../common/ListErrors'
 import agent from '../../agent'
 
 import {
@@ -79,7 +79,7 @@ class RequestActions extends React.Component {
             request.tagList.indexOf('ongoing') !== -1 ?
             <span>
               <Link
-                to={`editor/${request.requestId}`}
+                to={`requestEditor/${request.requestId}`}
                 className='btn btn-sm btn-outline-secondary'>
                 <i className='ion-edit'></i> Edit Request
               </Link>

@@ -25,7 +25,7 @@ class HelperList extends React.Component {
       return null
     }
 
-    if(this.props.request.helper.username === this.props.currentUserName){
+    if(request.helper.username === this.props.currentUserName){
 
       if(helpers.length === 0){
         return (

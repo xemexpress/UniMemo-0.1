@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 import RequestMeta from './RequestMeta'
 import HelperList from './HelperList'
-import CommentContainer from './CommentContainer'
+import CommentContainer from '../common/CommentContainer'
 import agent from '../../agent'
 
 import {
@@ -20,7 +20,7 @@ import {
 
 const mapStateToProps = state => ({
   ...state.request,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser || null
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -109,13 +109,17 @@ class Request extends React.Component {
           <div className='row article-content'>
             <div className='col-xs-12'>
 
-              <HelperList
-                onHelperLoad={this.props.onHelperLoad}
-                onHelperConfirm={this.props.onHelperConfirm}
-                posterName={request.poster.username}
-                currentUserName={this.props.currentUser.username}
-                request={request}
-                helpers={this.props.helpers} />
+              {
+                this.props.currentUser ?
+                <HelperList
+                  onHelperLoad={this.props.onHelperLoad}
+                  onHelperConfirm={this.props.onHelperConfirm}
+                  posterName={request.poster.username}
+                  currentUserName={this.props.currentUser.username}
+                  request={request}
+                  helpers={this.props.helpers} />
+                : null
+              }
 
               <hr />
 

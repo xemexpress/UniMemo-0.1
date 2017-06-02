@@ -40,7 +40,7 @@ const LoggedInView = props => {
         </li>
 
         <li className='nav-item'>
-          <Link to='editor' className='nav-link'>
+          <Link to='requestEditor' className='nav-link'>
             <i className='ion-compose'></i>&nbsp;New Request
           </Link>
         </li>
@@ -67,23 +67,21 @@ const LoggedInView = props => {
   return null
 }
 
-class Header extends React.Component {
-  render(){
-    return (
-      <nav className='navbar navbar-sticky-top navbar-light'>
-        <div className='container'>
+const Header = props => {
+  return (
+    <nav className='navbar navbar-sticky-top navbar-light'>
+      <div className='container'>
 
-          <Link to='/' className='navbar-brand'>
-            {this.props.appName}
-          </Link>
+        <Link to='/' className='navbar-brand'>
+          {props.appName}
+        </Link>
 
-          <LoggedOutView currentUser={this.props.currentUser} />
-          <LoggedInView currentUser={this.props.currentUser} />
+        <LoggedOutView currentUser={props.currentUser} />
+        <LoggedInView currentUser={props.currentUser} />
 
-        </div>
-      </nav>
-    )
-  }
+      </div>
+    </nav>
+  )
 }
 
 export default Header

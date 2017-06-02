@@ -54,6 +54,8 @@ const omitRequestId = request => Object.assign(request, { request_id: undefined 
 
 const Requests = {
   all: page =>
+  // testing purpose:
+  // requests.get(`/requests?${limit(PER_PAGE, page)}`),
     requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
   collect: page =>
     requests.get(`/requests/collect?tag=ongoing&${limit(PER_PAGE, page)}`),
@@ -91,6 +93,15 @@ const Requests = {
     requests.put(`/requests/${requestId}/ends/${mem}`)
 }
 
+const Gifts = {
+  byTag: (tag, page) =>
+    requests.get(`/user/gifts?tag=${tag}&${limit(PER_PAGE, page)}`),
+  providedBy: (username, page) =>
+    requests.get(`/user/gifts?provider=${username}&${limit(PER_PAGE, page)}`),
+  receivedBy: (username, page) =>
+    requests.get(`/user/gifts?receiver=${username}&${limit(PER_PAGE, page)}`)
+}
+
 const Comments = {
   forRequest: requestId =>
     requests.get(`/requests/${requestId}/comments`),
@@ -103,14 +114,17 @@ const Comments = {
 }
 
 const Tags = {
-  getAll: () =>
-    requests.get('/tags')
+  getRequests: () =>
+    requests.get('/tags?tag=requests'),
+  getGifts: () =>
+    requests.get('/tags?tag=gifts')
 }
 
 export default {
   Auth,
   Profile,
   Requests,
+  Gifts,
   Comments,
   Tags,
   setToken: _token => { token = _token }

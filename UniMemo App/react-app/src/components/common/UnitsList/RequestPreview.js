@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import agent from '../agent'
+import agent from '../../../agent'
 
 import {
   WISH_REQUEST,
   UNWISH_REQUEST
-} from '../constants/actionTypes'
+} from '../../../constants/actionTypes'
 
 const mapDispatchToProps = dispatch => ({
   wish: requestId => dispatch({
@@ -37,7 +37,6 @@ const RequestPreview = props => {
 
   return (
     <div className='article-preview'>
-
       <div className='article-meta'>
         <Link
           className='author'
@@ -69,7 +68,6 @@ const RequestPreview = props => {
       </div>
 
       <Link to={`request/${request.requestId}`} className='preview-link'>
-
         <h1>{request.text}</h1>
 
         <p>
@@ -95,7 +93,6 @@ const RequestPreview = props => {
             })
           }
         </ul>
-
       </Link>
     </div>
   )

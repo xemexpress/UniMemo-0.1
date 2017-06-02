@@ -435,9 +435,17 @@ Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
 Query Parameters:
 
-Filter by tag:
+Filter by tag: *(Chosen from gifts received by Current User)*
 
 `?tag=giveOrLend`
+
+Filter by provider:
+
+`?provider=xemexpress`
+
+Filter by receiver:
+
+`?receiver=xemexpress`
 
 Limit number of gifts (default is 10):
 
@@ -532,7 +540,7 @@ Authentication required, returns the favored User's [Profile](#profile)
 
 Authentication required, returns the unfavored User's [Profile](#profile)
 
-### equests
+### List Requests
 
 `GET /api/requests`
 
@@ -769,5 +777,11 @@ Authentication required, returns {}
 ### Get Tags
 
 `GET /api/tags`
+
+Filter by tag:
+
+`?tag=requests`
+
+`?tag=gifts`
 
 No authentication required, returns a [List of Tags](#list-of-tags)

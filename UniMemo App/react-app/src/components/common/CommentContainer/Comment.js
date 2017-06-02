@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import ListErrors from '../ListErrors'
-import agent from '../../agent'
+import agent from '../../../agent'
 
 import {
   UPDATE_COMMENT,
   DELETE_COMMENT
-} from '../../constants/actionTypes'
+} from '../../../constants/actionTypes'
 
 const mapDispatchToProps = dispatch => ({
   onDel: (payload, commentId) => dispatch({

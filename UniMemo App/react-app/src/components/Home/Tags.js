@@ -11,7 +11,10 @@ const Tags = props => {
           tags.map(tag => {
             const handleClick = ev => {
               ev.preventDefault()
-              props.onClickTag(tag, agent.Requests.byTag(tag))
+              if(props.tagType === 'request'){
+                return props.onClickTag(tag, agent.Requests.byTag(tag))
+              }
+              props.onClickTag(tag, agent.Gifts.byTag(tag))
             }
             return (
               <a

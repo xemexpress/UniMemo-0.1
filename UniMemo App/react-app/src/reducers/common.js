@@ -40,7 +40,7 @@ export default (state=defaultState, action) => {
       return {
         ...state,
         redirectTo: action.error ? null : '/',
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? state.currentUser : action.payload.user
       }
     case LOGOUT:
       return {
