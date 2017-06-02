@@ -37,7 +37,6 @@ const RequestPreview = props => {
 
   return (
     <div className='article-preview'>
-
       <div className='article-meta'>
         <Link
           className='author'
@@ -69,7 +68,6 @@ const RequestPreview = props => {
       </div>
 
       <Link to={`request/${request.requestId}`} className='preview-link'>
-
         <h1>{request.text}</h1>
 
         <p>
@@ -95,7 +93,6 @@ const RequestPreview = props => {
             })
           }
         </ul>
-
       </Link>
     </div>
   )
