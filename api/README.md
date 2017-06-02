@@ -439,6 +439,14 @@ Filter by tag:
 
 `?tag=giveOrLend`
 
+Filter by provider:
+
+`?provider=xemexpress`
+
+Filter by receiver:
+
+`?receiver=xemexpress`
+
 Limit number of gifts (default is 10):
 
 `?limit=10`
@@ -532,7 +540,7 @@ Authentication required, returns the favored User's [Profile](#profile)
 
 Authentication required, returns the unfavored User's [Profile](#profile)
 
-### equests
+### List Requests
 
 `GET /api/requests`
 

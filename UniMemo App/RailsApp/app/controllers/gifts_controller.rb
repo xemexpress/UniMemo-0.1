@@ -6,6 +6,10 @@ class GiftsController < ApplicationController
   def index
     @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
 
+    @gifts = @gifts.provided_by(params[:provider]) if params[:provider].present?
+
+    @gifts = @gifts.received_by(params[:receiver]) if params[:receiver].present?
+
     @gifts_count = @gifts.count
 
     @gifts = @gifts.order(updated_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
