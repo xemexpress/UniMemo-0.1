@@ -770,4 +770,10 @@ Authentication required, returns {}
 
 `GET /api/tags`
 
+Filter by tag:
+
+`?tag=requests`
+
+`?tag=gifts`
+
 No authentication required, returns a [List of Tags](#list-of-tags)
