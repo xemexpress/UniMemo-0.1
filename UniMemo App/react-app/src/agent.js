@@ -54,8 +54,9 @@ const omitRequestId = request => Object.assign(request, { request_id: undefined 
 
 const Requests = {
   all: page =>
-  requests.get(`/requests?${limit(PER_PAGE, page)}`),
-    // requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
+  // testing purpose:
+  // requests.get(`/requests?${limit(PER_PAGE, page)}`),
+    requests.get(`/requests?tag=ongoing&${limit(PER_PAGE, page)}`),
   collect: page =>
     requests.get(`/requests/collect?tag=ongoing&${limit(PER_PAGE, page)}`),
   taking: page =>
