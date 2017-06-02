@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import ProvideTab from './ProvideTab'
+import ReceiveTab from './ReceiveTab'
 import UnitsList from '../common/UnitsList'
 import agent from '../../agent'
 
@@ -13,7 +15,7 @@ import {
 // Request Tabs
 const YourCollectionTab = props => {
   if(props.currentUser){
-    const handleClick = ev => {
+    const handleCollect = ev => {
       ev.preventDefault()
       props.onTabClick('collect', agent.Requests.collect())
     }
@@ -21,7 +23,7 @@ const YourCollectionTab = props => {
       <li className='nav-item'>
         <a
           className={props.tab === 'collect' ? 'nav-link active' : 'nav-link'}
-          onClick={handleClick}>
+          onClick={handleCollect}>
           Your Collection
         </a>
       </li>
@@ -31,7 +33,7 @@ const YourCollectionTab = props => {
 }
 
 const GlobalFeedTab = props => {
-  const handleClick = ev => {
+  const handleAll = ev => {
     ev.preventDefault()
     props.onTabClick('all', agent.Requests.all())
   }
@@ -39,41 +41,8 @@ const GlobalFeedTab = props => {
     <li className='nav-item'>
       <a
         className={props.tab === 'all' ? 'nav-link active' : 'nav-link'}
-        onClick={handleClick}>
+        onClick={handleAll}>
         Global Feed
-      </a>
-    </li>
-  )
-}
-
-// Gift Tabs
-const ProvideTab = props => {
-  const handleClick = ev => {
-    ev.preventDefault()
-    props.onTabClick('provide', agent.Gifts.providedBy(props.currentUser.username))
-  }
-  return (
-    <li className='nav-item'>
-      <a
-        className={props.tab === 'provide' ? 'nav-link active' : 'nav-link'}
-        onClick={handleClick}>
-        Gifts I provide
-      </a>
-    </li>
-  )
-}
-
-const ReceiveTab = props => {
-  const handleClick = ev => {
-    ev.preventDefault()
-    props.onTabClick('receive', agent.Gifts.receivedBy(props.currentUser.username))
-  }
-  return (
-    <li className='nav-item'>
-      <a
-        className={props.tab === 'receive' ? 'nav-link active' : 'nav-link'}
-        onClick={handleClick}>
-        Gifts I could use
       </a>
     </li>
   )
@@ -99,10 +68,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onTabClick: (tab, payload) => dispatch({
+  onTabClick: (tab, payload, currentUserName=null, using=null) => dispatch({
     type: CHANGE_TAB,
+    tab,
     payload,
-    tab
+    currentUserName,
+    using
   }),
   onToggle: payload => dispatch({
     type: TOGGLE_TYPES,
@@ -125,7 +96,7 @@ class MainView extends React.Component {
 
     this.handleToggle = () => {
       if(this.state.loadRequest){
-        this.props.onTabClick('provide', agent.Gifts.providedBy(this.props.currentUser.username))
+        this.props.onTabClick('provide', agent.Gifts.providedBy(this.props.currentUser.username), this.props.currentUser.username, true)
         this.props.onToggle(agent.Tags.getGifts())
       }else{
         this.props.onTabClick('collect', agent.Requests.collect())
@@ -153,6 +124,7 @@ class MainView extends React.Component {
   render(){
     const onSetPage = page => this.onSetPage(page)
     const currentUser = this.props.currentUser
+
     return (
       <div className='col-md-9'>
 

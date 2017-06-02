@@ -43,15 +43,73 @@ export default (state={}, action) => {
     case PROFILE_PAGE_UNLOADED:
       return {}
     case CHANGE_TAB:
-      return {
-        ...state,
-        tag: null,
-        tab: action.tab,
-        requests: action.payload.requests ? action.payload.requests : null,
-        requestsCount: action.payload.requestsCount ? action.payload.requestsCount : null,
-        gifts: action.payload.gifts ? action.payload.gifts : null,
-        giftsCount: action.payload.giftsCount ? action.payload.giftsCount : null,
-        currentPage: 0
+      if(action.payload.requests){
+        return {
+          ...state,
+          tag: null,
+          tab: action.tab,
+          requests: action.payload.requests,
+          requestsCount: action.payload.requestsCount,
+          gifts: null,
+          giftsCount: null,
+          currentPage: 0
+        }
+      }else if(action.using){
+        if(action.tab === 'provide'){
+          return {
+            ...state,
+            tag: null,
+            tab: action.tab,
+            requests: null,
+            requestsCount: null,
+            gifts: action.payload.gifts.filter(gift =>
+              gift.receiver.username !== action.currentUserName
+            ),
+            giftsCount: action.payload.giftsCount,
+            currentPage: 0
+          }
+        }else{
+          return {
+            ...state,
+            tag: null,
+            tab: action.tab,
+            requests: null,
+            requestsCount: null,
+            gifts: action.payload.gifts.filter(gift =>
+              gift.receiver.username === action.currentUserName
+            ),
+            giftsCount: action.payload.giftsCount,
+            currentPage: 0
+          }
+        }
+      }else{
+        if(action.tab === 'provide'){
+          return {
+            ...state,
+            tag: null,
+            tab: action.tab,
+            requests: null,
+            requestsCount: null,
+            gifts: action.payload.gifts.filter(gift =>
+              gift.receiver.username === action.currentUserName
+            ),
+            giftsCount: action.payload.giftsCount,
+            currentPage: 0
+          }
+        }else{
+          return {
+            ...state,
+            tag: null,
+            tab: action.tab,
+            requests: null,
+            requestsCount: null,
+            gifts: action.payload.gifts.filter(gift =>
+              gift.receiver.username !== action.currentUserName
+            ),
+            giftsCount: action.payload.giftsCount,
+            currentPage: 0
+          }
+        }
       }
     case APPLY_TAG_FILTER:
       return {
