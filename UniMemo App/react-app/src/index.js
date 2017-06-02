@@ -9,7 +9,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Settings from './components/Settings'
 import Request from './components/Request'
-import Editor from './components/Editor'
+import RequestEditor from './components/RequestEditor'
 import Profile from './components/Profile'
 import ProfileWishes from './components/ProfileWishes'
 import ProfileTaken from './components/ProfileTaken'
@@ -28,8 +28,8 @@ ReactDOM.render((
         <Route path='@:username/taken' component={ProfileTaken} />
         <Route path='@:username' component={Profile} />
         <Route path='@:username/wishes' component={ProfileWishes} />
-        <Route path='editor' component={Editor} />
-        <Route path='editor/:requestId' component={Editor} />
+        <Route path='requestEditor' component={RequestEditor} />
+        <Route path='requestEditor/:requestId' component={RequestEditor} />
       </Route>
     </Router>
   </Provider>

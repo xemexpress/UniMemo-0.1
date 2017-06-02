@@ -1,11 +1,11 @@
 import {
-  SUBMIT_REQUEST,
-  EDITOR_PAGE_LOADED,
-  UPDATE_FIELD_EDITOR,
+  REQUEST_EDITOR_LOADED,
+  UPDATE_FIELD_REQUEST,
   EDITOR_PAGE_UNLOADED,
+  ADD_TAG_REQUEST,
+  REMOVE_TAG_REQUEST,
   ASYNC_START,
-  ADD_TAG,
-  REMOVE_TAG
+  SUBMIT_REQUEST
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -20,7 +20,7 @@ const defaultState = {
 
 export default (state=defaultState, action) => {
   switch(action.type){
-    case EDITOR_PAGE_LOADED:
+    case REQUEST_EDITOR_LOADED:
       return {
         ...state,
         requestId: action.payload ? action.payload.request.requestId : undefined,
@@ -33,18 +33,18 @@ export default (state=defaultState, action) => {
         tagInput: '',
         tagList: action.payload ? action.payload.request.tagList : ['ongoing']
       }
-    case UPDATE_FIELD_EDITOR:
+    case UPDATE_FIELD_REQUEST:
       return {
         ...state,
         [action.key]: action.value
       }
-    case ADD_TAG:
+    case ADD_TAG_REQUEST:
       return {
         ...state,
         tagList: (state.tagList || []).concat([state.tagInput]),
         tagInput: ''
       }
-    case REMOVE_TAG:
+    case REMOVE_TAG_REQUEST:
       return {
         ...state,
         tagList: state.tagList.filter(tag => tag !== action.tag)

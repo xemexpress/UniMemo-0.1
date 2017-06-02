@@ -19,7 +19,7 @@ const UnitsList = props => {
   if(units.length === 0){
     return (
       <div className='article-preview'>
-        No {units} are here... yet
+        No {unitType} are here... yet
       </div>
     )
   }

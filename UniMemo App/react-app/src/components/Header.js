@@ -40,7 +40,7 @@ const LoggedInView = props => {
         </li>
 
         <li className='nav-item'>
-          <Link to='editor' className='nav-link'>
+          <Link to='requestEditor' className='nav-link'>
             <i className='ion-compose'></i>&nbsp;New Request
           </Link>
         </li>

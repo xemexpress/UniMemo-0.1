@@ -6,35 +6,35 @@ import agent from '../agent'
 
 import {
   SUBMIT_REQUEST,
-  EDITOR_PAGE_LOADED,
-  UPDATE_FIELD_EDITOR,
+  REQUEST_EDITOR_LOADED,
+  UPDATE_FIELD_REQUEST,
   EDITOR_PAGE_UNLOADED,
-  ADD_TAG,
-  REMOVE_TAG
+  ADD_TAG_REQUEST,
+  REMOVE_TAG_REQUEST
 } from '../constants/actionTypes'
 
 const mapStateToProps = state => ({
-  ...state.editor
+  ...state.requestEditor
 })
 
 const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({
-    type: EDITOR_PAGE_LOADED,
+    type: REQUEST_EDITOR_LOADED,
     payload
   }),
   onUnload: () => dispatch({
     type: EDITOR_PAGE_UNLOADED
   }),
   onUpdateField: (key, value) => dispatch({
-    type: UPDATE_FIELD_EDITOR,
+    type: UPDATE_FIELD_REQUEST,
     key,
     value
   }),
   onAddTag: () => dispatch({
-    type: ADD_TAG
+    type: ADD_TAG_REQUEST
   }),
   onRemoveTag: tag => dispatch({
-    type: REMOVE_TAG,
+    type: REMOVE_TAG_REQUEST,
     tag
   }),
   onSubmit: payload => dispatch({
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => ({
   })
 })
 
-class Editor extends React.Component {
+class RequestEditor extends React.Component {
   constructor(){
     super()
 
@@ -58,6 +58,10 @@ class Editor extends React.Component {
     this.changeText = ev => this.props.onUpdateField('text', ev.target.value)
     this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
+
+    this.expand = () => this.setState({
+      checked: !this.state.checked
+    })
 
     this.watchForEnter = ev => {
       if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done'].indexOf(this.props.tagInput) === -1){
@@ -118,10 +122,6 @@ class Editor extends React.Component {
   }
 
   render(){
-    const expand = () => this.setState({
-      checked: !this.state.checked
-    })
-
     return (
       <div className='editor-page'>
         <div className='container page'>
@@ -149,7 +149,7 @@ class Editor extends React.Component {
                     id='toggle'
                     type='checkbox'
                     checked={this.state.checked}
-                    onChange={expand} />
+                    onChange={this.expand} />
 
                   <div id='expand'>
                     <fieldset className='form-group'>
@@ -266,4 +266,4 @@ class Editor extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Editor)
+export default connect(mapStateToProps, mapDispatchToProps)(RequestEditor)
