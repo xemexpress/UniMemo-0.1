@@ -14,6 +14,7 @@ import ProfileTaken from './components/ProfileTaken'
 import Request from './components/Request'
 import RequestEditor from './components/RequestEditor'
 import Gift from './components/Gift'
+import GiftEditor from './components/GiftEditor'
 import store from './store'
 
 ReactDOM.render((
@@ -31,8 +32,8 @@ ReactDOM.render((
         <Route path='gift/:giftId' component={Gift} />
         <Route path='requestEditor' component={RequestEditor} />
         <Route path='requestEditor/:requestId' component={RequestEditor} />
-        {/* <Route path='giftEditor' component={GiftEditor} />
-        <Route path='giftEditor/:giftId' component={GiftEditor} /> */}
+        <Route path='giftEditor' component={GiftEditor} />
+        {/* <Route path='giftEditor/:giftId' component={GiftEditor} /> */}
       </Route>
     </Router>
   </Provider>
