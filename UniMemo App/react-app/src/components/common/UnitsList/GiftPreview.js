@@ -38,8 +38,27 @@ const GiftPreview = props => {
         <ul className='tag-list'>
           {
             gift.tagList.map(tag => {
+              if(['personal', 'public', 'openPublic'].indexOf(tag) !== -1){
+                return (
+                  <li
+                    className='tag-default tag-pill tag-info'
+                    key={tag}>
+                    {tag}
+                  </li>
+                )
+              }else if(['delivering', 'giveOrLend', 'know', 'deliver'].indexOf(tag) !== -1){
+                return (
+                  <li
+                    className='tag-default tag-pill tag-success'
+                    key={tag}>
+                    {tag}
+                  </li>
+                )
+              }
               return (
-                <li className='tag-default tag-pill tag-outline' key={tag}>
+                <li
+                  className='tag-default tag-pill tag-outline'
+                  key={tag}>
                   {tag}
                 </li>
               )

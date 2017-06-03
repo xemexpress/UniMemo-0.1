@@ -20,7 +20,7 @@ import {
 
 const mapStateToProps = state => ({
   ...state.request,
-  currentUser: state.common.currentUser || null
+  currentUser: state.common.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

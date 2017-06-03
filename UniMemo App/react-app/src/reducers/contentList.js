@@ -56,6 +56,7 @@ export default (state={}, action) => {
         }
       }else if(action.using){
         if(action.tab === 'provide'){
+          // Gifts I've sent
           return {
             ...state,
             tag: null,
@@ -69,6 +70,7 @@ export default (state={}, action) => {
             currentPage: 0
           }
         }else{
+          // Gifts I've received
           return {
             ...state,
             tag: null,
@@ -84,6 +86,7 @@ export default (state={}, action) => {
         }
       }else{
         if(action.tab === 'provide'){
+          // Gifts not sent
           return {
             ...state,
             tag: null,
@@ -97,6 +100,7 @@ export default (state={}, action) => {
             currentPage: 0
           }
         }else{
+          // Gifts I could get
           return {
             ...state,
             tag: null,
