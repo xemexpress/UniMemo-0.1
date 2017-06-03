@@ -18,18 +18,25 @@ class GiftsController < ApplicationController
   def create
     @gift = Gift.new(gift_params)
     @gift.provider = current_user
+
     if params[:gift].has_key?('receiver')
-      if @gift.last_for_at_least_three_days?
-        @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
-        @gift.save!
+      if User.exists?(username: params[:gift][:receiver][:username])
+        if @gift.last_for_at_least_three_days?
+          @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
+          @gift.save!
+        else
+          render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+          return
+        end
       else
-        render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+        render json: { errors: { receiver: ['is not valid.'] } }, status: :unprocessable_entity
         return
       end
     else
       @gift.receiver = User.find(@current_user_id)
       @gift.save!
     end
+
     if @gift.save
       @gift.gift_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@gift.id) + rand(36**3).to_s(36)
       @gift.save!
@@ -47,11 +54,16 @@ class GiftsController < ApplicationController
     if @gift.provider_id == @current_user_id
       @gift.update_attributes(gift_params)
       if params[:gift].has_key?('receiver')
-        if @gift.last_for_at_least_three_days?
-          @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
-          @gift.save!
+        if User.exists?(username: params[:gift][:receiver][:username])
+          if @gift.last_for_at_least_three_days?
+            @gift.receiver = User.find_by_username!(params[:gift][:receiver][:username])
+            @gift.save!
+          else
+            render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+            return
+          end
         else
-          render json: { errors: { expire_at: ['should be at least 3 days after today'] } }, status: :forbidden
+          render json: { errors: { receiver: ['is not valid.'] } }, status: :unprocessable_entity
           return
         end
       end
@@ -89,7 +101,7 @@ class GiftsController < ApplicationController
         else
           @gift.tag_list.remove('openPublic').add('public')
         end
-        @gift.save
+        @gift.save!
 
         render :show
       else
