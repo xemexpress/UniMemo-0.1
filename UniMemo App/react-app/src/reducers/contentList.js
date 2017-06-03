@@ -78,7 +78,7 @@ export default (state={}, action) => {
             requests: null,
             requestsCount: null,
             gifts: action.payload.gifts.filter(gift =>
-              gift.receiver.username === action.currentUserName
+              gift.receiver !== gift.provider && gift.receiver.username === action.currentUserName
             ),
             giftsCount: action.payload.giftsCount,
             currentPage: 0
