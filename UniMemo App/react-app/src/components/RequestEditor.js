@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
+import TagList from './common/TagList'
 import agent from '../agent'
 
 import {
   SUBMIT_REQUEST,
   REQUEST_EDITOR_LOADED,
+  REQUEST_EDITOR_UNLOADED,
   UPDATE_FIELD_REQUEST,
-  EDITOR_PAGE_UNLOADED,
   ADD_TAG_REQUEST,
   REMOVE_TAG_REQUEST
 } from '../constants/actionTypes'
@@ -23,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
     payload
   }),
   onUnload: () => dispatch({
-    type: EDITOR_PAGE_UNLOADED
+    type: REQUEST_EDITOR_UNLOADED
   }),
   onUpdateField: (key, value) => dispatch({
     type: UPDATE_FIELD_REQUEST,
@@ -51,6 +52,10 @@ class RequestEditor extends React.Component {
       checked: false
     }
 
+    this.expand = () => this.setState({
+      checked: !this.state.checked
+    })
+
     this.changeStartTime = ev => this.props.onUpdateField('startTime', ev.target.value)
     this.changeStartPlace = ev => this.props.onUpdateField('startPlace', ev.target.value)
     this.changeEndTime = ev => this.props.onUpdateField('endTime', ev.target.value)
@@ -59,12 +64,8 @@ class RequestEditor extends React.Component {
     this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
 
-    this.expand = () => this.setState({
-      checked: !this.state.checked
-    })
-
     this.watchForEnter = ev => {
-      if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done'].indexOf(this.props.tagInput) === -1){
+      if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
         ev.preventDefault()
         this.props.onAddTag()
       }
@@ -141,12 +142,12 @@ class RequestEditor extends React.Component {
                       onChange={this.changeText} />
                   </fieldset>
 
-                  <label htmlFor='toggle'>
+                  <label htmlFor='toggleStart'>
                     <strong>Optional:</strong> Set when it starts
                   </label>
                   &nbsp;&nbsp;
                   <input
-                    id='toggle'
+                    id='toggleStart'
                     type='checkbox'
                     checked={this.state.checked}
                     onChange={this.expand} />
@@ -201,24 +202,7 @@ class RequestEditor extends React.Component {
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter} />
 
-                    <div className='tag-list'>
-                      {
-                        (this.props.tagList || []).map(tag => {
-                          return (
-                            <span
-                              className='tag-default tag-pill'
-                              key={tag}>
-                              {
-                                ['ongoing', 'ongoing-taken', 'done'].indexOf(tag) === -1 ?
-                                <i className='ion-close-round' onClick={this.removeTag(tag)}></i>
-                                : null
-                              }
-                              {tag}
-                            </span>
-                          )
-                        })
-                      }
-                    </div>
+                    <TagList unit={this.props} removeTag={this.removeTag} />
                   </fieldset>
 
                   <div className='text-xs-center'>
@@ -234,7 +218,7 @@ class RequestEditor extends React.Component {
                     <input
                       className='form-control form-control-lg'
                       type='url'
-                      placeholder='An image URL if it helps (optional)'
+                      placeholder='An image URL (you may leave it if you don&#39;t have one)'
                       value={this.props.image}
                       onChange={this.changeImage} />
                   </fieldset>

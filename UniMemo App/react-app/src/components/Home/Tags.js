@@ -1,5 +1,6 @@
 import React from 'react'
 
+import TagList from '../common/TagList'
 import agent from '../../agent'
 
 const Tags = props => {
@@ -11,32 +12,29 @@ const Tags = props => {
 
   const tags = props.tags
 
-  let payload
+  let payload, unit
   if(props.tagType === 'request'){
-    payload = tag => agent.Requests.byTag(tag)
+    payload = [
+      tag => agent.Requests.byTag(tag),
+      props.onClickTag
+    ]
+    unit = {
+      endTime: '',
+      tagList: tags
+    }
   }else{
-    payload = tag => agent.Gifts.byTag(tag)
+    payload = [
+      tag => agent.Gifts.byTag(tag),
+      props.onClickTag
+    ]
+    unit = {
+      expireAt: '',
+      tagList: tags
+    }
   }
 
   return (
-    <ul className='tag-list'>
-      {
-        tags.map(tag => {
-          const handleClick = ev => {
-            ev.preventDefault()
-            return props.onClickTag(tag, payload(tag))
-          }
-          return (
-            <a
-              className='tag-default tag-pill'
-              key={tag}
-              onClick={handleClick}>
-              {tag}
-            </a>
-          )
-        })
-      }
-    </ul>
+    <TagList unit={unit} payload={payload}/>
   )
 }
 
