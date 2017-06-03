@@ -98,3 +98,13 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* Tag list */
+.tag-list {
+  margin-top: 10px;
+}
+
+/* Wish Button */
+.go-top {
+  transform: translateY(-50px);
+}

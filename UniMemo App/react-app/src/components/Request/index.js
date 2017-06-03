@@ -6,9 +6,9 @@ import React from 'react'
 // });
 import { connect } from 'react-redux'
 
-import RequestMeta from './RequestMeta'
-import HelperList from './HelperList'
+import UnitMeta from '../common/UnitMeta'
 import CommentContainer from '../common/CommentContainer'
+import HelperList from './HelperList'
 import agent from '../../agent'
 
 import {
@@ -99,8 +99,8 @@ class Request extends React.Component {
           <div className='container'>
             <h1>{request.text}</h1>
 
-            <RequestMeta
-              request={request}
+            <UnitMeta
+              unit={request}
               canModify={canModify} />
           </div>
         </div>
