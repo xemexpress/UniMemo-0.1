@@ -9,6 +9,7 @@ import contentList from './reducers/contentList'
 import request from './reducers/request'
 import requestEditor from './reducers/requestEditor'
 import gift from './reducers/gift'
+import giftEditor from './reducers/giftEditor'
 import { promiseMiddleware, localStorageMiddleware } from './middleware'
 
 const reducer = combineReducers({
@@ -20,7 +21,8 @@ const reducer = combineReducers({
   contentList,
   request,
   requestEditor,
-  gift
+  gift,
+  giftEditor
 })
 
 const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware)

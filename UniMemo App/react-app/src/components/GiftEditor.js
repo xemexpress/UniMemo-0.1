@@ -1,0 +1,215 @@
+import React from 'react'
+import { connect } from 'react-redux'
+
+import TagList from './common/TagList'
+
+import {
+  GIFT_EDITOR_UNLOADED,
+  UPDATE_FIELD_GIFT,
+  ADD_TAG_GIFT,
+  REMOVE_TAG_GIFT
+} from '../constants/actionTypes'
+
+const mapStateToProps = state => ({
+  ...state.giftEditor
+})
+
+const mapDispatchToProps = dispatch => ({
+  onUnload: () => dispatch({
+    type: GIFT_EDITOR_UNLOADED
+  }),
+  onUpdateField: (key, value) => dispatch({
+    type: UPDATE_FIELD_GIFT,
+    key,
+    value
+  }),
+  onAddTag: tag => dispatch({
+    type: ADD_TAG_GIFT,
+    tag
+  }),
+  onRemoveTag: () => dispatch({
+    type: REMOVE_TAG_GIFT
+  })
+})
+
+class GiftEditor extends React.Component {
+  constructor(){
+    super()
+
+    this.state = {
+      checked: false
+    }
+
+    this.expand = () => this.setState({
+      checked: !this.state.checked
+    })
+
+    this.changeText = ev => this.props.onUpdateField('text', ev.target.value)
+    this.changeReceiver = ev => this.props.onUpdateField('receiver', ev.target.value)
+    this.changeExpireAt = ev => this.props.onUpdateField('expireAt', ev.target.value)
+    this.changeAccess = ev => this.props.onUpdateField('access', ev.target.value)
+    this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
+    this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
+
+    this.watchForEnter = ev => {
+      if(ev.keyCode === 13 && ['personal', 'public', 'openpublic', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
+        ev.preventDefault()
+        this.props.onAddTag()
+      }
+    }
+
+    this.removeTag = tag => ev => {
+      ev.preventDefault()
+      this.props.onRemoveTag(tag)
+    }
+
+    this.submitForm = ev => {
+
+    }
+  }
+
+  render(){
+    return (
+      <div className='editor-page'>
+        <div className='container page'>
+          <div className='row'>
+            <div className='col-md-10 offset-md-1 col-xs-12'>
+
+              {/* <ListErrors errors={this.props.error} /> */}
+
+              <form>
+                <fieldset>
+                  <fieldset className='form-group'>
+                    <textarea
+                      className='form-control form-control-lg'
+                      rows='5'
+                      placeholder='What could this gift offer'
+                      value={this.props.text}
+                      onChange={this.changeText} />
+                  </fieldset>
+
+                  <label htmlFor='toggleReceiver'>
+                    <strong>Optional:</strong> Set its receiver
+                  </label>
+                  &nbsp;&nbsp;
+                  <input
+                    id='toggleReceiver'
+                    type='checkbox'
+                    checked={this.state.checked}
+                    onChange={this.expand} />
+
+                  <div id='expand'>
+                    <fieldset className='form-group'>
+                      Receiver:
+                      <input
+                        className='form-control form-control-lg'
+                        type='text'
+                        value={this.props.receiver}
+                        onChange={this.changeReceiver} />
+                    </fieldset>
+                  </div>
+
+
+                  <fieldset className='form-group'>
+                    Available before:
+                    <input
+                      className='form-control form-control-lg'
+                      type='datetime-local'
+                      value={this.props.expireAt}
+                      onChange={this.changeExpireAt} />
+                  </fieldset>
+
+                  <div className='row'>
+                    <div className='col-md-3 col-xs-12'>
+                      <fieldset className='form-control form-control-label radio'>
+                        <label>
+                          <input
+                            type='radio'
+                            value='personal'
+                            checked={this.props.access === 'personal'}
+                            onChange={this.changeAccess} /> personal
+                        </label><br />
+                        <label>
+                          <input
+                            type='radio'
+                            value='public'
+                            checked={this.props.access === 'public'}
+                            onChange={this.changeAccess} /> public
+                        </label><br />
+                        <label>
+                          <input
+                            type='radio'
+                            value='openPublic'
+                            checked={this.props.access === 'openPublic'}
+                            onChange={this.changeAccess} /> openPublic
+                        </label><br />
+                      </fieldset>
+                      <div className='tag-list'>
+                        <span className='tag-default tag-pill tag-info'>
+                          {this.props.access}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className='col-md-9 col-xs-12'>
+                      <fieldset className='form-group'>
+                        <input
+                          className='form-control form-control-lg'
+                          rows='2'
+                          placeholder='Enter tags. Suggest one from &#39;giveOrLend&#39;, &#39;delivering&#39; & &#39;know&#39;(knowledge)'
+                          // except &#39;personal&#39;, &#39;public&#39;, &#39;openPublic&#39;
+                          value={this.props.tagInput}
+                          onChange={this.changeTagInput}
+                          onKeyUp={this.watchForEnter} />
+
+                        <TagList unit={this.props} removeTag={this.removeTag} />
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div className='text-xs-center'>
+                    <i className='ion-information-circled'></i>&nbsp;
+                    Get URL by uploading your custom pic&nbsp;
+                    <a
+                      className='nav-link'
+                      href='https://photouploads.com/'
+                      target='_blank'>here</a>
+                  </div>
+
+                  <fieldset className='form-group'>
+                    <input
+                      className='form-control form-control-lg'
+                      type='url'
+                      placeholder='An image URL if it helps (optional)'
+                      value={this.props.image}
+                      onChange={this.changeImage} />
+                  </fieldset>
+
+                  {
+                    this.props.image ?
+                      <img
+                        className='img-fluid'
+                        src={this.props.image}
+                        alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
+                  }
+
+                  <button
+                    className='btn btn-lg pull-xs-right btn-primary'
+                    type='button'
+                    onClick={this.submitForm}
+                    disabled={this.props.inProgress}>
+                    Post Gift
+                  </button>
+
+                </fieldset>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GiftEditor)

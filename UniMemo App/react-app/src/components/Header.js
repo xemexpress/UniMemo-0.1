@@ -46,6 +46,12 @@ const LoggedInView = props => {
         </li>
 
         <li className='nav-item'>
+          <Link to='giftEditor' className='nav-link'>
+            <i className='ion-android-happy'></i>&nbsp;New Gift
+          </Link>
+        </li>
+
+        <li className='nav-item'>
           <Link to='settings' className='nav-link'>
             <i className='ion-gear-a'></i>&nbsp;Settings
           </Link>
