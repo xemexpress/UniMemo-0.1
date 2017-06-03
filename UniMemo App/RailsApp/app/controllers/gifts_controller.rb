@@ -4,7 +4,7 @@ class GiftsController < ApplicationController
   before_action :find_gift!, except: [:index, :create]
 
   def index
-    @gifts = @gifts.received_by(current_user.username).tagged_with(params[:tag]) if params[:tag].present?
+    @gifts = @gifts.tagged_with(params[:tag]) if params[:tag].present?
 
     @gifts = @gifts.provided_by(params[:provider]) if params[:provider].present?
 
@@ -124,6 +124,7 @@ class GiftsController < ApplicationController
     @open_public_gifts = Gift.tagged_with("openPublic").map(&:gift_id)
     @gifts = Gift.all.related_to(@current_user_id).or(Gift.tagged(@open_public_gifts))
     @gifts.expired.find_each do |gift|
+      gift.tag_list.remove('openPublic').add('public') if gift.tag_list.include?('openPublic')
       gift.receiver = gift.provider
       gift.save!
     end

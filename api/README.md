@@ -435,7 +435,7 @@ Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
 Query Parameters:
 
-Filter by tag: *(Chosen from gifts received by Current User)*
+Filter by tag:
 
 `?tag=giveOrLend`
 
