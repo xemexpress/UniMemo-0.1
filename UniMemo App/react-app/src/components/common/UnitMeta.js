@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import RequestActions from '../Request/RequestActions'
+import GiftActions from '../Gift/GiftActions'
 
 const UnitMeta = props => {
   const canModify = props.canModify
@@ -25,15 +26,17 @@ const UnitMeta = props => {
       </div>
 
       {
-        canModify ?
-          (unit.requestId ?
-          <RequestActions
-            canModify={canModify}
-            request={unit} />
-          : null)
-        :null
+        canModify === null ? null
+        : unit.requestId ?
+        <RequestActions
+          isPoster={canModify}
+          request={unit} />
+        :
+        <GiftActions
+          isProvider={canModify}
+          gift={unit} />
       }
-  </div>
+    </div>
   )
 }
 
