@@ -40,7 +40,7 @@ export const SWITCH_TAKINGS = 'SWITCH_TAKINGS'
 export const TOGGLE_TYPES = 'TOGGLE_TYPES'
 export const GIFT_PAGE_LOADED = 'GIFT_PAGE_LOADED'
 export const GIFT_PAGE_UNLOADED = 'GIFT_PAGE_UNLOADED'
-// export const
+export const DELETE_GIFT = 'DELETE_GIFT'
 // export const
 // export const
 // export const

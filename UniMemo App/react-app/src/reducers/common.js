@@ -6,7 +6,8 @@ import {
   SAVE_SETTINGS,
   LOGOUT,
   DELETE_REQUEST,
-  SUBMIT_REQUEST
+  SUBMIT_REQUEST,
+  DELETE_GIFT
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -64,6 +65,11 @@ export default (state=defaultState, action) => {
       return {
         ...state,
         redirectTo: redirectURL
+      }
+    case DELETE_GIFT:
+      return {
+        ...state,
+        redirectTo: '/'
       }
     default:
   }
