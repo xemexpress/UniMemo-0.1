@@ -45,7 +45,7 @@ class RequestPreview extends React.Component {
     return (
       <div className='article-preview'>
         <div className='article-meta'>
-          <UnitMeta unit={request} />
+          <UnitMeta unit={request} preview={true} />
 
           <div className='pull-xs-right go-top'>
             <button

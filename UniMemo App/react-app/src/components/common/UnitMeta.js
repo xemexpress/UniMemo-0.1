@@ -9,7 +9,6 @@ const UnitMeta = props => {
   const unit = props.unit
   const unitHolder = unit.requestId ? unit.poster : unit.provider
 
-
   return (
     <div className='article-meta'>
       <Link to={`@${unitHolder.username}`}>
@@ -26,7 +25,7 @@ const UnitMeta = props => {
       </div>
 
       {
-        canModify === null ? null
+        props.preview ? null
         : unit.requestId ?
         <RequestActions
           isPoster={canModify}
@@ -36,6 +35,7 @@ const UnitMeta = props => {
           isProvider={canModify}
           gift={unit} />
       }
+
     </div>
   )
 }

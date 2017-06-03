@@ -9,7 +9,7 @@ const GiftPreview = props => {
 
   return (
     <div className='article-preview'>
-      <UnitMeta unit={gift} />
+      <UnitMeta unit={gift} preview={true} />
 
       <Link to={`gift/${gift.giftId}`} className='preview-link'>
         <h1>{gift.text}</h1>
