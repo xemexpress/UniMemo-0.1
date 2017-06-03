@@ -4,8 +4,12 @@
   transition: height 0.5s;
 }
 
-#toggle:checked ~ #expand {
+#toggleStart:checked ~ #expand {
   height: 200px;
+}
+
+#toggleReceiver:checked ~ #expand {
+  height: 100px;
 }
 
 .helper {
