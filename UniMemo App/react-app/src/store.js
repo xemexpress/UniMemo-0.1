@@ -3,11 +3,12 @@ import { applyMiddleware, createStore, combineReducers } from 'redux'
 import common from './reducers/common'
 import auth from './reducers/auth'
 import home from './reducers/home'
-import profile from './reducers/profile'
 import settings from './reducers/settings'
-import request from './reducers/request'
+import profile from './reducers/profile'
 import contentList from './reducers/contentList'
+import request from './reducers/request'
 import requestEditor from './reducers/requestEditor'
+import gift from './reducers/gift'
 import { promiseMiddleware, localStorageMiddleware } from './middleware'
 
 const reducer = combineReducers({
@@ -16,9 +17,10 @@ const reducer = combineReducers({
   home,
   profile,
   settings,
-  request,
   contentList,
-  requestEditor
+  request,
+  requestEditor,
+  gift
 })
 
 const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware)
