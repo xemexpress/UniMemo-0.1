@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false },
                        presence: true,
                        allow_blank: false,
+                       length: { maximum: 20 },
                        format: { with: /\A[a-zA-Z0-9]+\z/, message: ': only alphanumeric characters are allowed' }
   validates :bio, length: { maximum: 200 }
   validates :mobileNum, uniqueness: true,

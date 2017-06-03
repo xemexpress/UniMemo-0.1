@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
 
     if @request.save
       @request.request_id = rand(36**3).to_s(36) + Hashids.new("UniMemo").encode(@request.id) + rand(36**3).to_s(36)
-      @request.save
+      @request.save!
 
       render :show
     else

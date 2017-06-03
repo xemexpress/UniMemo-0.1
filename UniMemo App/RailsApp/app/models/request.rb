@@ -18,5 +18,5 @@ class Request < ApplicationRecord
   validates :tag_list, presence: true, allow_blank: false
   validates :end_time, presence: true, allow_blank: false
   validates :end_place, presence: true, allow_blank: false
-  validates :text, presence: true, allow_blank: false
+  validates :text, presence: true, allow_blank: false, length: { maxium: 100 }
 end
