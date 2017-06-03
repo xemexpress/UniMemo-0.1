@@ -1,7 +1,7 @@
 import {
   REQUEST_EDITOR_LOADED,
   UPDATE_FIELD_REQUEST,
-  EDITOR_PAGE_UNLOADED,
+  REQUEST_EDITOR_UNLOADED,
   ADD_TAG_REQUEST,
   REMOVE_TAG_REQUEST,
   ASYNC_START,
@@ -15,7 +15,8 @@ const defaultState = {
   endPlace: '',
   text: '',
   image: '',
-  tagInput: ''
+  tagInput: '',
+  tagList: []
 }
 
 export default (state=defaultState, action) => {
@@ -41,7 +42,7 @@ export default (state=defaultState, action) => {
     case ADD_TAG_REQUEST:
       return {
         ...state,
-        tagList: (state.tagList || []).concat([state.tagInput]),
+        tagList: state.tagList.concat([state.tagInput]),
         tagInput: ''
       }
     case REMOVE_TAG_REQUEST:
@@ -63,7 +64,7 @@ export default (state=defaultState, action) => {
         inProgress: false,
         error: action.error ? action.payload.errors : null
       }
-    case EDITOR_PAGE_UNLOADED:
+    case REQUEST_EDITOR_UNLOADED:
       return defaultState
     default:
   }

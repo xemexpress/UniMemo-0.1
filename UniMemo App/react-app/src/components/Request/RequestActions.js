@@ -115,9 +115,10 @@ class RequestActions extends React.Component {
           <button
             className={request.taking ? 'btn btn-sm btn-info' : 'btn btn-sm btn-outline-info'}
             onClick={this.handleTake(request)}>
-            <i className='ion-android-happy'></i>&nbsp;
             {
-              request.taking ? 'Untake' : 'Take'
+              request.taking ?
+              <span><i className='ion-android-checkmark-circle'></i>&nbsp;Untake</span>
+                :<span><i className='ion-android-radio-button-off'></i>&nbsp;Take</span>
             }
           </button>
         </span>
