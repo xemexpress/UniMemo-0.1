@@ -72,7 +72,7 @@ class RequestActions extends React.Component {
   render(){
     const request = this.props.request
 
-    if(this.props.canModify){
+    if(this.props.isPoster){
       return (
         <span>
           {

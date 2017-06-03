@@ -90,7 +90,7 @@ class Request extends React.Component {
       __html: text
     }
 
-    const canModify = this.props.currentUser &&
+    const isPoster = this.props.currentUser &&
       this.props.currentUser.username === request.poster.username
 
     return (
@@ -101,7 +101,7 @@ class Request extends React.Component {
 
             <UnitMeta
               unit={request}
-              canModify={canModify} />
+              canModify={isPoster} />
           </div>
         </div>
 
