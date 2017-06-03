@@ -99,7 +99,9 @@ const Gifts = {
   providedBy: (username, page) =>
     requests.get(`/user/gifts?provider=${username}&${limit(PER_PAGE, page)}`),
   receivedBy: (username, page) =>
-    requests.get(`/user/gifts?receiver=${username}&${limit(PER_PAGE, page)}`)
+    requests.get(`/user/gifts?receiver=${username}&${limit(PER_PAGE, page)}`),
+  get: giftId =>
+    requests.get(`/user/gifts/${giftId}`)
 }
 
 const Comments = {
