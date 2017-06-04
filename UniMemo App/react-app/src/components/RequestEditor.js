@@ -233,13 +233,17 @@ class RequestEditor extends React.Component {
                       onChange={this.changeImage} />
                   </fieldset>
 
-                  {
-                    this.props.image ?
-                      <img
-                        className='img-fluid'
-                        src={this.props.image}
-                        alt='preview' /> : null
-                  }
+                  <div className='row'>
+                    <div className='col-md-6 offset-md-3 col-xs-12'>
+                      {
+                        this.props.image ?
+                          <img
+                            className='img-fluid'
+                            src={this.props.image}
+                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
+                      }
+                    </div>
+                  </div>
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'

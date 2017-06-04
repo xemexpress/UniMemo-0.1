@@ -82,6 +82,7 @@ class Gift extends React.Component {
                   </div>
                 : null
               }
+              
             </div>
           </div>
         </div>

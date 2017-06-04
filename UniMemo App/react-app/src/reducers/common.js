@@ -7,7 +7,8 @@ import {
   LOGOUT,
   DELETE_REQUEST,
   SUBMIT_REQUEST,
-  DELETE_GIFT
+  DELETE_GIFT,
+  SUBMIT_GIFT
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -61,16 +62,27 @@ export default (state=defaultState, action) => {
           ...state
         }
       }
-      const redirectURL = `request/${action.payload.request.requestId}`
+      let redirectRequestURL = `request/${action.payload.request.requestId}`
       return {
         ...state,
-        redirectTo: redirectURL
+        redirectTo: redirectRequestURL
       }
     case DELETE_GIFT:
       return {
         ...state,
         redirectTo: '/'
       }
+      case SUBMIT_GIFT:
+        if(action.error){
+          return {
+            ...state
+          }
+        }
+        let redirectGiftURL = `gift/${action.payload.gift.giftId}`
+        return {
+          ...state,
+          redirectTo: redirectGiftURL
+        }
     default:
   }
   return state

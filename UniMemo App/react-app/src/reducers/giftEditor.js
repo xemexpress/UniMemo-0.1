@@ -2,7 +2,9 @@ import {
   GIFT_EDITOR_UNLOADED,
   UPDATE_FIELD_GIFT,
   ADD_TAG_GIFT,
-  REMOVE_TAG_GIFT
+  REMOVE_TAG_GIFT,
+  ASYNC_START,
+  SUBMIT_GIFT
 } from '../constants/actionTypes'
 
 const defaultState = {
@@ -41,6 +43,20 @@ export default (state=defaultState, action) => {
       return {
         ...state,
         tagList: state.tagList.filter(tag => tag !== action.tag)
+      }
+    case ASYNC_START:
+      if(action.subtype === SUBMIT_GIFT){
+        return {
+          ...state,
+          inProgress: true
+        }
+      }
+      break
+    case SUBMIT_GIFT:
+      return {
+        ...state,
+        inProgress: false,
+        error: action.error ? action.payload.errors : null
       }
     default:
   }

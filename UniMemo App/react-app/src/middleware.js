@@ -13,6 +13,7 @@ const promiseMiddleware = store => next => action => {
       type: ASYNC_START,
       subtype: action.type
     })
+    
     action.payload.then(
       res => {
         action.payload = res
@@ -43,7 +44,7 @@ const localStorageMiddleware = store => next => action => {
     window.localStorage.setItem('jwt', '')
     agent.setToken(null)
   }
-  
+
   next(action)
 }
 

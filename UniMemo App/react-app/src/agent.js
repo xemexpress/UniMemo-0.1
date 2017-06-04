@@ -103,7 +103,9 @@ const Gifts = {
   get: giftId =>
     requests.get(`/user/gifts/${giftId}`),
   del: giftId =>
-    requests.del(`/user/gifts/${giftId}`)
+    requests.del(`/user/gifts/${giftId}`),
+  create: gift =>
+    requests.post('/user/gifts', { gift })
 }
 
 const Comments = {

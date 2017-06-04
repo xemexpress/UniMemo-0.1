@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import ListErrors from './common/ListErrors'
 import TagList from './common/TagList'
+import agent from '../agent'
 
 import {
   GIFT_EDITOR_UNLOADED,
   UPDATE_FIELD_GIFT,
   ADD_TAG_GIFT,
-  REMOVE_TAG_GIFT
+  REMOVE_TAG_GIFT,
+  SUBMIT_GIFT
 } from '../constants/actionTypes'
 
 const mapStateToProps = state => ({
@@ -29,6 +32,10 @@ const mapDispatchToProps = dispatch => ({
   }),
   onRemoveTag: () => dispatch({
     type: REMOVE_TAG_GIFT
+  }),
+  onSubmit: gift => dispatch({
+    type: SUBMIT_GIFT,
+    payload: agent.Gifts.create(gift)
   })
 })
 
@@ -64,8 +71,32 @@ class GiftEditor extends React.Component {
     }
 
     this.submitForm = ev => {
+      ev.preventDefault()
 
+      let gift
+      if(this.props.receiver){
+        gift = {
+          tag_list: [this.props.access].concat(this.props.tagList),
+          text: this.props.text,
+          image: this.props.image,
+          expire_at: this.props.expireAt,
+          receiver: { username: this.props.receiver }
+        }
+      }else{
+        gift = {
+          tag_list: [this.props.access].concat(this.props.tagList),
+          text: this.props.text,
+          image: this.props.image,
+          expire_at: this.props.expireAt
+        }
+      }
+
+      this.props.onSubmit(gift)
     }
+  }
+
+  componentWillUnmount(){
+    this.props.onUnload()
   }
 
   render(){
@@ -75,7 +106,7 @@ class GiftEditor extends React.Component {
           <div className='row'>
             <div className='col-md-10 offset-md-1 col-xs-12'>
 
-              {/* <ListErrors errors={this.props.error} /> */}
+              <ListErrors errors={this.props.error} />
 
               <form>
                 <fieldset>
@@ -185,13 +216,17 @@ class GiftEditor extends React.Component {
                       onChange={this.changeImage} />
                   </fieldset>
 
-                  {
-                    this.props.image ?
-                      <img
-                        className='img-fluid'
-                        src={this.props.image}
-                        alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
-                  }
+                  <div className='row'>
+                    <div className='col-md-6 offset-md-3 col-xs-12'>
+                      {
+                        this.props.image ?
+                          <img
+                            className='img-fluid'
+                            src={this.props.image}
+                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
+                      }
+                    </div>
+                  </div>
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'
