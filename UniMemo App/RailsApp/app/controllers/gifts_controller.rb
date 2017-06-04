@@ -134,7 +134,7 @@ class GiftsController < ApplicationController
 
   def fix_expired
     @open_public_gifts = Gift.tagged_with("openPublic").map(&:gift_id)
-    @gifts = Gift.all.related_to(@current_user_id).or(Gift.tagged(@open_public_gifts))
+    @gifts = Gift.related_to(@current_user_id).or(Gift.tagged(@open_public_gifts))
     @gifts.expired.find_each do |gift|
       gift.tag_list.remove('openPublic').add('public') if gift.tag_list.include?('openPublic')
       gift.receiver = gift.provider

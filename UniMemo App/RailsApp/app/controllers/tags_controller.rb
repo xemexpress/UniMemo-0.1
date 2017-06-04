@@ -3,7 +3,7 @@ class TagsController < ApplicationController
     @requests = Request.all.tagged_with('ongoing')
 
     @open_public_gifts = Gift.tagged_with("openPublic").map(&:gift_id)
-    @gifts = Gift.where(receiver: current_user).or(Gift.tagged(@open_public_gifts))
+    @gifts = Gift.related_to(@current_user_id).or(Gift.tagged(@open_public_gifts)).where.not(provider: current_user)
 
     if params[:tag] == 'requests'
       render json: {
