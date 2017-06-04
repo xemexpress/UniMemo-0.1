@@ -142,55 +142,65 @@ class RequestEditor extends React.Component {
                       onChange={this.changeText} />
                   </fieldset>
 
-                  <label htmlFor='toggleStart'>
+                  <label htmlFor='toggle'>
                     <strong>Optional:</strong> Set when it starts
                   </label>
                   &nbsp;&nbsp;
                   <input
-                    id='toggleStart'
+                    id='toggle'
                     type='checkbox'
                     checked={this.state.checked}
                     onChange={this.expand} />
 
                   <div id='expand'>
-                    <fieldset className='form-group'>
-                      Start Time:
-                      <input
-                        className='form-control form-control-lg'
-                        type='datetime-local'
-                        value={this.props.startTime}
-                        onChange={this.changeStartTime} />
-                    </fieldset>
-
-                    <fieldset className='form-group'>
-                      Start Place:
-                      <input
-                        className='form-control form-control-lg'
-                        type='text'
-                        placeholder='Where it starts (Optional)'
-                        value={this.props.startPlace}
-                        onChange={this.changeStartPlace} />
-                    </fieldset>
+                    <div className='row'>
+                      <div className='col-md-4 col-xs-12'>
+                        <fieldset className='form-group'>
+                          Start Time:
+                          <input
+                            className='form-control form-control-lg'
+                            type='datetime-local'
+                            value={this.props.startTime}
+                            onChange={this.changeStartTime} />
+                        </fieldset>
+                      </div>
+                      <div className='col-md-8 col-xs-12'>
+                        <fieldset className='form-group'>
+                          Start Place:
+                          <input
+                            className='form-control form-control-lg'
+                            type='text'
+                            placeholder='Where it starts (Optional)'
+                            value={this.props.startPlace}
+                            onChange={this.changeStartPlace} />
+                        </fieldset>
+                      </div>
+                    </div>
                   </div>
 
-                  <fieldset className='form-group'>
-                    End Time:
-                    <input
-                      className='form-control form-control-lg'
-                      type='datetime-local'
-                      value={this.props.endTime}
-                      onChange={this.changeEndTime} />
-                  </fieldset>
-
-                  <fieldset className='form-group'>
-                    End Place:
-                    <input
-                      className='form-control form-control-lg'
-                      type='text'
-                      placeholder='Where to do it'
-                      value={this.props.endPlace}
-                      onChange={this.changeEndPlace} />
-                  </fieldset>
+                  <div className='row'>
+                    <div className='col-md-4 col-xs-12'>
+                      <fieldset className='form-group'>
+                        End Time:
+                        <input
+                          className='form-control form-control-lg'
+                          type='datetime-local'
+                          value={this.props.endTime}
+                          onChange={this.changeEndTime} />
+                      </fieldset>
+                    </div>
+                    <div className='col-md-8 col-xs-12'>
+                      <fieldset className='form-group'>
+                        End Place:
+                        <input
+                          className='form-control form-control-lg'
+                          type='text'
+                          placeholder='Where to do it'
+                          value={this.props.endPlace}
+                          onChange={this.changeEndPlace} />
+                      </fieldset>
+                    </div>
+                  </div>
 
                   <fieldset className='form-group'>
                     <input

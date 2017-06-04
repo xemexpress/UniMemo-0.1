@@ -88,12 +88,12 @@ class GiftEditor extends React.Component {
                       onChange={this.changeText} />
                   </fieldset>
 
-                  <label htmlFor='toggleReceiver'>
+                  <label htmlFor='toggle'>
                     <strong>Optional:</strong> Set its receiver
                   </label>
                   &nbsp;&nbsp;
                   <input
-                    id='toggleReceiver'
+                    id='toggle'
                     type='checkbox'
                     checked={this.state.checked}
                     onChange={this.expand} />
