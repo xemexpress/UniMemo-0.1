@@ -118,7 +118,7 @@ class Profile extends React.Component {
             <Link
               className='nav-link'
               to={`@${this.props.profile.username}/taken`}>
-              My Undertakings
+              <i className='ion-ios-analytics-outline'></i>&nbsp;My Undertakings
             </Link>
           </li>
           : null
@@ -128,7 +128,7 @@ class Profile extends React.Component {
           <Link
             className='nav-link active'
             to={`@${this.props.profile.username}`}>
-            My Requests
+            <i className='ion-ios-pulse-strong'></i>&nbsp;My Requests
           </Link>
         </li>
 
@@ -136,7 +136,7 @@ class Profile extends React.Component {
           <Link
             className='nav-link'
             to={`@${this.props.profile.username}/wishes`}>
-            Wished Requests
+            <i className='ion-help-buoy'></i>&nbsp;Wished Requests
           </Link>
         </li>
       </ul>

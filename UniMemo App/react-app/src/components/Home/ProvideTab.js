@@ -31,14 +31,14 @@ class ProvideTab extends React.Component {
             <a
               className={this.state.using ? 'nav-link' : 'nav-link active'}
               onClick={this.state.using ? this.handleProvide : null}>
-              Gifts I've sent
+              <i className='ion-android-send'></i>&nbsp;Gifts I've sent
             </a>
           </li>
           <li className='nav-item'>
             <a
               className={this.state.using ? 'nav-link active' : 'nav-link'}
               onClick={this.state.using ? null : this.handleProvide}>
-              Gifts not sent
+              <i className='ion-cube'></i>&nbsp;Gifts not sent
             </a>
           </li>
         </div>
@@ -49,7 +49,7 @@ class ProvideTab extends React.Component {
           <a
             className='nav-link'
             onClick={this.handleProvide}>
-            Gifts I provide
+            <i className='ion-wand'></i>&nbsp;Gifts I provide
           </a>
         </li>
       )

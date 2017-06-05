@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { CollectionTab, GlobalFeedTab, TagTab } from './RequestTabs'
 import ProvideTab from './ProvideTab'
 import ReceiveTab from './ReceiveTab'
 import UnitsList from '../common/UnitsList'
@@ -11,56 +12,6 @@ import {
   TOGGLE_TYPES,
   SET_PAGE
 } from '../../constants/actionTypes'
-
-// Request Tabs
-const YourCollectionTab = props => {
-  if(props.currentUser){
-    const handleCollect = ev => {
-      ev.preventDefault()
-      props.onTabClick('collect', agent.Requests.collect())
-    }
-    return (
-      <li className='nav-item'>
-        <a
-          className={props.tab === 'collect' ? 'nav-link active' : 'nav-link'}
-          onClick={handleCollect}>
-          Your Collection
-        </a>
-      </li>
-    )
-  }
-  return null
-}
-
-const GlobalFeedTab = props => {
-  const handleAll = ev => {
-    ev.preventDefault()
-    props.onTabClick('all', agent.Requests.all())
-  }
-  return (
-    <li className='nav-item'>
-      <a
-        className={props.tab === 'all' ? 'nav-link active' : 'nav-link'}
-        onClick={handleAll}>
-        Global Feed
-      </a>
-    </li>
-  )
-}
-
-const TagTab = props => {
-  if(!props.tag){
-    return null
-  }
-
-  return (
-    <li className='nav-item'>
-      <a className='nav-link active'>
-        <i className='ion-pound'></i>&nbsp;{props.tag}
-      </a>
-    </li>
-  )
-}
 
 const mapStateToProps = state => ({
   ...state.contentList,
@@ -134,7 +85,7 @@ class MainView extends React.Component {
             {
               this.state.loadRequest ?
               <span>
-                <YourCollectionTab
+                <CollectionTab
                   currentUser={currentUser}
                   tab={this.props.tab}
                   onTabClick={this.props.onTabClick} />

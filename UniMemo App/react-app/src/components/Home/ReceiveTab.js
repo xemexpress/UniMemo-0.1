@@ -31,14 +31,14 @@ class ReceiveTab extends React.Component {
             <a
               className={this.state.using ? 'nav-link' : 'nav-link active'}
               onClick={this.state.using ? this.handleReceive : null}>
-              Gifts I've received
+              <i className='ion-waterdrop'></i>&nbsp;Gifts I've received
             </a>
           </li>
           <li className='nav-item'>
             <a
               className={this.state.using ? 'nav-link active' : 'nav-link'}
               onClick={this.state.using ? null : this.handleReceive}>
-              Gifts I could get
+              <i className='ion-bonfire'></i>&nbsp;Gifts I could get
             </a>
           </li>
         </div>
@@ -49,7 +49,7 @@ class ReceiveTab extends React.Component {
           <a
             className='nav-link'
             onClick={this.handleReceive}>
-            Gifts I could use
+            <i className='ion-umbrella'></i>&nbsp;Gifts I could use
           </a>
         </li>
       )
