@@ -7,6 +7,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import UnitMeta from '../common/UnitMeta'
+import TagList from '../common/TagList'
 import CommentContainer from '../common/CommentContainer'
 import HelperList from './HelperList'
 import agent from '../../agent'
@@ -102,6 +103,8 @@ class Request extends React.Component {
             <UnitMeta
               unit={request}
               canModify={isPoster} />
+
+            <TagList unit={request} />
           </div>
         </div>
 
@@ -124,20 +127,6 @@ class Request extends React.Component {
               <hr />
 
               <div dangerouslySetInnerHTML={markup}></div>
-
-              <ul className='tag-list'>
-                {
-                  request.tagList.map(tag => {
-                    return (
-                      <li
-                        className='tag-default tag-pill tag-outline'
-                        key={tag}>
-                        {tag}
-                      </li>
-                    )
-                  })
-                }
-              </ul>
 
               <hr />
 

@@ -15,8 +15,9 @@ const defaultState = {
   endPlace: '',
   text: '',
   image: '',
+  requestId: undefined,
   tagInput: '',
-  tagList: []
+  tagList: ['ongoing']
 }
 
 export default (state=defaultState, action) => {
@@ -24,16 +25,18 @@ export default (state=defaultState, action) => {
     case REQUEST_EDITOR_LOADED:
       return {
         ...state,
-        requestId: action.payload ? action.payload.request.requestId : undefined,
-        startTime: action.payload ? action.payload.request.startTime ? new Date(action.payload.request.startTime).toISOString().slice(0,16) : '' : '',
-        startPlace: action.payload ? action.payload.request.startPlace : '',
-        endTime: action.payload ? new Date(action.payload.request.endTime).toISOString().slice(0,16) : '',
-        endPlace: action.payload ? action.payload.request.endPlace : '',
-        text: action.payload ? action.payload.request.text : '',
-        image: action.payload ? action.payload.request.image : '',
+        requestId: action.payload.request.requestId,
+        startTime: action.payload.request.startTime ? new Date(action.payload.request.startTime).toISOString().slice(0,16) : '',
+        startPlace: action.payload.request.startPlace,
+        endTime: new Date(action.payload.request.endTime).toISOString().slice(0,16),
+        endPlace: action.payload.request.endPlace,
+        text: action.payload.request.text,
+        image: action.payload.request.image,
         tagInput: '',
-        tagList: action.payload ? action.payload.request.tagList : ['ongoing']
+        tagList: action.payload.request.tagList
       }
+    case REQUEST_EDITOR_UNLOADED:
+      return defaultState
     case UPDATE_FIELD_REQUEST:
       return {
         ...state,
@@ -64,8 +67,6 @@ export default (state=defaultState, action) => {
         inProgress: false,
         error: action.error ? action.payload.errors : null
       }
-    case REQUEST_EDITOR_UNLOADED:
-      return defaultState
     default:
   }
   return state

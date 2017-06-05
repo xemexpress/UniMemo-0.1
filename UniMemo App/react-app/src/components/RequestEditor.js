@@ -100,12 +100,11 @@ class RequestEditor extends React.Component {
 
   componentWillReceiverProps(nextProps){
     if(this.props.params.requestId !== nextProps.params.requestId){
+      this.props.onUnload()
       if(nextProps.params.requestId){
-        this.props.onUnload()
         this.setState({ checked: true })
         return this.props.onLoad(agent.Requests.get(this.props.params.requestId))
       }
-      this.props.onLoad(null)
     }
   }
 
@@ -115,7 +114,7 @@ class RequestEditor extends React.Component {
       this.setState({ checked: true })
       return
     }
-    this.props.onLoad(null)
+    this.props.onUnload()
   }
 
   componentWillUnmount(){
@@ -250,7 +249,7 @@ class RequestEditor extends React.Component {
                     type='button'
                     onClick={this.submitForm}
                     disabled={this.props.inProgress}>
-                    Post Request
+                    { this.props.requestId ? 'Update Request' : 'Post Request' }
                   </button>
 
                 </fieldset>

@@ -22,11 +22,6 @@ const TagList = ({ unit, removeTag, payload }) => {
           if(statusList.indexOf(tag) !== -1){
             return (
               <li className='tag-default tag-pill tag-info' key={tag}>
-                { // Skipped if no removeTag
-                  removeTag ?
-                  <i className='ion-close-round' onClick={removeTag(tag)}></i>
-                  : null
-                }
                 {tag}
               </li>
             )
@@ -48,7 +43,7 @@ const TagList = ({ unit, removeTag, payload }) => {
             <li
               className='tag-default tag-pill tag-outline' key={tag}
               onClick={handleClick}>
-              {
+              { // Skipped if no removeTag
                 removeTag ?
                 <i className='ion-close-round' onClick={removeTag(tag)}></i>
                 : null

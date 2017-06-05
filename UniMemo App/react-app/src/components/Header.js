@@ -1,5 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
+
+import {
+  REQUEST_EDITOR_UNLOADED
+} from '../constants/actionTypes'
 
 const LoggedOutView = props => {
   if(!props.currentUser){
@@ -34,7 +39,7 @@ const LoggedInView = props => {
         </li>
 
         <li className='nav-item'>
-          <Link to='requestEditor' className='nav-link'>
+          <Link to='requestEditor' className='nav-link' onClick={props.onEmptyEditor}>
             <i className='ion-compose'></i>&nbsp;New Request
           </Link>
         </li>
@@ -67,6 +72,12 @@ const LoggedInView = props => {
   return null
 }
 
+const mapDispatchToProps = dispatch => ({
+  onEmptyEditor: () => dispatch({
+    type: REQUEST_EDITOR_UNLOADED
+  })
+})
+
 const Header = props => {
   return (
     <nav className='navbar navbar-sticky-top navbar-light'>
@@ -77,11 +88,13 @@ const Header = props => {
         </Link>
 
         <LoggedOutView currentUser={props.currentUser} />
-        <LoggedInView currentUser={props.currentUser} />
+        <LoggedInView
+          currentUser={props.currentUser}
+          onEmptyEditor={props.onEmptyEditor} />
 
       </div>
     </nav>
   )
 }
 
-export default Header
+export default connect(()=>({}), mapDispatchToProps)(Header)
