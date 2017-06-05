@@ -15,13 +15,17 @@ class Statement extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentPage: state.contentList.currentPage
+  appName: state.common.appName,
+  currentPage: state.contentList.currentPage,
+  token: state.common.token
 })
 
 const Banner = props => {
+  const bannerClasses = props.token ? 'banner' : 'banner full-screen'
+  const containerClasses = props.token ? 'container' : 'container center'
   return (
-    <div className='banner'>
-      <div className='container'>
+    <div className={bannerClasses}>
+      <div className={containerClasses}>
         <h1 className='logo-font'>
           {props.appName}
         </h1>

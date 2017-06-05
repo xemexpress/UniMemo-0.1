@@ -14,8 +14,7 @@ import {
 
 const mapStateToProps = state => ({
   ...state.home,
-  token: state.common.token,
-  appName: state.common.appName
+  token: state.common.token
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -36,11 +35,13 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount(){
-    const tab = this.props.token ? 'collect' : 'all'
-    const requestsPromise = this.props.token ?
-      agent.Requests.collect() : agent.Requests.all()
+    if(this.props.token){
+      const tab = this.props.token ? 'collect' : 'all'
+      const requestsPromise = this.props.token ?
+        agent.Requests.collect() : agent.Requests.all()
 
-    this.props.onLoad(tab, Promise.all([agent.Tags.getRequests(), requestsPromise]))
+      this.props.onLoad(tab, Promise.all([agent.Tags.getRequests(), requestsPromise]))
+    }
   }
 
   componentWillUnmount(){
@@ -48,28 +49,35 @@ class Home extends React.Component {
   }
 
   render(){
-    return (
-      <div className='home-page'>
+    if(this.props.token){
+      return (
+        <div className='home-page'>
 
-        <Banner appName={this.props.appName} />
+          <Banner />
 
-        <div className='container page'>
-          <div className='row'>
-            <MainView />
+          <div className='container page'>
+            <div className='row'>
+              <MainView />
 
-            <div className='col-md-3'>
-              <div className='sidebar'>
-                <p>Popular Tags</p>
-              
-                <Tags
-                  tagType={this.props.tagType}
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
+              <div className='col-md-3'>
+                <div className='sidebar'>
+                  <p>Popular Tags</p>
+
+                  <Tags
+                    tagType={this.props.tagType}
+                    tags={this.props.tags}
+                    onClickTag={this.props.onClickTag} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
+        </div>
+      )
+    }
+    return (
+      <div className='home-page'>
+        <Banner />
       </div>
     )
   }
