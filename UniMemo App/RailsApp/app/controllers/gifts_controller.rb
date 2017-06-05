@@ -129,7 +129,7 @@ class GiftsController < ApplicationController
   end
 
   def find_gift!
-    @gift = @gifts.find_by_gift_id!(params[:gift_id])
+    @gift = Gift.find_by_gift_id!(params[:gift_id])
   end
 
   def fix_expired

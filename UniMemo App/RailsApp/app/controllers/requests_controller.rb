@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :fix_expired_and_old, except: [:create]
+  before_action :find_request!, only: [:show, :update, :destroy]
 
   def index
     @requests = Request.includes(:poster, :helper)
@@ -59,12 +60,9 @@ class RequestsController < ApplicationController
   end
 
   def show
-      @request = Request.find_by_request_id!(params[:request_id])
   end
 
   def update
-    @request = Request.find_by_request_id!(params[:request_id])
-
     if @request.poster_id == @current_user_id
       @request.update_attributes(request_params)
 
@@ -75,8 +73,6 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request = Request.find_by_request_id!(params[:request_id])
-
     if @request.poster_id == @current_user_id
       @request.destroy
 
@@ -90,6 +86,10 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:start_time, :start_place, :end_time, :end_place, :text, :image, tag_list: [])
+  end
+
+  def find_request!
+    @request = Request.find_by_request_id!(params[:request_id])
   end
 
   def fix_expired_and_old
