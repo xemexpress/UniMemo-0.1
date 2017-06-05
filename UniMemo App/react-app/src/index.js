@@ -33,7 +33,7 @@ ReactDOM.render((
         <Route path='requestEditor' component={RequestEditor} />
         <Route path='requestEditor/:requestId' component={RequestEditor} />
         <Route path='giftEditor' component={GiftEditor} />
-        {/* <Route path='giftEditor/:giftId' component={GiftEditor} /> */}
+        <Route path='giftEditor/:giftId' component={GiftEditor} />
       </Route>
     </Router>
   </Provider>

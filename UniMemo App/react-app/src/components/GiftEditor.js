@@ -6,6 +6,7 @@ import TagList from './common/TagList'
 import agent from '../agent'
 
 import {
+  GIFT_EDITOR_LOADED,
   GIFT_EDITOR_UNLOADED,
   UPDATE_FIELD_GIFT,
   ADD_TAG_GIFT,
@@ -18,6 +19,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  onLoad: payload => dispatch({
+    type: GIFT_EDITOR_LOADED,
+    payload
+  }),
   onUnload: () => dispatch({
     type: GIFT_EDITOR_UNLOADED
   }),
@@ -33,9 +38,9 @@ const mapDispatchToProps = dispatch => ({
   onRemoveTag: () => dispatch({
     type: REMOVE_TAG_GIFT
   }),
-  onSubmit: gift => dispatch({
+  onSubmit: payload => dispatch({
     type: SUBMIT_GIFT,
-    payload: agent.Gifts.create(gift)
+    payload
   })
 })
 
@@ -91,7 +96,30 @@ class GiftEditor extends React.Component {
         }
       }
 
-      this.props.onSubmit(gift)
+      const giftId = this.props.giftId
+      const payload = giftId ?
+        agent.Gifts.update(Object.assign(gift, { giftId })):
+        agent.Gifts.create(gift)
+
+      this.props.onSubmit(payload)
+    }
+  }
+
+  componentWillMount(){
+    if(this.props.params.giftId){
+      this.props.onLoad(agent.Gifts.get(this.props.params.giftId))
+      this.setState({ checked: true })
+    }
+  }
+
+  componentWillReceiverProps(nextProps){
+    if(this.props.params.giftId !== nextProps.params.giftId){
+      this.props.onUnload()
+      this.setState({ checked: false })
+      if(nextProps.params.giftId){
+        this.setState({ checked: true })
+        this.props.onLoad(agent.Gifts.get(this.props.params.giftId))
+      }
     }
   }
 
@@ -131,7 +159,7 @@ class GiftEditor extends React.Component {
 
                   <div id='expand'>
                     <fieldset className='form-group'>
-                      Receiver:
+                      Receiver: <i className='pull-xs-right'>(if your username's in this field, meaning it hasn't been sent)</i>
                       <input
                         className='form-control form-control-lg'
                         type='text'
@@ -188,7 +216,7 @@ class GiftEditor extends React.Component {
                           className='form-control form-control-lg'
                           rows='2'
                           placeholder='Enter tags. Suggest one from &#39;giveOrLend&#39;, &#39;delivering&#39; & &#39;know&#39;(knowledge)'
-                          // except &#39;personal&#39;, &#39;public&#39;, &#39;openPublic&#39;
+                          // except status tags, e.g. personal, public, openPublic
                           value={this.props.tagInput}
                           onChange={this.changeTagInput}
                           onKeyUp={this.watchForEnter} />
@@ -223,7 +251,8 @@ class GiftEditor extends React.Component {
                           <img
                             className='img-fluid'
                             src={this.props.image}
-                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
+                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' />
+                          : null
                       }
                     </div>
                   </div>
@@ -233,9 +262,8 @@ class GiftEditor extends React.Component {
                     type='button'
                     onClick={this.submitForm}
                     disabled={this.props.inProgress}>
-                    Post Gift
+                    { this.props.giftId ? 'Update' : 'Post' } Gift
                   </button>
-
                 </fieldset>
               </form>
 

@@ -1,4 +1,5 @@
 import {
+  GIFT_EDITOR_LOADED,
   GIFT_EDITOR_UNLOADED,
   UPDATE_FIELD_GIFT,
   ADD_TAG_GIFT,
@@ -12,6 +13,7 @@ const defaultState = {
   image: '',
   expireAt: '',
   receiver: '',
+  giftId: undefined,
   access: 'personal',
   tagInput: '',
   tagList: []
@@ -19,6 +21,24 @@ const defaultState = {
 
 export default (state=defaultState, action) => {
   switch(action.type){
+    case GIFT_EDITOR_LOADED:
+      const access = [], tagList = []
+      action.payload.gift.tagList.forEach(tag => {
+        if(['personal', 'public', 'openPublic'].indexOf(tag) !== -1){
+          return access.push(tag)
+        }
+        tagList.push(tag)
+      })
+      return {
+        giftId: action.payload.gift.giftId,
+        text: action.payload.gift.text,
+        image: action.payload.gift.image || '',
+        expireAt: new Date(action.payload.gift.expireAt).toISOString().slice(0,16),
+        receiver: action.payload.gift.receiver.username,
+        access: access[0],
+        tagInput: '',
+        tagList: tagList
+      }
     case GIFT_EDITOR_UNLOADED:
       return defaultState
     case UPDATE_FIELD_GIFT:

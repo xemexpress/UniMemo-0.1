@@ -105,7 +105,9 @@ const Gifts = {
   del: giftId =>
     requests.del(`/user/gifts/${giftId}`),
   create: gift =>
-    requests.post('/user/gifts', { gift })
+    requests.post('/user/gifts', { gift }),
+  update: gift =>
+    requests.put(`/user/gifts/${gift.giftId}`, { gift })
 }
 
 const Comments = {

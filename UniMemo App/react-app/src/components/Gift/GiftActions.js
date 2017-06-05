@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import agent from '../../agent'
 
@@ -28,16 +29,23 @@ class GiftActions extends React.Component {
 
     if(this.props.isProvider){
       return (
-        <button
-          className='btn btn-sm btn-outline-danger'
-          onClick={this.handleDel(gift)}>
-          <i className='ion-trash-a'></i> Delete Gift
-        </button>
+        <span>
+          <Link
+            to={`giftEditor/${gift.giftId}`}
+            className='btn btn-sm btn-outline-secondary'>
+            <i className='ion-edit'></i>&nbsp;Edit Gift
+          </Link>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            className='btn btn-sm btn-outline-danger'
+            onClick={this.handleDel(gift)}>
+            <i className='ion-trash-a'></i>&nbsp;Delete Gift
+          </button>
+        </span>
       )
     }else{
       return null
     }
-
   }
 }
 
