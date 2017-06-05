@@ -90,20 +90,21 @@ class RequestEditor extends React.Component {
       }
 
       const requestId = this.props.requestId
-      const promise = requestId ?
+      const payload = requestId ?
         agent.Requests.update(Object.assign(request, { requestId })):
         agent.Requests.create(request)
 
-      this.props.onSubmit(promise)
+      this.props.onSubmit(payload)
     }
   }
 
   componentWillReceiverProps(nextProps){
     if(this.props.params.requestId !== nextProps.params.requestId){
       this.props.onUnload()
+      this.setState({ checked: false })
       if(nextProps.params.requestId){
         this.setState({ checked: true })
-        return this.props.onLoad(agent.Requests.get(this.props.params.requestId))
+        this.props.onLoad(agent.Requests.get(this.props.params.requestId))
       }
     }
   }
@@ -112,9 +113,7 @@ class RequestEditor extends React.Component {
     if(this.props.params.requestId){
       this.props.onLoad(agent.Requests.get(this.props.params.requestId))
       this.setState({ checked: true })
-      return
     }
-    this.props.onUnload()
   }
 
   componentWillUnmount(){
@@ -206,7 +205,7 @@ class RequestEditor extends React.Component {
                       className='form-control form-control-lg'
                       type='text'
                       placeholder='Enter tags. Recommend choosing 1 from &#39;delivering&#39;, &#39;production&#39; & &#39;shopping&#39;'
-                      // except &#39;ongoing&#39;, &#39;ongoing-taken&#39;, &#39;done&#39;
+                      // except status tags, e.g. ongoing, ongoing-taken, done
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter} />
@@ -239,7 +238,8 @@ class RequestEditor extends React.Component {
                           <img
                             className='img-fluid'
                             src={this.props.image}
-                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' /> : null
+                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' />
+                          : null
                       }
                     </div>
                   </div>
@@ -249,9 +249,8 @@ class RequestEditor extends React.Component {
                     type='button'
                     onClick={this.submitForm}
                     disabled={this.props.inProgress}>
-                    { this.props.requestId ? 'Update Request' : 'Post Request' }
+                    { this.props.requestId ? 'Update' : 'Post' } Request
                   </button>
-
                 </fieldset>
               </form>
 

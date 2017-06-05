@@ -27,11 +27,11 @@ export default (state=defaultState, action) => {
         ...state,
         requestId: action.payload.request.requestId,
         startTime: action.payload.request.startTime ? new Date(action.payload.request.startTime).toISOString().slice(0,16) : '',
-        startPlace: action.payload.request.startPlace,
+        startPlace: action.payload.request.startPlace || '',
         endTime: new Date(action.payload.request.endTime).toISOString().slice(0,16),
         endPlace: action.payload.request.endPlace,
         text: action.payload.request.text,
-        image: action.payload.request.image,
+        image: action.payload.request.image || '',
         tagInput: '',
         tagList: action.payload.request.tagList
       }

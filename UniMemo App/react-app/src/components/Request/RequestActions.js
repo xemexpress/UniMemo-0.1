@@ -81,13 +81,13 @@ class RequestActions extends React.Component {
               <Link
                 to={`requestEditor/${request.requestId}`}
                 className='btn btn-sm btn-outline-secondary'>
-                <i className='ion-edit'></i> Edit Request
+                <i className='ion-edit'></i>&nbsp;Edit Request
               </Link>
               &nbsp;&nbsp;&nbsp;
               <button
                 className='btn btn-sm btn-outline-danger'
                 onClick={this.handleDel(request)}>
-                <i className='ion-trash-a'></i> Delete Request
+                <i className='ion-trash-a'></i>&nbsp;Delete Request
               </button>
             </span>
             : request.tagList.indexOf('ongoing-taken') !== -1 ?
