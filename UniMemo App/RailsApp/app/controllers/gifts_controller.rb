@@ -10,6 +10,11 @@ class GiftsController < ApplicationController
 
     @gifts = @gifts.received_by(params[:receiver]) if params[:receiver].present?
 
+    if params[:using].present?
+      @gifts = @gifts.where.not(receiver_id:  @current_user_id) if ['sent', 'nReceived'].index(params[:using])
+      @gifts = @gifts.where(receiver_id: @current_user_id) if ['nSent', 'received'].index(params[:using])
+    end
+
     @gifts_count = @gifts.count
 
     @gifts = @gifts.order(updated_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)

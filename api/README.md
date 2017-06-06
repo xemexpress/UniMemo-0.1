@@ -447,6 +447,10 @@ Filter by receiver:
 
 `?receiver=xemexpress`
 
+Filter by using ('sent' relates to 'Gifts sent'; 'received' to 'Gifts received'; 'nSent' to 'not sent'; 'nReceived' to 'not received'):
+
+`?using=sent`
+
 Limit number of gifts (default is 10):
 
 `?limit=10`
