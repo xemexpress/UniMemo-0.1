@@ -13,6 +13,7 @@ import {
 } from '../../constants/actionTypes'
 
 const mapStateToProps = state => ({
+  currentUser: state.common.currentUser,
   memErrors: state.request.memErrors
 })
 
@@ -72,7 +73,10 @@ class RequestActions extends React.Component {
   render(){
     const request = this.props.request
 
-    if(this.props.isPoster){
+    const isPoster = this.props.currentUser &&
+      this.props.currentUser.username === request.poster.username
+
+    if(isPoster){
       return (
         <span>
           {
@@ -118,7 +122,7 @@ class RequestActions extends React.Component {
             {
               request.taking ?
               <span><i className='ion-android-checkmark-circle'></i>&nbsp;Untake</span>
-                :<span><i className='ion-android-radio-button-off'></i>&nbsp;Take</span>
+              : <span><i className='ion-android-radio-button-off'></i>&nbsp;Take</span>
             }
           </button>
         </span>

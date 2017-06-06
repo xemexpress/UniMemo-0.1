@@ -47,7 +47,7 @@ export const GIFT_EDITOR_UNLOADED = 'GIFT_EDITOR_UNLOADED'
 export const ADD_TAG_GIFT = 'ADD_TAG_GIFT'
 export const REMOVE_TAG_GIFT = 'REMOVE_TAG_GIFT'
 export const SUBMIT_GIFT = 'SUBMIT_GIFT'
-// export const
+export const UPDATE_GIFT = 'UPDATE_GIFT'
 // export const
 // export const
 // export const

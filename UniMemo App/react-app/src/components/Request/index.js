@@ -91,18 +91,13 @@ class Request extends React.Component {
       __html: text
     }
 
-    const isPoster = this.props.currentUser &&
-      this.props.currentUser.username === request.poster.username
-
     return (
       <div className='article-page'>
         <div className='banner'>
           <div className='container'>
             <h1>{request.text}</h1>
 
-            <UnitMeta
-              unit={request}
-              canModify={isPoster} />
+            <UnitMeta unit={request} />
 
             <TagList unit={request} />
           </div>

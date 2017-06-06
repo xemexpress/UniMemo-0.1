@@ -5,7 +5,6 @@ import RequestActions from '../Request/RequestActions'
 import GiftActions from '../Gift/GiftActions'
 
 const UnitMeta = props => {
-  const canModify = props.canModify
   const unit = props.unit
   const unitHolder = unit.requestId ? unit.poster : unit.provider
 
@@ -27,13 +26,9 @@ const UnitMeta = props => {
       {
         props.preview ? null
         : unit.requestId ?
-        <RequestActions
-          isPoster={canModify}
-          request={unit} />
+        <RequestActions request={unit} />
         :
-        <GiftActions
-          isProvider={canModify}
-          gift={unit} />
+        <GiftActions gift={unit} />
       }
 
     </div>

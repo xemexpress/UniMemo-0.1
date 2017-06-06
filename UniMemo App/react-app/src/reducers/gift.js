@@ -1,6 +1,7 @@
 import {
   GIFT_PAGE_LOADED,
-  GIFT_PAGE_UNLOADED
+  GIFT_PAGE_UNLOADED,
+  UPDATE_GIFT
 } from '../constants/actionTypes'
 
 export default (state={}, action) => {
@@ -12,6 +13,11 @@ export default (state={}, action) => {
       }
     case GIFT_PAGE_UNLOADED:
       return {}
+    case UPDATE_GIFT:
+      return {
+        ...state,
+        gift: action.error ? null : action.payload.gift
+      }
     default:
   }
   return state

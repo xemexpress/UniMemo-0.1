@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import UnitMeta from '../common/UnitMeta'
 import TagList from '../common/TagList'
+import ReceiverList from './ReceiverList'
 import agent from '../../agent'
 
 import {
@@ -43,7 +44,12 @@ class Gift extends React.Component {
 
     const text = `
       <div>
-        You may use it before:&nbsp;<strong>${new Date(gift.expireAt).toDateString()}</strong>
+        ${
+          gift.provider.username === this.props.currentUser.username ?
+          'People could use it before: '
+          : 'You may use it before: '
+        }
+        <strong>${new Date(gift.expireAt).toDateString()}</strong>
       </div>
     `
 
@@ -51,18 +57,13 @@ class Gift extends React.Component {
       __html: text
     }
 
-    const canModify = this.props.currentUser &&
-      this.props.currentUser.username === gift.provider.username
-
     return (
       <div className='article-page'>
         <div className='banner'>
           <div className='container'>
             <h1>{gift.text}</h1>
 
-            <UnitMeta
-              unit={gift}
-              canModify={canModify} />
+            <UnitMeta unit={gift} />
 
             <TagList unit={gift} />
 
@@ -72,6 +73,8 @@ class Gift extends React.Component {
         <div className='container page'>
           <div className='row article-content'>
             <div className='col-xs-12'>
+              <ReceiverList gift={gift} currentUser={this.props.currentUser} />
+
               <div dangerouslySetInnerHTML={markup}></div>
               <hr />
 
@@ -82,7 +85,6 @@ class Gift extends React.Component {
                   </div>
                 : null
               }
-              
             </div>
           </div>
         </div>
