@@ -514,7 +514,7 @@ Notes:
 - When Receivers update their received Gift (as the only action), it will be returned to its provider and `public` tag (if any) will be switched to `openPublic`.
 - When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`.
 
-### Toggle Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
+### Switch Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
 
 `GET /api/user/gifts/:gift_id/switch`
 
