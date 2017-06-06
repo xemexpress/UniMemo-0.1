@@ -50,7 +50,13 @@ const Profile = {
 }
 
 const limit = (count, page=0) => `limit=${count}&offset=${page * count}`
-const omitRequestId = request => Object.assign(request, { request_id: undefined })
+const omitUnitId = unit => {
+  if(unit.requestId){
+    return Object.assign(unit, { requestId: undefined })
+  }else{
+    return Object.assign(unit, { giftId: undefined })
+  }
+}
 
 const Requests = {
   all: page =>
@@ -72,7 +78,7 @@ const Requests = {
   get: requestId =>
     requests.get(`/requests/${requestId}`),
   update: request =>
-    requests.put(`/requests/${request.requestId}`, { request: omitRequestId(request) }),
+    requests.put(`/requests/${request.requestId}`, { request: omitUnitId(request) }),
   create: request =>
     requests.post('/requests', { request }),
   del: requestId =>
@@ -107,7 +113,7 @@ const Gifts = {
   create: gift =>
     requests.post('/user/gifts', { gift }),
   update: gift =>
-    requests.put(`/user/gifts/${gift.giftId}`, { gift })
+    requests.put(`/user/gifts/${gift.giftId}`, { gift: omitUnitId(gift) })
 }
 
 const Comments = {
