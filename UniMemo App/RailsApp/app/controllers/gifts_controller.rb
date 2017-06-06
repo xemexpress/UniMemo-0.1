@@ -71,7 +71,7 @@ class GiftsController < ApplicationController
       render :show
     elsif @gift.receiver_id == @current_user_id
       @gift.receiver = User.find_by_username!(@gift.provider.username)
-      @gift.tag_list.remove('openPublic').add('public') if @gift.tag_list.include?('openPublic')
+      @gift.tag_list.remove('public').add('openPublic') if @gift.tag_list.include?('public')
       @gift.save!
 
       render :show
@@ -129,7 +129,7 @@ class GiftsController < ApplicationController
   end
 
   def find_gift!
-    @gift = Gift.find_by_gift_id!(params[:gift_id])
+    @gift = @gifts.find_by_gift_id!(params[:gift_id])
   end
 
   def fix_expired
