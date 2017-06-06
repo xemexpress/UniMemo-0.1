@@ -4,7 +4,7 @@ class GiftsController < ApplicationController
   before_action :find_gift!, except: [:index, :create]
 
   def index
-    @gifts = @gifts.where.not(provider: current_user).tagged_with(params[:tag]) if params[:tag].present?
+    @gifts = @gifts.where.not("provider_id = :user_id and receiver_id = :user_id", { user_id: @current_user_id }).tagged_with(params[:tag]) if params[:tag].present?
 
     @gifts = @gifts.provided_by(params[:provider]) if params[:provider].present?
 
