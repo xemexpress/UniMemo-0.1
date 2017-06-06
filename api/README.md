@@ -511,7 +511,7 @@ Authentication required, returns the updated [Gift](#single-gift)
 Optional fields: `text`, `image`, `expire_at`, `receiver` (accepting an object with `username`), `tag_list`
 
 Notes:
-- When Receivers update their received Gift (as the only action), it will be returned to its provider.
+- When Receivers update their received Gift (as the only action), it will be returned to its provider and `public` tag (if any) will be switched to `openPublic`.
 - When Users update an OpenPublic Gift, it will be received instantly by them with the `openPublic` tag switched back to `public`.
 
 ### Toggle Gift's Access Tag: 'personal' <-> 'public' (for providers); 'public' <-> 'openPublic' (for receivers)
