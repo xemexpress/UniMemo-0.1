@@ -113,7 +113,9 @@ const Gifts = {
   create: gift =>
     requests.post('/user/gifts', { gift }),
   update: gift =>
-    requests.put(`/user/gifts/${gift.giftId}`, { gift: omitUnitId(gift) })
+    requests.put(`/user/gifts/${gift.giftId}`, { gift: omitUnitId(gift) }),
+  switch: giftId =>
+    requests.get(`/user/gifts/${giftId}/switch`)
 }
 
 const Comments = {

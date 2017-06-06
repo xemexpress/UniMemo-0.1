@@ -195,13 +195,13 @@ class GiftEditor extends React.Component {
                             checked={this.props.access === 'public'}
                             onChange={this.changeAccess} /> public
                         </label><br />
-                        <label>
+                        {/* <label>
                           <input
                             type='radio'
                             value='openPublic'
                             checked={this.props.access === 'openPublic'}
                             onChange={this.changeAccess} /> openPublic
-                        </label><br />
+                        </label><br /> */}
                       </fieldset>
                       <div className='tag-list'>
                         <span className='tag-default tag-pill tag-info'>

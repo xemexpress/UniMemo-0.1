@@ -73,8 +73,7 @@ class RequestActions extends React.Component {
   render(){
     const request = this.props.request
 
-    const isPoster = this.props.currentUser &&
-      this.props.currentUser.username === request.poster.username
+    const isPoster = this.props.currentUser.username === request.poster.username
 
     if(isPoster){
       return (
@@ -101,7 +100,7 @@ class RequestActions extends React.Component {
                 className='mem'
                 type='number'
                 value={this.state.mem}
-                onChange={this.setMem} />&nbsp;minutes.&nbsp;&nbsp;
+                onChange={this.setMem} />&nbsp;minutes.&nbsp;&nbsp;&nbsp;
               <button
                 className='btn btn-outline-danger'
                 onClick={this.handleEnd(request, this.state.mem)}>

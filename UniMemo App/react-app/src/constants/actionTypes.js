@@ -48,7 +48,7 @@ export const ADD_TAG_GIFT = 'ADD_TAG_GIFT'
 export const REMOVE_TAG_GIFT = 'REMOVE_TAG_GIFT'
 export const SUBMIT_GIFT = 'SUBMIT_GIFT'
 export const UPDATE_GIFT = 'UPDATE_GIFT'
-// export const
+export const SWITCH_ACCESS_GIFT = 'SWITCH_ACCESS_GIFT'
 // export const
 // export const
 // export const
