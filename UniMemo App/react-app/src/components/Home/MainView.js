@@ -19,20 +19,18 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onTabClick: (tab, payload, currentUserName=null, using=null) => dispatch({
+  onTabClick: (tab, payload) => dispatch({
     type: CHANGE_TAB,
     tab,
-    payload,
-    currentUserName,
-    using
+    payload
   }),
   onToggle: payload => dispatch({
     type: TOGGLE_TYPES,
     payload
   }),
-  onSetPage: (p, payload) => dispatch({
+  onSetPage: (page, payload) => dispatch({
     type: SET_PAGE,
-    page: p,
+    page,
     payload
   })
 })
@@ -47,26 +45,34 @@ class MainView extends React.Component {
 
     this.handleToggle = () => {
       if(this.state.loadRequest){
-        this.props.onTabClick('provide', agent.Gifts.providedBy(this.props.currentUser.username), this.props.currentUser.username, true)
         this.props.onToggle(agent.Tags.getGifts())
+        this.props.onTabClick(
+          'provide-sent',
+          agent.Gifts.providedBy(this.props.currentUser.username, 'sent')
+        )
       }else{
-        this.props.onTabClick('collect', agent.Requests.collect())
         this.props.onToggle(agent.Tags.getRequests())
+        this.props.onTabClick(
+          'collect',
+          agent.Requests.collect()
+        )
       }
       this.setState({loadRequest: !this.state.loadRequest})
     }
   }
 
   onSetPage(page){
+    const tab = this.props.tab, tag = this.props.tag
+
     let payload
     if(this.state.loadRequest){
-      payload = this.props.tab === 'all' ? agent.Requests.all(page) :
-        this.props.tag ? agent.Requests.byTag(this.props.tag, page) :
+      payload = tab === 'all' ? agent.Requests.all(page) :
+        tag ? agent.Requests.byTag(tag, page) :
         agent.Requests.collect(page)
     }else{
-      payload = this.props.tab === 'provide' ? agent.Gifts.providedBy(this.props.currentUser.username, page) :
-        this.props.tag ? agent.Gifts.byTag(this.props.tag, page) :
-        agent.Gifts.receivedBy(this.props.currentUser.username, page)
+      payload = tab.startsWith('provide') ? agent.Gifts.providedBy(this.props.currentUser.username, tab.slice(8) ,page) :
+        tag ? agent.Gifts.byTag(tag, page) :
+        agent.Gifts.receivedBy(this.props.currentUser.username, tab.slice(8) ,page)
     }
 
     this.props.onSetPage(page, payload)

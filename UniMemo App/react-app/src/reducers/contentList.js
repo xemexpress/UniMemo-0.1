@@ -54,77 +54,41 @@ export default (state={}, action) => {
           giftsCount: null,
           currentPage: 0
         }
-      }else if(action.using){
-        if(action.tab === 'provide'){
-          // Gifts I've sent
-          return {
-            ...state,
-            tag: null,
-            tab: action.tab,
-            requests: null,
-            requestsCount: null,
-            gifts: action.payload.gifts.filter(gift =>
-              gift.receiver.username !== action.currentUserName
-            ),
-            giftsCount: action.payload.giftsCount,
-            currentPage: 0
-          }
-        }else{
-          // Gifts I've received
-          return {
-            ...state,
-            tag: null,
-            tab: action.tab,
-            requests: null,
-            requestsCount: null,
-            gifts: action.payload.gifts.filter(gift =>
-              gift.receiver !== gift.provider && gift.receiver.username === action.currentUserName
-            ),
-            giftsCount: action.payload.giftsCount,
-            currentPage: 0
-          }
-        }
       }else{
-        if(action.tab === 'provide'){
-          // Gifts not sent
-          return {
-            ...state,
-            tag: null,
-            tab: action.tab,
-            requests: null,
-            requestsCount: null,
-            gifts: action.payload.gifts.filter(gift =>
-              gift.receiver.username === action.currentUserName
-            ),
-            giftsCount: action.payload.giftsCount,
-            currentPage: 0
-          }
-        }else{
-          // Gifts I could get
-          return {
-            ...state,
-            tag: null,
-            tab: action.tab,
-            requests: null,
-            requestsCount: null,
-            gifts: action.payload.gifts.filter(gift =>
-              gift.receiver.username !== action.currentUserName
-            ),
-            giftsCount: action.payload.giftsCount,
-            currentPage: 0
-          }
+        return {
+          ...state,
+          tag: null,
+          tab: action.tab,
+          requests: null,
+          requestsCount: null,
+          gifts: action.payload.gifts,
+          giftsCount: action.payload.giftsCount,
+          currentPage: 0
         }
       }
     case APPLY_TAG_FILTER:
-      return {
-        ...state,
-        tag: action.tag,
-        tab: null,
-        requests: action.payload.requests ? action.payload.requests : null,
-        requestsCount: action.payload.requestsCount ? action.payload.requestsCount : null,
-        gifts: action.payload.gifts ? action.payload.gifts : null,
-        giftsCount: action.payload.giftsCount ? action.payload.giftsCount : null,
-        currentPage: 0
+      if(action.payload.requests){
+        return {
+          ...state,
+          tag: action.tag,
+          tab: null,
+          requests: action.payload.requests,
+          requestsCount: action.payload.requestsCount,
+          gifts: null,
+          giftsCount: null,
+          currentPage: 0
+        }
+      }else{
+        return {
+          ...state,
+          tag: action.tag,
+          tab: null,
+          requests: null,
+          requestsCount: null,
+          gifts: action.payload.gifts,
+          giftsCount: action.payload.giftsCount,
+          currentPage: 0
+        }
       }
     case WISH_REQUEST:
     case UNWISH_REQUEST:

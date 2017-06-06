@@ -102,10 +102,10 @@ const Requests = {
 const Gifts = {
   byTag: (tag, page) =>
     requests.get(`/user/gifts?tag=${tag}&${limit(PER_PAGE, page)}`),
-  providedBy: (username, page) =>
-    requests.get(`/user/gifts?provider=${username}&${limit(PER_PAGE, page)}`),
-  receivedBy: (username, page) =>
-    requests.get(`/user/gifts?receiver=${username}&${limit(PER_PAGE, page)}`),
+  providedBy: (username, using, page) =>
+    requests.get(`/user/gifts?provider=${username}&using=${using}&${limit(PER_PAGE, page)}`),
+  receivedBy: (username, using, page) =>
+    requests.get(`/user/gifts?receiver=${username}&using=${using}&${limit(PER_PAGE, page)}`),
   get: giftId =>
     requests.get(`/user/gifts/${giftId}`),
   del: giftId =>
