@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
+import ToGetPicUrl from './common/ToGetPicUrl'
 import agent from '../agent'
 
 import {
@@ -22,7 +23,6 @@ class SettingsForm extends React.Component {
     }
 
     this.updateState = field => ev => {
-      // const newState = Object.assign(this.state, { [field]: ev.target.value })
       this.setState({ [field]: ev.target.value })
     }
 
@@ -39,26 +39,26 @@ class SettingsForm extends React.Component {
   }
 
   componentWillMount(){
-    if(this.props.currentUser){
-      this.setState({
-        proPic: this.props.currentUser.proPic || '',
-        username: this.props.currentUser.username,
-        bio: this.props.currentUser.bio || '',
-        mobileNum: this.props.currentUser.mobileNum || ''
-      })
-    }
+    this.setState({
+      proPic: this.props.currentUser.proPic || '',
+      username: this.props.currentUser.username,
+      bio: this.props.currentUser.bio || '',
+      mobileNum: this.props.currentUser.mobileNum || ''
+    })
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.currentUser){
-      this.setState({
-        proPic: nextProps.currentUser.proPic || '',
-        username: nextProps.currentUser.username,
-        bio: nextProps.currentUser.bio || '',
-        mobileNum: nextProps.currentUser.mobileNum || ''
-      })
-    }
-  }
+  // In case you want to stay without redirectTo '/' after successful updates.
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.currentUser){
+  //     this.setState({
+  //       proPic: nextProps.currentUser.proPic || '',
+  //       username: nextProps.currentUser.username,
+  //       bio: nextProps.currentUser.bio || '',
+  //       password: '',
+  //       mobileNum: nextProps.currentUser.mobileNum || ''
+  //     })
+  //   }
+  // }
 
   render(){
     return (
@@ -139,63 +139,52 @@ const mapDispatchToProps = dispatch => ({
 
 class Settings extends React.Component {
   render(){
-    return (
-      <div className='settings-page'>
-        <div className='container page'>
-          <div className='row'>
-            <div className='col-md-6 offset-md-3 col-xs-12'>
+    const currentUser = this.props.currentUser
+    if(currentUser){
+      return (
+        <div className='settings-page'>
+          <div className='container page'>
+            <div className='row'>
+              <div className='col-md-6 offset-md-3 col-xs-12'>
 
-              <h1 className='text-xs-center'>
-                Your Settings
-              </h1>
-
-              {
-                this.props.currentUser ?
                   <div className='text-xs-center'>
-                    <i className='ion-star'></i>&nbsp;
-                    {this.props.currentUser.yellowStars}&nbsp;&nbsp;
-                    Mem&nbsp;
-                    {this.props.currentUser.mem}
-                    <br />
+                    <h1>Your Settings</h1>
+
+                    <i className='ion-star'></i> {currentUser.yellowStars}&nbsp;&nbsp;
+
+                    Mem {currentUser.mem}<br />
+
                     <img
                       className='img-fluid'
-                      src={ this.props.currentUser.proPic ? this.props.currentUser.proPic : 'https://photouploads.com/images/350646.png' }
-                      alt={`${this.props.currentUser.username}'s proPic`} />
-                  </div> : null
-              }
+                      src={ currentUser.proPic ? this.props.currentUser.proPic : 'https://photouploads.com/images/350646.png' }
+                      alt={`${currentUser.username}'s proPic`} /><br />
 
-              <br />
+                    <ToGetPicUrl />
+                  </div>
 
-              <div className='text-xs-center'>
-                <i className='ion-information-circled'></i>&nbsp;
-                Get URL by uploading your custom pic&nbsp;
-                <a
-                  className='nav-link'
-                  href='https://photouploads.com/'
-                  target='_blank'>here</a>
+                  <hr />
+
+                  <ListErrors errors={this.props.errors} />
+
+                  <SettingsForm
+                    currentUser={currentUser}
+                    onSubmitForm={this.props.onSubmitForm} />
+
+                  <hr />
+
+                  <button
+                    className='btn btn-outline-danger'
+                    onClick={this.props.onClickLogout}>
+                    Or click here to logout.
+                  </button>
+
               </div>
-
-              <hr />
-
-              <ListErrors errors={this.props.errors} />
-
-              <SettingsForm
-                currentUser={this.props.currentUser}
-                onSubmitForm={this.props.onSubmitForm} />
-
-              <hr />
-
-              <button
-                className='btn btn-outline-danger'
-                onClick={this.props.onClickLogout}>
-                Or click here to logout.
-              </button>
-
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    }
+    return null
   }
 }
 

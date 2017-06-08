@@ -10,6 +10,32 @@ import {
   DELETE_COMMENT
 } from '../../../constants/actionTypes'
 
+const CommentActions = props => {
+  if(props.show){
+    return (
+      <span className='mod-options'>
+        {/* Delete Button */}
+        <i className='ion-trash-a' onClick={props.del}></i>&nbsp;
+
+        {/* Update-Submit Button */}
+        {
+          props.canEdit ?
+          <button
+            className='btn btn-sm btn-primary'
+            onClick={props.updateComment}>
+            Update Comment
+          </button>
+          :
+          <span className='mod-options'>
+            <i className='ion-edit' onClick={props.enableEdit}></i>
+          </span>
+        }
+      </span>
+    )
+  }
+  return null
+}
+
 const mapDispatchToProps = dispatch => ({
   onDel: (payload, commentId) => dispatch({
     type: DELETE_COMMENT,
@@ -30,7 +56,7 @@ class Comment extends React.Component {
       body: props.comment.body
     }
 
-    this.canEdit = ev => {
+    this.enableEdit = ev => {
       ev.preventDefault()
       this.setState({
         canEdit: true
@@ -63,8 +89,7 @@ class Comment extends React.Component {
 
   render(){
     const comment = this.props.comment
-    const show = this.props.currentUser &&
-      comment.author.username === this.props.currentUser.username
+    const show = this.props.currentUser.username === comment.author.username
 
     return (
       <div className='card'>
@@ -104,35 +129,12 @@ class Comment extends React.Component {
             {new Date(comment.createdAt).toDateString()}
           </span>
 
-          {
-            // Delete Button
-            show ?
-            <span className='mod-options'>
-              <i className='ion-trash-a' onClick={this.del}></i>
-            </span>
-            : null
-          }
-          &nbsp;
-          {
-            // Update-Submit Button
-            show ?
-            <span className='mod-options'>
-              {
-                this.state.canEdit ?
-                <button
-                  className='btn btn-sm btn-primary'
-                  onClick={this.updateComment}>
-                  Update Comment
-                </button>
-                :
-                <span className='mod-options'>
-                  <i className='ion-edit' onClick={this.canEdit}></i>
-                </span>
-              }
-            </span>
-            :
-            null
-          }
+          <CommentActions
+            show={show}
+            canEdit={this.state.canEdit}
+            del={this.del}
+            enableEdit={this.enableEdit}
+            updateComment={this.updateComment} />
         </div>
 
       </div>

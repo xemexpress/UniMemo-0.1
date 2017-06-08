@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
 import TagList from './common/TagList'
+import ToGetPicUrl from './common/ToGetPicUrl'
 import agent from '../agent'
 
 import {
@@ -213,14 +214,7 @@ class RequestEditor extends React.Component {
                     <TagList unit={this.props} removeTag={this.removeTag} />
                   </fieldset>
 
-                  <div className='text-xs-center'>
-                    <i className='ion-information-circled'></i>&nbsp;
-                    Get URL by uploading your custom pic&nbsp;
-                    <a
-                      className='nav-link'
-                      href='https://photouploads.com/'
-                      target='_blank'>here</a>
-                  </div>
+                  <ToGetPicUrl />
 
                   <fieldset className='form-group'>
                     <input
