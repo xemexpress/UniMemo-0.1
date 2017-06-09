@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { CollectionTab, GlobalFeedTab, TagTab } from './RequestTabs'
-import ProvideTab from './ProvideTab'
-import ReceiveTab from './ReceiveTab'
+import { ProvideTab, ReceiveTab } from './GiftTabs'
 import UnitsList from '../common/UnitsList'
 import agent from '../../agent'
 
