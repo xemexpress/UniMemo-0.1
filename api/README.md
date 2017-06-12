@@ -598,7 +598,7 @@ Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication required, returns [multiple Requests](#multiple-requests) posted by Users previously favored by Current User, ordered by most recent first.
+Authentication required, returns [multiple Requests](#multiple-requests) posted by favored Users and wished by favored Users, ordered by most recent first.
 
 ### List Requests taken by Current User
 

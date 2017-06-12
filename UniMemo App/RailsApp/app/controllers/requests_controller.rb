@@ -22,7 +22,9 @@ class RequestsController < ApplicationController
   end
 
   def collect
-    @requests = Request.includes(:poster).where(poster: current_user.following_users)
+    @requests_wished_by_favored_users = Request.where(id: Request.joins(:wishes).where(wishes: { user: current_user.following_users } ).pluck(:id))
+
+    @requests = Request.where(poster: current_user.following_users).or(@requests_wished_by_favored_users)
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
 
