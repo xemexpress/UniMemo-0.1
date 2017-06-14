@@ -122,3 +122,10 @@ input:checked + .slider:before {
 .go-top {
   transform: translateY(-50px);
 }
+
+/* Google Maps */
+.map {
+  width: 100%;
+  height: 30.5vw;
+  min-height: 200px;
+}

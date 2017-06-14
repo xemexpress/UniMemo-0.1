@@ -7,6 +7,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import UnitMeta from '../common/UnitMeta'
+import GoogleMap from '../common/Maps/GoogleMap'
 import TagList from '../common/TagList'
 import CommentContainer from '../common/CommentContainer'
 import HelperList from './HelperList'
@@ -121,7 +122,15 @@ class Request extends React.Component {
 
               <hr />
 
-              <div dangerouslySetInnerHTML={markup}></div>
+              <div className='row'>
+                <div className='col-md-5 col-xs-12'>
+                  <div dangerouslySetInnerHTML={markup}></div>
+                </div>
+
+                <div className='col-md-7 col-xs-12'>
+                  <GoogleMap startPlace={request.startPlace} endPlace={request.endPlace} />
+                </div>
+              </div>
 
               <hr />
 
