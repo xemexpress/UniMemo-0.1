@@ -19,7 +19,7 @@
 }
 
 #toggle:checked ~ #expand {
-  height: 100px;
+  height: 200px;
 }
 
 .helper {

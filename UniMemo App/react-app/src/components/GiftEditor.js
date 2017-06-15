@@ -159,8 +159,13 @@ class GiftEditor extends React.Component {
                     onChange={this.expand} />
 
                   <div id='expand'>
+                    <div>
+                      <i>Notes:</i>
+                      <p>- If your username's in this field, meaning it hasn't been sent yet.</p>
+                      <p>- Please ensure the username of the receiver is <strong>spelt right</strong>.</p>
+                    </div>
                     <fieldset className='form-group'>
-                      Receiver: <i className='pull-xs-right'>(if your username's in this field, meaning it hasn't been sent)</i>
+                      Receiver:
                       <input
                         className='form-control form-control-lg'
                         type='text'

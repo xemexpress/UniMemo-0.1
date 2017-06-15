@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
+import GoogleMap from './common/Maps/GoogleMap'
 import TagList from './common/TagList'
 import ToGetPicUrl from './common/ToGetPicUrl'
 import agent from '../agent'
@@ -50,6 +51,7 @@ class RequestEditor extends React.Component {
     super()
 
     this.state = {
+      first: true,
       checked: false
     }
 
@@ -104,7 +106,7 @@ class RequestEditor extends React.Component {
       this.props.onUnload()
       this.setState({ checked: false })
       if(nextProps.params.requestId){
-        this.setState({ checked: true })
+        this.setState({ checked: true, first: false })
         this.props.onLoad(agent.Requests.get(this.props.params.requestId))
       }
     }
@@ -113,7 +115,7 @@ class RequestEditor extends React.Component {
   componentWillMount(){
     if(this.props.params.requestId){
       this.props.onLoad(agent.Requests.get(this.props.params.requestId))
-      this.setState({ checked: true })
+      this.setState({ checked: true, first: false })
     }
   }
 
@@ -141,19 +143,19 @@ class RequestEditor extends React.Component {
                       onChange={this.changeText} />
                   </fieldset>
 
-                  <label htmlFor='toggle'>
-                    <strong>Optional:</strong> Set when it starts
-                  </label>
-                  &nbsp;&nbsp;
-                  <input
-                    id='toggle'
-                    type='checkbox'
-                    checked={this.state.checked}
-                    onChange={this.expand} />
+                  <div className='row'>
+                    <div className='col-md-6 col-xs-12'>
+                      <label htmlFor='toggle'>
+                        <strong>Optional:</strong> Set when it starts
+                      </label>
+                      &nbsp;&nbsp;
+                      <input
+                        id='toggle'
+                        type='checkbox'
+                        checked={this.state.checked}
+                        onChange={this.expand} />
 
-                  <div id='expand'>
-                    <div className='row'>
-                      <div className='col-md-4 col-xs-12'>
+                      <div id='expand'>
                         <fieldset className='form-group'>
                           Start Time:
                           <input
@@ -162,8 +164,6 @@ class RequestEditor extends React.Component {
                             value={this.props.startTime}
                             onChange={this.changeStartTime} />
                         </fieldset>
-                      </div>
-                      <div className='col-md-8 col-xs-12'>
                         <fieldset className='form-group'>
                           Start Place:
                           <input
@@ -174,11 +174,7 @@ class RequestEditor extends React.Component {
                             onChange={this.changeStartPlace} />
                         </fieldset>
                       </div>
-                    </div>
-                  </div>
 
-                  <div className='row'>
-                    <div className='col-md-4 col-xs-12'>
                       <fieldset className='form-group'>
                         End Time:
                         <input
@@ -187,8 +183,6 @@ class RequestEditor extends React.Component {
                           value={this.props.endTime}
                           onChange={this.changeEndTime} />
                       </fieldset>
-                    </div>
-                    <div className='col-md-8 col-xs-12'>
                       <fieldset className='form-group'>
                         End Place:
                         <input
@@ -199,7 +193,18 @@ class RequestEditor extends React.Component {
                           onChange={this.changeEndPlace} />
                       </fieldset>
                     </div>
+
+                    <div className='col-md-6 col-xs-12'>
+                      { this.state.first ?
+                        <GoogleMap startPlace={this.props.startPlace} endPlace={this.props.endPlace} />
+                        : this.props.endPlace ?
+                        <GoogleMap startPlace={this.props.startPlace} endPlace={this.props.endPlace} />
+                        : null
+                      }
+                    </div>
                   </div>
+
+                  <br />
 
                   <fieldset className='form-group'>
                     <input
