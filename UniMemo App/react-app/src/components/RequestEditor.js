@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ListErrors from './common/ListErrors'
 import GoogleMap from './common/Maps/GoogleMap'
 import TagList from './common/TagList'
-import ToGetPicUrl from './common/ToGetPicUrl'
+import HandleImage from './common/HandleImage'
 import agent from '../agent'
 
 import {
@@ -64,8 +64,9 @@ class RequestEditor extends React.Component {
     this.changeEndTime = ev => this.props.onUpdateField('endTime', ev.target.value)
     this.changeEndPlace = ev => this.props.onUpdateField('endPlace', ev.target.value)
     this.changeText = ev => this.props.onUpdateField('text', ev.target.value)
-    this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
+    this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
+    this.uploadImage = url => this.props.onUpdateField('image', url)
 
     this.watchForEnter = ev => {
       if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
@@ -205,7 +206,7 @@ class RequestEditor extends React.Component {
                   </div>
 
                   <br />
-
+                  Tags:
                   <fieldset className='form-group'>
                     <input
                       className='form-control form-control-lg'
@@ -218,30 +219,11 @@ class RequestEditor extends React.Component {
 
                     <TagList unit={this.props} removeTag={this.removeTag} />
                   </fieldset>
-
-                  <ToGetPicUrl />
-
-                  <fieldset className='form-group'>
-                    <input
-                      className='form-control form-control-lg'
-                      type='url'
-                      placeholder='An image URL (you may leave it if you don&#39;t have one)'
-                      value={this.props.image}
-                      onChange={this.changeImage} />
-                  </fieldset>
-
-                  <div className='row'>
-                    <div className='col-md-6 offset-md-3 col-xs-12'>
-                      {
-                        this.props.image ?
-                          <img
-                            className='img-fluid'
-                            src={this.props.image}
-                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' />
-                          : null
-                      }
-                    </div>
-                  </div>
+                  Image:
+                  <HandleImage
+                    image={this.props.image}
+                    changeImage={this.changeImage}
+                    uploadImage={this.uploadImage} />
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
 import TagList from './common/TagList'
-import ToGetPicUrl from './common/ToGetPicUrl'
+import HandleImage from './common/HandleImage'
 import agent from '../agent'
 
 import {
@@ -63,6 +63,7 @@ class GiftEditor extends React.Component {
     this.changeAccess = ev => this.props.onUpdateField('access', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
     this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
+    this.uploadImage = url => this.props.onUpdateField('image', url)
 
     this.watchForEnter = ev => {
       if(ev.keyCode === 13 && ['personal', 'public', 'openpublic', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
@@ -201,13 +202,6 @@ class GiftEditor extends React.Component {
                             checked={this.props.access === 'public'}
                             onChange={this.changeAccess} /> public
                         </label><br />
-                        {/* <label>
-                          <input
-                            type='radio'
-                            value='openPublic'
-                            checked={this.props.access === 'openPublic'}
-                            onChange={this.changeAccess} /> openPublic
-                        </label><br /> */}
                       </fieldset>
                       <div className='tag-list'>
                         <span className='tag-default tag-pill tag-info'>
@@ -232,29 +226,10 @@ class GiftEditor extends React.Component {
                     </div>
                   </div>
 
-                  <ToGetPicUrl />
-
-                  <fieldset className='form-group'>
-                    <input
-                      className='form-control form-control-lg'
-                      type='url'
-                      placeholder='An image URL if it helps (optional)'
-                      value={this.props.image}
-                      onChange={this.changeImage} />
-                  </fieldset>
-
-                  <div className='row'>
-                    <div className='col-md-6 offset-md-3 col-xs-12'>
-                      {
-                        this.props.image ?
-                          <img
-                            className='img-fluid'
-                            src={this.props.image}
-                            alt='preview failed. The URL better ends with .jpg/.jpeg or .png' />
-                          : null
-                      }
-                    </div>
-                  </div>
+                  <HandleImage
+                    image={this.props.image}
+                    changeImage={this.changeImage}
+                    uploadImage={this.uploadImage} />
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'

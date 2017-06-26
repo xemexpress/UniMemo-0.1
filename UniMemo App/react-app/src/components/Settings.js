@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
-import ToGetPicUrl from './common/ToGetPicUrl'
+import HandleImage from './common/HandleImage'
 import agent from '../agent'
 
 import {
@@ -22,9 +22,9 @@ class SettingsForm extends React.Component {
       mobileNum: ''
     }
 
-    this.updateState = field => ev => {
-      this.setState({ [field]: ev.target.value })
-    }
+    this.updateState = field => ev => this.setState({ [field]: ev.target.value })
+
+    this.uploadImage = url => this.setState({ proPic: url })
 
     this.submitForm = ev => {
       ev.preventDefault()
@@ -64,15 +64,7 @@ class SettingsForm extends React.Component {
     return (
       <form onSubmit={this.submitForm}>
         <fieldset>
-          <fieldset className='form-group'>
-            <input
-              className='form-control form-control-lg'
-              type='text'
-              placeholder='URL of profile picture'
-              value={this.state.proPic}
-              onChange={this.updateState('proPic')} />
-          </fieldset>
-
+          Username:
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -81,7 +73,7 @@ class SettingsForm extends React.Component {
               value={this.state.username}
               onChange={this.updateState('username')} />
           </fieldset>
-
+          Password:
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -90,7 +82,7 @@ class SettingsForm extends React.Component {
               value={this.state.password}
               onChange={this.updateState('password')} />
           </fieldset>
-
+          Bio:
           <fieldset className='form-group'>
             <textarea
               className='form-control form-control-lg'
@@ -99,7 +91,7 @@ class SettingsForm extends React.Component {
               value={this.state.bio}
               onChange={this.updateState('bio')} />
           </fieldset>
-
+          Mobile No.:
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -108,6 +100,11 @@ class SettingsForm extends React.Component {
               value={this.state.mobileNum}
               onChange={this.updateState('mobileNum')} />
           </fieldset>
+          Profile Picture:
+          <HandleImage
+            image={this.state.proPic}
+            changeImage={this.updateState('proPic')}
+            uploadImage={this.uploadImage} />
 
           <button
             className='btn btn-lg btn-primary pull-xs-right'
@@ -115,7 +112,6 @@ class SettingsForm extends React.Component {
             disabled={this.props.inProgress}>
             Update Settings
           </button>
-
         </fieldset>
       </form>
     )
@@ -158,8 +154,6 @@ class Settings extends React.Component {
                       className='img-fluid'
                       src={ currentUser.proPic ? this.props.currentUser.proPic : 'https://photouploads.com/images/350646.png' }
                       alt={`${currentUser.username}'s proPic`} /><br />
-
-                    <ToGetPicUrl />
                   </div>
 
                   <hr />
