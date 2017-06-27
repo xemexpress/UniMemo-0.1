@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ListErrors from './common/ListErrors'
 import GoogleMap from './common/Maps/GoogleMap'
 import TagList from './common/TagList'
-import HandleImage from './common/HandleImage'
+import ImageUpload from './common/ImageUpload'
 import agent from '../agent'
 
 import {
@@ -65,8 +65,7 @@ class RequestEditor extends React.Component {
     this.changeEndPlace = ev => this.props.onUpdateField('endPlace', ev.target.value)
     this.changeText = ev => this.props.onUpdateField('text', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
-    this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
-    this.uploadImage = url => this.props.onUpdateField('image', url)
+    this.changeImage = url => this.props.onUpdateField('image', url)
 
     this.watchForEnter = ev => {
       if(ev.keyCode === 13 && ['ongoing', 'ongoing-taken', 'done', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
@@ -147,7 +146,7 @@ class RequestEditor extends React.Component {
                   <div className='row'>
                     <div className='col-md-6 col-xs-12'>
                       <label htmlFor='toggle'>
-                        <strong>Optional:</strong> Set when it starts
+                        <i>Optional:</i> Set when it starts
                       </label>
                       &nbsp;&nbsp;
                       <input
@@ -158,7 +157,7 @@ class RequestEditor extends React.Component {
 
                       <div id='expand'>
                         <fieldset className='form-group'>
-                          Start Time:
+                          <strong>Start Time:</strong>
                           <input
                             className='form-control form-control-lg'
                             type='datetime-local'
@@ -166,7 +165,7 @@ class RequestEditor extends React.Component {
                             onChange={this.changeStartTime} />
                         </fieldset>
                         <fieldset className='form-group'>
-                          Start Place:
+                          <strong>Start Place:</strong>
                           <input
                             className='form-control form-control-lg'
                             type='text'
@@ -177,7 +176,7 @@ class RequestEditor extends React.Component {
                       </div>
 
                       <fieldset className='form-group'>
-                        End Time:
+                        <strong>End Time:</strong>
                         <input
                           className='form-control form-control-lg'
                           type='datetime-local'
@@ -185,7 +184,7 @@ class RequestEditor extends React.Component {
                           onChange={this.changeEndTime} />
                       </fieldset>
                       <fieldset className='form-group'>
-                        End Place:
+                        <strong>End Place:</strong>
                         <input
                           className='form-control form-control-lg'
                           type='text'
@@ -202,11 +201,11 @@ class RequestEditor extends React.Component {
                         <GoogleMap startPlace={this.props.startPlace} endPlace={this.props.endPlace} />
                         : null
                       }
+                      <br />
                     </div>
                   </div>
 
-                  <br />
-                  Tags:
+                  <strong>Tags:</strong>
                   <fieldset className='form-group'>
                     <input
                       className='form-control form-control-lg'
@@ -219,11 +218,11 @@ class RequestEditor extends React.Component {
 
                     <TagList unit={this.props} removeTag={this.removeTag} />
                   </fieldset>
-                  Image:
-                  <HandleImage
+
+                  <strong>Image:</strong>
+                  <ImageUpload
                     image={this.props.image}
-                    changeImage={this.changeImage}
-                    uploadImage={this.uploadImage} />
+                    changeImage={this.changeImage} />
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'

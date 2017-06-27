@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
 import TagList from './common/TagList'
-import HandleImage from './common/HandleImage'
+import ImageUpload from './common/ImageUpload'
 import agent from '../agent'
 
 import {
@@ -62,8 +62,7 @@ class GiftEditor extends React.Component {
     this.changeExpireAt = ev => this.props.onUpdateField('expireAt', ev.target.value)
     this.changeAccess = ev => this.props.onUpdateField('access', ev.target.value)
     this.changeTagInput = ev => this.props.onUpdateField('tagInput', ev.target.value)
-    this.changeImage = ev => this.props.onUpdateField('image', ev.target.value)
-    this.uploadImage = url => this.props.onUpdateField('image', url)
+    this.changeImage = url => this.props.onUpdateField('image', url)
 
     this.watchForEnter = ev => {
       if(ev.keyCode === 13 && ['personal', 'public', 'openpublic', ''].indexOf(this.props.tagInput.toLowerCase()) === -1){
@@ -150,7 +149,7 @@ class GiftEditor extends React.Component {
                   </fieldset>
 
                   <label htmlFor='toggle'>
-                    <strong>Optional:</strong> Set its receiver
+                    <i>Optional:</i> Set its receiver
                   </label>
                   &nbsp;&nbsp;
                   <input
@@ -166,7 +165,7 @@ class GiftEditor extends React.Component {
                       <p>- Please ensure the username of the receiver is <strong>spelt right</strong>.</p>
                     </div>
                     <fieldset className='form-group'>
-                      Receiver:
+                      <strong>Receiver:</strong>
                       <input
                         className='form-control form-control-lg'
                         type='text'
@@ -177,7 +176,7 @@ class GiftEditor extends React.Component {
 
 
                   <fieldset className='form-group'>
-                    Available before:
+                    <strong>Available before:</strong>
                     <input
                       className='form-control form-control-lg'
                       type='datetime-local'
@@ -185,6 +184,7 @@ class GiftEditor extends React.Component {
                       onChange={this.changeExpireAt} />
                   </fieldset>
 
+                  <strong>Tags:</strong>
                   <div className='row'>
                     <div className='col-md-3 col-xs-12'>
                       <fieldset className='form-control form-control-label radio'>
@@ -226,10 +226,14 @@ class GiftEditor extends React.Component {
                     </div>
                   </div>
 
-                  <HandleImage
-                    image={this.props.image}
-                    changeImage={this.changeImage}
-                    uploadImage={this.uploadImage} />
+                  <strong>Image:</strong>
+                  <div className='row'>
+                    <div className='col-xs-12'>
+                      <ImageUpload
+                        image={this.props.image}
+                        changeImage={this.changeImage} />
+                    </div>
+                  </div>
 
                   <button
                     className='btn btn-lg pull-xs-right btn-primary'

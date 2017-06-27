@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ListErrors from './common/ListErrors'
-import HandleImage from './common/HandleImage'
+import ImageUpload from './common/ImageUpload'
 import agent from '../agent'
 
 import {
@@ -64,7 +64,7 @@ class SettingsForm extends React.Component {
     return (
       <form onSubmit={this.submitForm}>
         <fieldset>
-          Username:
+          <strong>Username:</strong>
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -73,7 +73,8 @@ class SettingsForm extends React.Component {
               value={this.state.username}
               onChange={this.updateState('username')} />
           </fieldset>
-          Password:
+
+          <strong>Password:</strong>
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -82,7 +83,8 @@ class SettingsForm extends React.Component {
               value={this.state.password}
               onChange={this.updateState('password')} />
           </fieldset>
-          Bio:
+
+          <strong>Bio:</strong>
           <fieldset className='form-group'>
             <textarea
               className='form-control form-control-lg'
@@ -91,7 +93,8 @@ class SettingsForm extends React.Component {
               value={this.state.bio}
               onChange={this.updateState('bio')} />
           </fieldset>
-          Mobile No.:
+
+          <strong>Mobile No.:</strong>
           <fieldset className='form-group'>
             <input
               className='form-control form-control-lg'
@@ -100,11 +103,11 @@ class SettingsForm extends React.Component {
               value={this.state.mobileNum}
               onChange={this.updateState('mobileNum')} />
           </fieldset>
-          Profile Picture:
-          <HandleImage
+
+          <i>Update your Profile Pic:</i>
+          <ImageUpload
             image={this.state.proPic}
-            changeImage={this.updateState('proPic')}
-            uploadImage={this.uploadImage} />
+            changeImage={this.uploadImage} /><br />
 
           <button
             className='btn btn-lg btn-primary pull-xs-right'
@@ -141,7 +144,7 @@ class Settings extends React.Component {
         <div className='settings-page'>
           <div className='container page'>
             <div className='row'>
-              <div className='col-md-6 offset-md-3 col-xs-12'>
+              <div className='col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-xs-12'>
 
                   <div className='text-xs-center'>
                     <h1>Your Settings</h1>
@@ -151,7 +154,7 @@ class Settings extends React.Component {
                     Mem {currentUser.mem}<br />
 
                     <img
-                      className='img-fluid'
+                      className='user-img'
                       src={ currentUser.proPic ? this.props.currentUser.proPic : 'https://photouploads.com/images/350646.png' }
                       alt={`${currentUser.username}'s proPic`} /><br />
                   </div>
