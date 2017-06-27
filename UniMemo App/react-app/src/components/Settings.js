@@ -152,9 +152,8 @@ class Settings extends React.Component {
                     <i className='ion-star'></i> {currentUser.yellowStars}&nbsp;&nbsp;
 
                     Mem {currentUser.mem}<br />
-
                     <img
-                      className='user-img'
+                      className='img-fluid'
                       src={ currentUser.proPic ? this.props.currentUser.proPic : 'https://photouploads.com/images/350646.png' }
                       alt={`${currentUser.username}'s proPic`} /><br />
                   </div>
