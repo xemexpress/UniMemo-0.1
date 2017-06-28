@@ -1,5 +1,6 @@
 import React from 'react'
 import request from 'superagent'
+import sha1 from 'sha1'
 import Dropzone from 'react-dropzone'
 
 import {
@@ -17,16 +18,28 @@ class HandleImage extends React.Component {
     }
 
     this.onImageDrop = files => {
-      alert('After you dropped an image, image conversion will be in full swing. Please wait until your image is shown.')
+      alert('Please don\'t further perform any action until your image is shown below.')
+      const image = files[0]
+
+      const timestamp = Date.now() / 1000
+
+      const paramsStr = 'timestamp=' + timestamp + '&upload_preset=' + CLOUDINARY_UPLOAD_PRESET
+                        + CLOUDINARY_API_SECRET
+
+      const signature = sha1(paramsStr)
 
       let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                          .attach('file', image)
+                          .field('api_key', CLOUDINARY_API_KEY)
+                          .field('timestamp', timestamp)
                           .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                          .field('file', files[0])
+                          .field('signature', signature)
+
       upload.end((err, response) => {
         // console.log('error', err, 'response', response)
         if(err){
-          console.error(err)
           alert(err)
+          return
         }
 
         if(response.body.secure_url !== ''){
