@@ -1,6 +1,7 @@
 import React from 'react'
 import request from 'superagent'
 import sha1 from 'sha1'
+import Ionicon from 'react-ionicons'
 import Dropzone from 'react-dropzone'
 
 import {
@@ -14,11 +15,13 @@ class ImageUpload extends React.Component {
   constructor(){
     super()
     this.state = {
+      uploading: false,
       image: ''
     }
 
     this.onImageDrop = files => {
       alert('Please don\'t further perform any action until your image is shown below.')
+      this.setState({ uploading: true })
       const image = files[0]
 
       const timestamp = Date.now() / 1000
@@ -36,11 +39,12 @@ class ImageUpload extends React.Component {
                           .field('signature', signature)
 
       upload.end((err, response) => {
+        this.setState({ uploading: false })
+
         if(err){
           alert(err)
           return
         }
-
         if(response.body.secure_url !== ''){
           this.setState({ image: response.body.secure_url })
           this.props.changeImage(response.body.secure_url)
@@ -52,10 +56,13 @@ class ImageUpload extends React.Component {
   render(){
     if(this.state.image){
       return (
-        <div className='row'>
-          <div className='offset-lg-3 col-lg-6 offset-md-1 col-md-10 col-xs-12'>
-            <img className='img-fluid' src={this.state.image} alt='Preview uploads failed.' />
+        <div>
+          <div className='row'>
+            <div className='offset-lg-3 col-lg-6 offset-md-1 col-md-10 col-xs-12'>
+              <img className='img-fluid' src={this.state.image} alt='Preview uploads failed.' />
+            </div>
           </div>
+          <br />
         </div>
       )
     }else{
@@ -72,13 +79,21 @@ class ImageUpload extends React.Component {
             null
           }
           <br />
-          <Dropzone
-            className='card text-xs-center article-preview'
-            multiple={false}
-            accept='image/*'
-            onDrop={this.onImageDrop}>
-            <div>Drop an image or click to select a file to upload.</div>
-          </Dropzone>
+          {
+            this.state.uploading ?
+            <div className='text-xs-center'>
+              <Ionicon icon="ion-load-c" fontSize="60px" color="#347eff" rotate={true} />
+            </div>
+            :
+            <Dropzone
+              className='card text-xs-center article-preview'
+              multiple={false}
+              accept='image/*'
+              onDrop={this.onImageDrop}>
+              <div>Drop an image or click to select a file to upload.</div>
+            </Dropzone>
+          }
+          <br />
         </div>
       )
     }
