@@ -36,7 +36,6 @@ class ImageUpload extends React.Component {
                           .field('signature', signature)
 
       upload.end((err, response) => {
-        // console.log('error', err, 'response', response)
         if(err){
           alert(err)
           return
@@ -51,8 +50,6 @@ class ImageUpload extends React.Component {
   }
 
   render(){
-    // Original part
-    // Upload part
     if(this.state.image){
       return (
         <div className='row'>
