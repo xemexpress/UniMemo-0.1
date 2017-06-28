@@ -10,7 +10,7 @@ import {
   CLOUDINARY_UPLOAD_PRESET
 } from '../../constants/imageUploads'
 
-class HandleImage extends React.Component {
+class ImageUpload extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -88,4 +88,4 @@ class HandleImage extends React.Component {
   }
 }
 
-export default HandleImage
+export default ImageUpload
