@@ -30,14 +30,14 @@ class HelperList extends React.Component {
       if(helpers.length === 0){
         return (
           <div className='article-meta'>
-            No helpers are here... yet
+            未有人接...住
           </div>
         )
       }
 
       return (
         <div className='article-meta'>
-          Helpers:&nbsp;
+          順便嘅人:&nbsp;
           {
             helpers.map(helper => {
               return (
@@ -48,7 +48,7 @@ class HelperList extends React.Component {
                     className='btn btn-sm pull-xs-right btn-primary confirmButton'
                     type='button'
                     onClick={this.onHelperConfirm(helper)}>
-                    Confirm
+                    就搵你啦！
                   </button>
                 </div>
               )
@@ -59,7 +59,7 @@ class HelperList extends React.Component {
     }else{
       return (
         <div className='article-meta'>
-          Helper confirmed:&nbsp;&nbsp;&nbsp;
+          已確認的順便:&nbsp;&nbsp;&nbsp;
           <img src={request.helper.proPic} alt={request.helper.username} />&nbsp;
           {request.helper.username}&nbsp;&nbsp;
         </div>

@@ -23,7 +23,7 @@ const CommentActions = props => {
           <button
             className='btn btn-sm btn-primary'
             onClick={props.updateComment}>
-            Update Comment
+            更新留言
           </button>
           :
           <span className='mod-options'>
@@ -100,7 +100,7 @@ class Comment extends React.Component {
               this.state.canEdit ?
               <textarea
                 className='form-control'
-                placeholder='Update Comment...'
+                placeholder='更新留言...'
                 rows='3'
                 value={this.state.body}
                 onChange={this.setBody} />

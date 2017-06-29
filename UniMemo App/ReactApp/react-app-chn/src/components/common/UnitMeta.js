@@ -19,7 +19,7 @@ const UnitMeta = props => {
           {unitHolder.username}
         </Link>
         <span className='date'>
-          {new Date(unit.createdAt).toDateString()}
+          {new Date(unit.createdAt).toLocaleString('chinese').slice(0, -3)}
         </span>
       </div>
 

@@ -51,7 +51,7 @@ class RequestPreview extends React.Component {
             <button
               className={wishButtonClass}
               onClick={this.handleClick}>
-              <i className='ion-help-buoy'></i> {request.wishesCount}
+              <i className='ion-help-buoy'></i> Wish | {request.wishesCount}
             </button>
           </div>
         </div>
@@ -60,16 +60,16 @@ class RequestPreview extends React.Component {
           <h1>{request.text}</h1>
 
           <p>
-            Start Time:&nbsp;{request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}
+            開始時間:&nbsp;{request.startTime ? new Date(request.startTime).toLocaleString('chinese').slice(0, -3) : '結束前 :)'}
             <br />
-            Start Place:&nbsp;{request.startPlace ? request.startPlace : 'Not determined yet :)'}
+            開始地點:&nbsp;{request.startPlace ? request.startPlace : '未定 :)'}
             <br /><br />
-            End Time:&nbsp;{new Date(request.endTime).toDateString()}
+            結束時間:&nbsp;{new Date(request.endTime).toLocaleString('chinese').slice(0, -3)}
             <br />
-            End Place:&nbsp;{request.endPlace}
+            結束地點:&nbsp;{request.endPlace}
           </p>
 
-          <span>Read more...</span>
+          <span>了解更多...</span>
 
           <TagList unit={request} />
         </Link>

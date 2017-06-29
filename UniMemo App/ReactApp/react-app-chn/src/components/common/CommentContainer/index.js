@@ -33,11 +33,11 @@ class CommentContainer extends React.Component {
             currentUser={this.props.currentUser} />
           : this.props.comments.length === 0 ?
           <div className='card text-xs-center article-preview'>
-            <a className='text-success'>No responses...yet</a>
+            <a className='text-success'>未有留言</a>
           </div>
           :
           <div className='card text-xs-center article-preview'>
-            <a className='text-success' onClick={this.showComments}>Show all responses</a>
+            <a className='text-success' onClick={this.showComments}>顯示所有回應</a>
           </div>
 
         }

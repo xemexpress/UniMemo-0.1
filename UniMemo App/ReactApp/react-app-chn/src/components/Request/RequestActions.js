@@ -84,23 +84,23 @@ class RequestActions extends React.Component {
               <Link
                 to={`requestEditor/${request.requestId}`}
                 className='btn btn-sm btn-outline-secondary'>
-                <i className='ion-edit'></i>&nbsp;Edit Request
+                <i className='ion-edit'></i>&nbsp;編輯委託
               </Link>
               &nbsp;&nbsp;&nbsp;
               <button
                 className='btn btn-sm btn-outline-danger'
                 onClick={this.handleDel(request)}>
-                <i className='ion-trash-a'></i>&nbsp;Delete Request
+                <i className='ion-trash-a'></i>&nbsp;刪除委託
               </button>
             </span>
             : request.tagList.indexOf('ongoing-taken') !== -1 ?
             <span>
-              {`${request.helper.username}'s help has saved me`}&nbsp;
+              {`${request.helper.username}嘅順便幫我慳左`}&nbsp;
               <input
                 className='mem'
                 type='number'
                 value={this.state.mem}
-                onChange={this.setMem} />&nbsp;minutes.&nbsp;&nbsp;&nbsp;
+                onChange={this.setMem} />&nbsp;分鐘.&nbsp;&nbsp;&nbsp;
               <button
                 className='btn btn-outline-danger'
                 onClick={this.handleEnd(request, this.state.mem)}>

@@ -90,7 +90,7 @@ class ImageUpload extends React.Component {
               multiple={false}
               accept='image/*'
               onDrop={this.onImageDrop}>
-              <div>Drop an image or click to select a file to upload.</div>
+              <div>擺上相片<br/><br/>或<br/><br/>點擊選擇文件</div>
             </Dropzone>
           }
           <br />

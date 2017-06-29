@@ -138,7 +138,7 @@ class RequestEditor extends React.Component {
                     <textarea
                       className='form-control form-control-lg'
                       rows='5'
-                      placeholder="What's this request about"
+                      placeholder="委託內容"
                       value={this.props.text}
                       onChange={this.changeText} />
                   </fieldset>
@@ -146,7 +146,7 @@ class RequestEditor extends React.Component {
                   <div className='row'>
                     <div className='col-md-6 col-xs-12'>
                       <label htmlFor='toggle'>
-                        <i>Optional:</i> Set when it starts
+                        <i>可選:</i> 填寫幾時開始
                       </label>
                       &nbsp;&nbsp;
                       <input
@@ -157,7 +157,7 @@ class RequestEditor extends React.Component {
 
                       <div id='expand'>
                         <fieldset className='form-group'>
-                          <strong>Start Time:</strong>
+                          <strong>開始時間:</strong>
                           <input
                             className='form-control form-control-lg'
                             type='datetime-local'
@@ -165,18 +165,18 @@ class RequestEditor extends React.Component {
                             onChange={this.changeStartTime} />
                         </fieldset>
                         <fieldset className='form-group'>
-                          <strong>Start Place:</strong>
+                          <strong>開始地點:</strong>
                           <input
                             className='form-control form-control-lg'
                             type='text'
-                            placeholder='Where it starts (Optional)'
+                            placeholder='開始地點(可選)'
                             value={this.props.startPlace}
                             onChange={this.changeStartPlace} />
                         </fieldset>
                       </div>
 
                       <fieldset className='form-group'>
-                        <strong>End Time:</strong>
+                        <strong>結束時間:</strong>
                         <input
                           className='form-control form-control-lg'
                           type='datetime-local'
@@ -184,11 +184,11 @@ class RequestEditor extends React.Component {
                           onChange={this.changeEndTime} />
                       </fieldset>
                       <fieldset className='form-group'>
-                        <strong>End Place:</strong>
+                        <strong>結束地點:</strong>
                         <input
                           className='form-control form-control-lg'
                           type='text'
-                          placeholder='Where to do it'
+                          placeholder='結束地點'
                           value={this.props.endPlace}
                           onChange={this.changeEndPlace} />
                       </fieldset>
@@ -205,12 +205,12 @@ class RequestEditor extends React.Component {
                     </div>
                   </div>
 
-                  <strong>Tags:</strong>
+                  <strong>標籤:</strong>
                   <fieldset className='form-group'>
                     <input
                       className='form-control form-control-lg'
                       type='text'
-                      placeholder='Enter tags. Recommend choosing 1 from &#39;delivering&#39;, &#39;production&#39; & &#39;shopping&#39;'
+                      placeholder='建議&#39;delivering&#39;, &#39;production&#39; & &#39;shopping&#39;'
                       // except status tags, e.g. ongoing, ongoing-taken, done
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
@@ -219,7 +219,7 @@ class RequestEditor extends React.Component {
                     <TagList unit={this.props} removeTag={this.removeTag} />
                   </fieldset>
 
-                  <strong>Image:</strong>
+                  <strong>相片:</strong>
                   <ImageUpload
                     image={this.props.image}
                     changeImage={this.changeImage} />
@@ -229,7 +229,7 @@ class RequestEditor extends React.Component {
                     type='button'
                     onClick={this.submitForm}
                     disabled={this.props.inProgress}>
-                    { this.props.requestId ? 'Update' : 'Post' } Request
+                    { this.props.requestId ? '更新' : '散出' }委託
                   </button>
                 </fieldset>
               </form>

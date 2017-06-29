@@ -46,7 +46,7 @@ class CommentInput extends React.Component {
           <div className='card-block'>
             <textarea
               className='form-control'
-              placeholder='Write a Comment...'
+              placeholder='寫低留言...'
               rows='3'
               value={this.state.body}
               onChange={this.setBody} />
@@ -60,7 +60,7 @@ class CommentInput extends React.Component {
             <button
               className='btn btn-sm btn-primary'
               type='submit'>
-              Post Comment
+              留言
             </button>
           </div>
         </form>

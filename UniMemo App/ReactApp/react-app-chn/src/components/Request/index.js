@@ -59,28 +59,20 @@ class Request extends React.Component {
 
     const text = `
       <div>
-        Start Time:&nbsp;
-          <strong>${request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}</strong>
+        開始時間:&nbsp;
+          <strong>${request.startTime ? new Date(request.startTime).toLocaleString('chinese').slice(0, -3) : '結束前 :)'}</strong>
         <br />
-        Start Place:&nbsp;
-          <strong>${request.startPlace ? request.startPlace : 'Not determined yet :)'}</strong>
+        開始地點:&nbsp;
+          <strong>${request.startPlace ? request.startPlace : '未定 :)'}</strong>
         <br />
         <br />
-        End Time:&nbsp;
-          <strong>${new Date(request.endTime).toDateString()}</strong>
+        結束時間:&nbsp;
+          <strong>${new Date(request.endTime).toLocaleString('chinese').slice(0, -3)}</strong>
         <br />
-        End Place:&nbsp;
+        結束地點:&nbsp;
           <strong>${request.endPlace}</strong>
       </div>
     `
-
-    // const text = `
-    //     Start Time: __${request.startTime ? new Date(request.startTime).toDateString() : 'Before End Time :)'}__
-    //     Start Place: __${request.startPlace ? request.startPlace : 'Not determined yet :)'}__
-    //
-    //     End Time: __${new Date(request.endTime).toDateString()}__
-    //     End Place: __${request.endPlace}__
-    // `
 
     const markup = {
       __html: text

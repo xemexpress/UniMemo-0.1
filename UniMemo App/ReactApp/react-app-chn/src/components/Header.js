@@ -7,13 +7,13 @@ const LoggedOutView = props => {
       <ul className='nav navbar-nav pull-xs-right'>
         <li className='nav-item'>
           <Link to='login' className='nav-link'>
-            Sign in
+            登入
           </Link>
         </li>
 
         <li className='nav-item'>
           <Link to='register' className='nav-link'>
-            Sign up
+            註冊
           </Link>
         </li>
       </ul>
@@ -57,25 +57,25 @@ class LoggedInView extends React.Component {
         <ul id='myTopNav' className={this.state.expanded ? 'nav navbar-nav pull-xs-right topnav expanded' : 'nav navbar-nav pull-xs-right topnav'}>
           <li className='nav-item'>
             <Link to='/' className='nav-link'>
-              Home
+              主頁
             </Link>
           </li>
 
           <li className='nav-item'>
             <Link to='requestEditor' className='nav-link'>
-              <i className='ion-compose'></i>&nbsp;New Request
+              <i className='ion-compose'></i>&nbsp;散出委託
             </Link>
           </li>
 
           <li className='nav-item'>
             <Link to='giftEditor' className='nav-link'>
-              <i className='ion-android-happy'></i>&nbsp;New Gift
+              <i className='ion-android-happy'></i>&nbsp;分享順便
             </Link>
           </li>
 
           <li className='nav-item'>
             <Link to='settings' className='nav-link'>
-              <i className='ion-gear-a'></i>&nbsp;Settings
+              <i className='ion-gear-a'></i>&nbsp;個人設置
             </Link>
           </li>
 

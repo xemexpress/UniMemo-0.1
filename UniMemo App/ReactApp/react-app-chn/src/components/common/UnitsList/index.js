@@ -8,7 +8,7 @@ const UnitsList = props => {
   if(!props.requests && !props.gifts){
     return (
       <div className='article-preview'>
-        Loading...
+        抖下先...
       </div>
     )
   }
@@ -19,7 +19,7 @@ const UnitsList = props => {
   if(units.length === 0){
     return (
       <div className='article-preview'>
-        No {unitType} are here... yet
+        仲未有「{unitType === 'requests' ? '委託' : '順便'}」...住。
       </div>
     )
   }

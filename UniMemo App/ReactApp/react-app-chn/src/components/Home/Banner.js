@@ -29,7 +29,7 @@ const Banner = props => {
         <h1 className='logo-font'>
           {props.appName}
         </h1>
-        <Statement statement='Convenience from the Convenients' page={props.currentPage}/>
+        <Statement statement='發掘順便' page={props.currentPage}/>
       </div>
     </div>
   )
