@@ -45,7 +45,6 @@ class LoggedInView extends React.Component {
 
   componentDidMount(){
     document.addEventListener('wheel', ev => {
-      ev.preventDefault()
       if(this.state.expanded){
         this.setState({ expanded: false })
       }
