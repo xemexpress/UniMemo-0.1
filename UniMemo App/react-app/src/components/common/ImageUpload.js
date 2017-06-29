@@ -58,7 +58,7 @@ class ImageUpload extends React.Component {
       return (
         <div>
           <div className='row'>
-            <div className='offset-lg-3 col-lg-6 offset-md-1 col-md-10 col-xs-12'>
+            <div className='offset-sm-4 col-sm-4 offset-xs-3 col-xs-6'>
               <img className='img-fluid' src={this.state.image} alt='Preview uploads failed.' />
             </div>
           </div>
@@ -71,7 +71,7 @@ class ImageUpload extends React.Component {
           {
             this.props.image ?
             <div className='row'>
-              <div className='offset-lg-3 col-lg-6 offset-md-2 col-md-8 col-xs-12'>
+              <div className='offset-sm-4 col-sm-4 offset-xs-3 col-xs-6'>
                 <img className='img-fluid' src={this.props.image} alt='Preview uploads failed.' />
               </div>
             </div>
