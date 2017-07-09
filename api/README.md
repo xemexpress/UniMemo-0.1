@@ -600,6 +600,26 @@ Offset number of requests (default is 0):
 
 Authentication required, returns [multiple Requests](#multiple-requests) posted by favored Users and wished by favored Users, ordered by most recent first.
 
+### Further Collect Requests
+
+`GET /api/requests/furtherCollect`
+
+Query Parameters:
+
+Filter by tag:
+
+`?tag=ongoing,shopping`
+
+Limit number of requests (default is 10):
+
+`?limit=10`
+
+Offset number of requests (default is 0):
+
+`?offset=0`
+
+Authentication required, returns [multiple Requests](#multiple-requests) posted by Users favored by your favored Users, ordered by most recent first.
+
 ### List Requests taken by Current User
 
 `GET /api/requests/taking`

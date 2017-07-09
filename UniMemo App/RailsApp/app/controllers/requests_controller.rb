@@ -21,6 +21,18 @@ class RequestsController < ApplicationController
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
   end
 
+  def taking
+    @requests = current_user.following_requests
+
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
+
+    @requests_count = @requests.count
+
+    @requests = @requests.order(:created_at).offset(params[:offset] || 0).limit(params[:limit] || 10)
+
+    render :index
+  end
+
   def collect
     @requests_wished_by_favored_users = Request.where(id: Request.joins(:wishes).where(wishes: { user: current_user.following_users } ).pluck(:id))
 
@@ -35,17 +47,33 @@ class RequestsController < ApplicationController
     render :index
   end
 
-  def taking
-    @requests = current_user.following_requests
+  def furtherCollect
+    # A Series
+    @favored_users = current_user.following_users
+
+    # Init B Series [array]
+    @further_favored_users = []
+
+    # Get B Series
+    @favored_users.each do |user|
+      @further_favored_users = @further_favored_users + user.following_users
+    end
+
+    @further_favored_users = @further_favored_users - @favored_users - [current_user]
+
+    @further_favored_users.uniq
+
+    @requests = Request.where(poster: @further_favored_users)
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
 
     @requests_count = @requests.count
 
-    @requests = @requests.order(:created_at).offset(params[:offset] || 0).limit(params[:limit] || 10)
+    @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
 
     render :index
   end
+
 
   def create
     @request = Request.new(request_params)
