@@ -4,7 +4,7 @@ import CommentList from './CommentList'
 import CommentInput from './CommentInput'
 
 class CommentContainer extends React.Component {
-  constructor(){
+  constructor(props){
     super(props)
     this.state = {
       hidden: !(this.props.isPoster || this.props.comments.some(comment => {
