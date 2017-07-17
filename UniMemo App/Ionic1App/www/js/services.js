@@ -1,1 +1,1 @@
-angular.module('unimemo.services', [])
+angular.module('unimemo.services', ['ionic.utils'])
