@@ -22,3 +22,28 @@ angular.module('unimemo', ['ionic'])
     }
   });
 })
+
+.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider
+
+  // Set up an abstract state for the tabs directive
+  .state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tabs.html'
+  })
+
+  // Each tab has its own nav history stack:
+
+  .state('tab.home', {
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/home.html'
+      }
+    }
+  })
+
+  // If none of the above states are matched, use this as the fallback:
+  $urlRouterProvider.otherwise('/tab/home')
+})
