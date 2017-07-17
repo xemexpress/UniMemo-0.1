@@ -61,7 +61,7 @@ angular.module('unimemo', ['ionic', 'unimemo.controllers'])
   })
 
   .state('tab.profile', {
-    url: '/me',
+    url: '/profile',
     views: {
       'tab-profile': {
         templateUrl: 'templates/profile.html',
