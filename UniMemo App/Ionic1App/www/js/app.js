@@ -56,6 +56,15 @@ angular.module('unimemo', ['ionic'])
     }
   })
 
+  .state('tab.me', {
+    url: '/me',
+    views: {
+      'tab-me': {
+        templateUrl: 'templates/me.html'
+      }
+    }
+  })
+
   // If none of the above states are matched, use this as the fallback:
   $urlRouterProvider.otherwise('/tab/home')
 })
