@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('unimemo', ['ionic'])
+angular.module('unimemo', ['ionic', 'unimemo.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,7 +30,8 @@ angular.module('unimemo', ['ionic'])
   .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'TabsCtrl'
   })
 
   // Each tab has its own nav history stack:
@@ -39,7 +40,8 @@ angular.module('unimemo', ['ionic'])
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
@@ -48,19 +50,22 @@ angular.module('unimemo', ['ionic'])
     url: '/post',
     views: {
       'tab-post-request': {
-        templateUrl: 'templates/post/request.html'
+        templateUrl: 'templates/post/request.html',
+        controller: 'PostRequestCtrl'
       },
       'tab-post-gift': {
-        templateUrl: 'templates/post/gift.html'
+        templateUrl: 'templates/post/gift.html',
+        controller: 'PostGiftCtrl'
       }
     }
   })
 
-  .state('tab.me', {
+  .state('tab.profile', {
     url: '/me',
     views: {
-      'tab-me': {
-        templateUrl: 'templates/me.html'
+      'tab-profile': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
       }
     }
   })
