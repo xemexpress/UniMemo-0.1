@@ -1,4 +1,4 @@
-angular.module('unimemo.controllers', ['ionic'])
+angular.module('unimemo.controllers', ['ionic', 'unimemo.services'])
 
 // Controller for the home page
 .controller('HomeCtrl', function($scope){
