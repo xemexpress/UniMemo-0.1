@@ -435,19 +435,19 @@ Optional fields: `email`, `username`, `password`, `proPic`, `bio`
 
 Query Parameters:
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=giveOrLend`
 
-Filter by provider:
+Filter by `provider`:
 
 `?provider=xemexpress`
 
-Filter by receiver:
+Filter by `receiver`:
 
 `?receiver=xemexpress`
 
-Filter by using ('sent' relates to 'Gifts sent'; 'received' to 'Gifts received'; 'nSent' to 'not sent'; 'nReceived' to 'not received'):
+Filter by `using` ('sent' relates to 'Gifts sent'; 'received' to 'Gifts received'; 'nSent' to 'not sent'; 'nReceived' to 'not received'):
 
 `?using=sent`
 
@@ -550,23 +550,23 @@ Authentication required, returns the unfavored User's [Profile](#profile)
 
 Query Parameters:
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=ongoing,shopping`
 
-Filter by not_this_tag:
+Filter by `not_this_tag`:
 
 `?not_this_tag=done`
 
-Filter by poster:
+Filter by `poster`:
 
 `?poster=xemexpress`
 
-Filter by helper: *(Requests that are done 2 weeks ago would be destroyed)*
+Filter by `helper`: *(Requests that are done 2 weeks ago would be destroyed)*
 
 `?helper=xemexpress`
 
-Wished by user:
+Wished by `user`:
 
 `?wisher=xemexpress`
 
@@ -586,7 +586,7 @@ Authentication optional, returns [multiple requests](#multiple-requests), ordere
 
 Query Parameters:
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=ongoing,shopping`
 
@@ -606,7 +606,7 @@ Authentication required, returns [multiple Requests](#multiple-requests) posted 
 
 Query Parameters:
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=ongoing,shopping`
 
@@ -626,7 +626,7 @@ Authentication required, returns [multiple Requests](#multiple-requests) posted 
 
 Query Parameters:
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=ongoing`
 
@@ -802,7 +802,7 @@ Authentication required, returns {}
 
 `GET /api/tags`
 
-Filter by tag:
+Filter by `tag`:
 
 `?tag=requests`
 
