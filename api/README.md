@@ -772,7 +772,7 @@ Example request body:
 
 Authentication required, returns the [Comment](#single-comment)
 
-Required fields: `body`
+Required field: `body`
 
 ### Update Comment
 
@@ -790,7 +790,7 @@ Example request body:
 
 Authentication required, returns the updated [Comment](#single-comment)
 
-Optional fields: `body`
+Optional field: `body`
 
 ### Delete Comment
 
