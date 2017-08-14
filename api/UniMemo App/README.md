@@ -1,4 +1,4 @@
-# UniMemo API Spec
+# UniMemo WebApp API Spec
 
 ### Authentication Header:
 
