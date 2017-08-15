@@ -75,7 +75,7 @@ class Register extends React.Component {
     const username = this.props.username
     const email = this.props.email
     const password = this.props.password
-    const confirm = this.state.confirm
+    const confirm = this.props.confirm
 
     return (
       <div className='auth-page'>
