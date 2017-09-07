@@ -6,6 +6,8 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.includes(:poster, :helper)
 
+    @requests = @requests.where.not(poster: current_user.following_users)
+
     @requests = @requests.where.not(id: @requests.tagged_with(params[:not_this_tag]).pluck(:id)) if params[:not_this_tag].present?
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?

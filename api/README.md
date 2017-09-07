@@ -578,7 +578,7 @@ Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication optional, returns [multiple requests](#multiple-requests), ordered by most recent first
+Authentication optional, returns [multiple requests](#multiple-requests) without requests in [My Collection](#collect-requests), ordered by most recent first
 
 ### Collect Requests
 
@@ -598,7 +598,7 @@ Offset number of requests (default is 0):
 
 `?offset=0`
 
-Authentication required, returns [multiple Requests](#multiple-requests) posted by favored Users and wished by favored Users, ordered by most recent first.
+Authentication required, returns [multiple Requests](#multiple-requests) posted by favored Users and wished by favored Users, ordered by most recent first. This is referred as "My Collection".
 
 ### Further Collect Requests
 
